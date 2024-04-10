@@ -312,6 +312,27 @@ return [
             'label_color' => 'success',
         ],
         [
+            'text' => 'Ciudad',
+            'url' => '/ciudad',
+            'icon' => 'far fa-fw fa-file',
+            'label' => 4,
+            'label_color' => 'success',
+        ],
+        [
+            'text' => 'Egresos',
+            'url' => '/egresos',
+            'icon' => 'far fa-fw fa-file',
+            'label' => 4,
+            'label_color' => 'success',
+        ],
+        [
+            'text' => 'Especialidades',
+            'url' => '/especialidad',
+            'icon' => 'far fa-fw fa-file',
+            'label' => 4,
+            'label_color' => 'success',
+        ],
+        [
             'text' => 'change_password',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',

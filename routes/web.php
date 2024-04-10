@@ -39,3 +39,21 @@ Route::get('/departamentos/{departamento}', [App\Http\Controllers\DepartamentoCo
 Route::get('/departamentos/{departamento}/edit', [App\Http\Controllers\DepartamentoController::class, 'edit'])->middleware('auth')->name('departamentos.edit');
 Route::put('/departamentos/{departamento}', [App\Http\Controllers\DepartamentoController::class, 'update'])->middleware('auth')->name('departamentos.update');
 Route::delete('/departamentos/{departamento}', [App\Http\Controllers\DepartamentoController::class, 'destroy'])->middleware('auth')->name('departamentos.destroy');
+
+
+Route::get('/ciudad', [App\Http\Controllers\CiudadController::class, 'index'])->middleware('auth')->name('ciudad.index');
+Route::get('/ciudad/create', [App\Http\Controllers\CiudadController::class, 'create'])->middleware('auth')->name('ciudad.create');
+Route::post('/ciudad', [App\Http\Controllers\CiudadController::class, 'store'])->middleware('auth')->name('ciudad.store');
+Route::get('/ciudad/{ciudad}', [App\Http\Controllers\CiudadController::class, 'show'])->middleware('auth')->name('ciudad.show');
+Route::get('/ciudad/{ciudad}/edit', [App\Http\Controllers\CiudadController::class, 'edit'])->middleware('auth')->name('ciudad.edit');
+Route::put('/ciudad/{ciudad}', [App\Http\Controllers\CiudadController::class, 'update'])->middleware('auth')->name('ciudad.update');
+Route::delete('/ciudad/{ciudad}', [App\Http\Controllers\CiudadController::class, 'destroy'])->middleware('auth')->name('ciudad.destroy');
+
+Route::get('/egresos', [App\Http\Controllers\EgresoController::class, 'index'])->middleware('auth')->name('egresos.index');
+Route::get('/egresos/create', [App\Http\Controllers\EgresoController::class, 'create'])->middleware('auth')->name('egresos.create');
+Route::post('/egresos', [App\Http\Controllers\EgresoController::class, 'store'])->middleware('auth')->name('egresos.store');
+Route::get('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'show'])->middleware('auth')->name('egresos.show');
+Route::get('/egresos/{egreso}/edit', [App\Http\Controllers\EgresoController::class, 'edit'])->middleware('auth')->name('egresos.edit');
+Route::put('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'update'])->middleware('auth')->name('egresos.update');
+Route::delete('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'destroy'])->middleware('auth')->name('egresos.destroy');
+
