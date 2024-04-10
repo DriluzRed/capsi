@@ -1,23 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Ingreso;
 
 use Illuminate\Http\Request;
-use App\Models\Especialidad;
-class EspecialidadController extends Controller
+
+class IngresoController extends Controller
 {
     public function index()
     {
-        $especialidades = Especialidad::where('deleted_at', null)->get();
-        return view('especialidades.index')
-        ->with('especialidades', $especialidades)
-        ->with('title', 'Listado de especialidades');
+        $ingresos = Ingreso::where('deleted_at', null)->get();
+        return view('ingresos.index')
+        ->with('ingresos', $ingresos)
+        ->with('title', 'Listado de ingresos');
     }
 
     public function create()
     {
-        return view('especialidades.create')
-        ->with('title', 'Crear especialidad');
+        return view('ingresos.create')
+        ->with('title', 'Crear ingreso');
     }
 
     public function store(Request $request)
@@ -32,31 +33,31 @@ class EspecialidadController extends Controller
             'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
         ]);
 
-        $especialidad = new Especialidad();
-        $especialidad::create(
+        $ingreso = new Ingreso();
+        $ingreso::create(
             [
                 'nombre' => $request->nombre
             ]
         );
-        return redirect()->route('especialidades.index');
+        return redirect()->route('ingresos.index');
     }
 
-    public function show(Especialidad $especialidad)
+    public function show(Ingreso $ingreso)
     {
-        return view('especialidades.show')
-        ->with('especialidad', $especialidad)
-        ->with('title', 'Ver especialidad');
+        return view('ingresos.show')
+        ->with('ingreso', $ingreso)
+        ->with('title', 'Ver ingreso');
     }
 
     public function edit($id)
     {   
-        $especialidad = Especialidad::find($id);
-        return view('especialidades.edit')
-        ->with('especialidad', $especialidad)
-        ->with('title', 'Editar especialidad');
+        $ingreso = Ingreso::find($id);
+        return view('ingresos.edit')
+        ->with('ingreso', $ingreso)
+        ->with('title', 'Editar ingreso');
     }
 
-    public function update(Request $request, Especialidad $especialidad)
+    public function update(Request $request, Ingreso $ingreso)
     {
         $request->validate([
             'nombre' => 'required|string|max:15|min:2'
@@ -68,18 +69,18 @@ class EspecialidadController extends Controller
             'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
         ]);
 
-        $especialidad->update(
+        $ingreso->update(
             [
                 'nombre' => $request->nombre
             ]
         );
-        return redirect()->route('especialidades.index');
+        return redirect()->route('ingresos.index');
     }
 
-    public function destroy(Especialidad $especialidad)
+    public function destroy(Ingreso $ingreso)
     {
-        $especialidad->delete();
-        return redirect()->route('especialidades.index');
+        $ingreso->delete();
+        return redirect()->route('ingresos.index');
     }
 
 }
