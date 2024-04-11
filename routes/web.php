@@ -57,3 +57,42 @@ Route::get('/egresos/{egreso}/edit', [App\Http\Controllers\EgresoController::cla
 Route::put('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'update'])->middleware('auth')->name('egresos.update');
 Route::delete('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'destroy'])->middleware('auth')->name('egresos.destroy');
 
+// Route::get('/ingresos', [App\Http\Controllers\IngresoController::class, 'index'])->middleware('auth')->name('ingresos.index');
+// Route::get('/ingresos/create', [App\Http\Controllers\IngresoController::class, 'create'])->middleware('auth')->name('ingresos.create');
+// Route::post('/ingresos', [App\Http\Controllers\IngresoController::class, 'store'])->middleware('auth')->name('ingresos.store');
+// Route::get('/ingresos/{ingreso}', [App\Http\Controllers\IngresoController::class, 'show'])->middleware('auth')->name('ingresos.show');
+
+Route::get('/users_detalles', [App\Http\Controllers\UserDetalleController::class, 'index'])->middleware('auth')->name('users_detalles.index');
+Route::get('/users_detalles/create_pac', [App\Http\Controllers\UserDetalleController::class, 'createPaciente'])->middleware('auth')->name('users_detalles.create_pac');
+Route::get('/users_detalles/create_psi', [App\Http\Controllers\UserDetalleController::class, 'createPsicologo'])->middleware('auth')->name('users_detalles.create_psi');
+Route::post('/users_detalles', [App\Http\Controllers\UserDetalleController::class, 'store'])->middleware('auth')->name('users_detalles.store');
+
+Route::get('/users_detalles/{user_detalle}', [App\Http\Controllers\UserDetalleController::class, 'show'])->middleware('auth')->name('users_detalles.show');
+Route::get('/users_detalles/{user_detalle}/edit', [App\Http\Controllers\UserDetalleController::class, 'edit'])->middleware('auth')->name('users_detalles.edit');
+Route::put('/users_detalles/{user_detalle}', [App\Http\Controllers\UserDetalleController::class, 'update'])->middleware('auth')->name('users_detalles.update');
+Route::delete('/users_detalles/{user_detalle}', [App\Http\Controllers\UserDetalleController::class, 'destroy'])->middleware('auth')->name('users_detalles.destroy');
+
+
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->middleware('auth')->name('users.index');
+Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->middleware('auth')->name('users.create');
+Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->middleware('auth')->name('users.store');
+Route::get('/users/{user}', [App\Http\Controllers\UserController::class, 'show'])->middleware('auth')->name('users.show');
+Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->middleware('auth')->name('users.edit');
+Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->middleware('auth')->name('users.update');
+Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->middleware('auth')->name('users.destroy');
+
+Route::get('/roles', [App\Http\Controllers\RoleController::class, 'index'])->middleware('auth')->name('admin.roles.index');
+Route::get('/roles/create', [App\Http\Controllers\RoleController::class, 'create'])->middleware('auth')->name('admin.roles.create');
+Route::post('/roles', [App\Http\Controllers\RoleController::class, 'store'])->middleware('auth')->name('admin.roles.store');
+Route::get('/roles/{role}', [App\Http\Controllers\RoleController::class, 'show'])->middleware('auth')->name('admin.roles.show');
+Route::get('/roles/{role}/edit', [App\Http\Controllers\RoleController::class, 'edit'])->middleware('auth')->name('admin.roles.edit');
+Route::put('/roles/{role}', [App\Http\Controllers\RoleController::class, 'update'])->middleware('auth')->name('admin.roles.update');
+Route::delete('/roles/{role}', [App\Http\Controllers\RoleController::class, 'destroy'])->middleware('auth')->name('admin.roles.destroy');
+
+Route::get('/permissions', [App\Http\Controllers\PermissionController::class, 'index'])->middleware('auth')->name('admin.permissions.index');
+Route::get('/permissions/create', [App\Http\Controllers\PermissionController::class, 'create'])->middleware('auth')->name('admin.permissions.create');
+Route::post('/permissions', [App\Http\Controllers\PermissionController::class, 'store'])->middleware('auth')->name('admin.permissions.store');
+Route::get('/permissions/{permission}', [App\Http\Controllers\PermissionController::class, 'show'])->middleware('auth')->name('admin.permissions.show');
+Route::get('/permissions/{permission}/edit', [App\Http\Controllers\PermissionController::class, 'edit'])->middleware('auth')->name('admin.permissions.edit');
+Route::put('/permissions/{permission}', [App\Http\Controllers\PermissionController::class, 'update'])->middleware('auth')->name('admin.permissions.update');
+Route::delete('/permissions/{permission}', [App\Http\Controllers\PermissionController::class, 'destroy'])->middleware('auth')->name('admin.permissions.destroy');

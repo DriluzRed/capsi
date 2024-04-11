@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Egreso extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'fecha', 'monto'];
 
 }

@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -26,7 +26,7 @@
                         has-danger
                     @enderror">
                     <label for="fecha">Fecha</label>
-                    <input type="date" class="form-control
+                    <input type="date" class="form-control datepicker
                         @error('fecha')
                             is-invalid
                         @enderror" id="fecha" name="fecha" value="{{ old('fecha') }}">
