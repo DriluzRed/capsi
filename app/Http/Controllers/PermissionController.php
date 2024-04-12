@@ -8,57 +8,56 @@ class PermissionController extends Controller
 {
     public function index()
     {
-        return view('permissions.index');
+        $permissions = Permission::all();
+        return view('admin.permissions.index')
+            ->with('permissions', $permissions);
     }
 
     public function create()
     {
-        return view('permissions.create');
+        return view('admin.permissions.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required'
+            'name' => 'required',
         ]);
 
         $permiso = new Permission();
-        $permiso->name = $request->nombre;
-        $permiso->description = $request->descripcion;
+        $permiso->name = $request->name;
         $permiso->save();
 
-        return redirect()->route('permissions.index');
+        return redirect()->route('admin.permissions.index');
     }
 
     public function show(Permission $permiso)
     {
-        return view('permissions.show', compact('permiso'));
+        return view('admin.permissions.show', compact('permiso'));
     }
 
-    public function edit(Permission $permiso)
+    public function edit(Permission $permission)
     {
-        return view('permissions.edit', compact('permiso'));
+        return view('admin.permissions.edit', compact('permission'));
     }
 
-    public function update(Request $request, Permission $permiso)
+    public function update(Request $request, $id)
     {
+        $permiso = Permission::find($id);
         $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required'
+            'name' => 'required',
         ]);
 
-        $permiso->name = $request->nombre;
-        $permiso->description = $request->descripcion;
+        $permiso->name = $request->name;
         $permiso->save();
 
-        return redirect()->route('permissions.index');
+        return redirect()->route('admin.permissions.index');
     }
 
 
     public function destroy(Permission $permiso)
     {
         $permiso->delete();
-        return redirect()->route('permissions.index');
+        return redirect()->route('admin.permissions.index');
     }
 }
