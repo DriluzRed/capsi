@@ -10,15 +10,15 @@ class CiudadController extends Controller
 {
     public function index()
     {
-        $ciudad = Ciudad::where('deleted_at', null)->get();
-        return view('ciudad.index')
-        ->with('ciudad', $ciudad)
+        $ciudades = Ciudad::where('deleted_at', null)->get();
+        return view('pages.ciudad.index')
+        ->with('ciudades', $ciudades)
         ->with('title', 'Listado de Ciudad');
     }
     public function create()
     {
         $departamentos = Departamento::where('deleted_at', null)->get();
-        return view('ciudad.create')
+        return view('pages.ciudad.create')
         ->with('title', 'Crear Ciudad')
         ->with('departamentos', $departamentos);
     }
@@ -27,19 +27,19 @@ class CiudadController extends Controller
     {
         $request->validate([
             'nombre' => 'required|string|max:30',
-            'departamento' => 'required'
+            'departamento_id' => 'required'
         ], [
             'nombre.required' => 'El campo nombre es obligatorio',
             'nombre.string' => 'El campo nombre debe ser un texto',
             'nombre.max' => 'El campo nombre debe tener máximo 30 caracteres',
-            'departamento.required' => 'El campo país es obligatorio'
+            'departamento_id.required' => 'El campo departamento es obligatorio'
         ]
         );
         $ciudad = new Ciudad();
         $ciudad->nombre = $request->nombre;
-        $ciudad->departamento_id = $request->departamento;
+        $ciudad->departamento_id = $request->departamento_id;
         $ciudad->save();
-        return redirect()->route('ciudad.index');
+        return redirect()->route('ciudades.index');
     }
 
     public function show(Ciudad $ciudad)
@@ -53,7 +53,7 @@ class CiudadController extends Controller
     {
         $ciudad = Ciudad::find($id);
         $departamentos = Departamento::where('deleted_at', null)->get();
-        return view('ciudad.edit')
+        return view('pages.ciudad.edit')
         ->with('ciudad', $ciudad)
         ->with('title', 'Editar ciudad')
         ->with('departamentos', $departamentos);
@@ -63,24 +63,24 @@ class CiudadController extends Controller
     {
         $request->validate([
             'nombre' => 'required|string|max:30',
-            'departamento' => 'required'
+            'departamento_id' => 'required'
         ], [
             'nombre.required' => 'El campo nombre es obligatorio',
             'nombre.string' => 'El campo nombre debe ser un texto',
             'nombre.max' => 'El campo nombre debe tener máximo 30 caracteres',
-            'departamento.required' => 'El campo país es obligatorio'
+            'departamento_id.required' => 'El campo departamento es obligatorio'
         ]
         );
         $ciudad->nombre = $request->nombre;
-        $ciudad->departamento_id = $request->departamento;
+        $ciudad->departamento_id = $request->departamento_id;
         $ciudad->save();
-        return redirect()->route('ciudad.index');
+        return redirect()->route('ciudades.index');
     }
 
     public function destroy(Ciudad $ciudad)
     {
         $ciudad->delete();
-        return redirect()->route('ciudad.index');
+        return redirect()->route('ciudades.index');
     }
 
 }

@@ -4,23 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
     public function index()
     {
-        return view('users.index');
+        $users = User::all();
+        return view('admin.users.index')
+            ->with('users', $users);
     }
 
     public function create()
     {
-        return view('users.create');
+        $roles = Role::all();
+        $permssions = Permission::all();
+        return view('admin.users.create')
+            ->with('roles', $roles)
+            ->with('permissions', $permssions);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'password' => 'required'
         ]);
@@ -28,44 +36,69 @@ class UserController extends Controller
         $usuario = new User();
         $usuario->name = $request->nombre;
         $usuario->email = $request->email;
+        $usuario->nombre_profesional = $request->nombre_profesional;
         $usuario->password = bcrypt($request->password);
+        $usuario->es_pacietne = $request->es_paciente;
+        $usuario->assignRole($request->roles);
+        $usuario->givePermissionTo($request->permissions);
         $usuario->save();
 
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
             ->with('success', 'Rol creado con éxito');
     }
 
     public function show(User $usuario)
     {
-        return view('users.show', compact('usuario'));
+        return view('admin.users.show', compact('usuario'));
     }
 
-    public function edit(User $usuario)
+    public function edit($id)
     {
-        
-        return view('users.edit', compact('usuario'));
+        $user = User::find($id);
+        $roles = Role::all();
+        $permissions = Permission::all();
+        return view('admin.users.edit')
+            ->with('user', $user)
+            ->with('roles', $roles)
+            ->with('permissions', $permissions);
     }
 
-    public function update(Request $request, User $usuario)
-    {
+    public function update(Request $request, $id)
+{
+    $usuario = User::find($id);
+
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+    ]);
+
+    $usuario->name = $request->name;
+    $usuario->email = $request->email;
+    if ($request->filled('password')) {
         $request->validate([
-            'nombre' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
-
-        $usuario->name = $request->nombre;
-        $usuario->email = $request->email;
         $usuario->password = bcrypt($request->password);
-        $usuario->save();
-
-        return redirect()->route('users.index');
     }
+    $usuario->save();
+
+    // Obtener los nombres de los roles y permisos
+    if($request->roles) {
+        $roles = Role::whereIn('id', $request->roles)->pluck('name');
+        $usuario->syncRoles($roles);
+    }
+    if($request->permissions) {
+        $permissions = Permission::whereIn('id', $request->permissions)->pluck('name');
+        $usuario->syncPermissions($permissions);
+    }
+
+    return redirect()->route('admin.users.index');
+}
 
     public function destroy(User $usuario)
     {
         $usuario->delete();
-        return redirect()->route('users.index');
+        return redirect()->route('admin.users.index');
     }
 
 }
