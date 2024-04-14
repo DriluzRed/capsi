@@ -1,12 +1,11 @@
-@extends('adminlte::page')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-12">
             <h1 class="text-center">{{$title}}</h1>
-            <form action="{{ route('nivelEscolar.update', $pais->id) }}" method="POST">
-                @method('PUT')
+            <form action="{{ route('turnos.store') }}" method="POST">
                 @csrf
                 <div class="form-group
                     @error('descripcion')
@@ -16,7 +15,7 @@
                     <input type="text" class="form-control
                         @error('descripcion')
                             is-invalid
-                        @enderror" id="descripcion" name="descripcion" value="{{$pais->descripcion}}">
+                        @enderror" id="descripcion" name="descripcion" value="{{ old('descripcion') }}">
                     @error('descripcion')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

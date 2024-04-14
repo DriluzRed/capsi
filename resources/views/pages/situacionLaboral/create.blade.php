@@ -1,11 +1,11 @@
-@extends('adminlte::page')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-12">
             <h1 class="text-center">{{$title}}</h1>
-            <form action="{{ route('nivelEscolar.store') }}" method="POST">
+            <form action="{{ route('situacionLaboral.store') }}" method="POST">
                 @csrf
                 <div class="form-group
                     @error('descripcion')

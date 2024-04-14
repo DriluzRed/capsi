@@ -49,18 +49,6 @@ Route::get('/ciudades/{ciudad}/edit', [App\Http\Controllers\CiudadController::cl
 Route::put('/ciudades/{ciudad}', [App\Http\Controllers\CiudadController::class, 'update'])->middleware('auth')->name('ciudades.update');
 Route::delete('/ciudades/{ciudad}', [App\Http\Controllers\CiudadController::class, 'destroy'])->middleware('auth')->name('ciudades.destroy');
 
-Route::get('/egresos', [App\Http\Controllers\EgresoController::class, 'index'])->middleware('auth')->name('egresos.index');
-Route::get('/egresos/create', [App\Http\Controllers\EgresoController::class, 'create'])->middleware('auth')->name('egresos.create');
-Route::post('/egresos', [App\Http\Controllers\EgresoController::class, 'store'])->middleware('auth')->name('egresos.store');
-Route::get('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'show'])->middleware('auth')->name('egresos.show');
-Route::get('/egresos/{egreso}/edit', [App\Http\Controllers\EgresoController::class, 'edit'])->middleware('auth')->name('egresos.edit');
-Route::put('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'update'])->middleware('auth')->name('egresos.update');
-Route::delete('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'destroy'])->middleware('auth')->name('egresos.destroy');
-
-// Route::get('/ingresos', [App\Http\Controllers\IngresoController::class, 'index'])->middleware('auth')->name('ingresos.index');
-// Route::get('/ingresos/create', [App\Http\Controllers\IngresoController::class, 'create'])->middleware('auth')->name('ingresos.create');
-// Route::post('/ingresos', [App\Http\Controllers\IngresoController::class, 'store'])->middleware('auth')->name('ingresos.store');
-// Route::get('/ingresos/{ingreso}', [App\Http\Controllers\IngresoController::class, 'show'])->middleware('auth')->name('ingresos.show');
 
 Route::get('/users_detalles', [App\Http\Controllers\UserDetalleController::class, 'index'])->middleware('auth')->name('users_detalles.index');
 Route::get('/users_detalles/create_pac', [App\Http\Controllers\UserDetalleController::class, 'createPaciente'])->middleware('auth')->name('users_detalles.create_pac');
