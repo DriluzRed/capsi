@@ -39,7 +39,7 @@
                                                     <td>{{ $ciudad->departamento->nombre }}</td>
                                                     <td>
                                                         <a href="{{ route('ciudades.edit', $ciudad->id) }}" class="btn btn-primary btn-sm">Editar</a>
-                                                        <form action="{{ route('ciudad.destroy', $ciudad->id) }}" method="POST" style="display: inline;">
+                                                        <form action="{{ route('ciudades.destroy', $ciudad->id) }}" method="POST" style="display: inline;">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
