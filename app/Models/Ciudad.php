@@ -17,7 +17,7 @@ class Ciudad extends Model
         return $this->hasMany(UserDetalle::class);
     }
 
-    public function departamentos()
+    public function departamento()
     {
         return $this->belongsTo(Departamento::class);
     }

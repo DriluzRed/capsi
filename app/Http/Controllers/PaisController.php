@@ -9,14 +9,14 @@ class PaisController extends Controller
     public function index()
     {
         $paises = Pais::where('deleted_at', null)->get();
-        return view('paises.index')
+        return view('pages.paises.index')
         ->with('paises', $paises)
         ->with('title', 'Listado de paises');
     }
 
     public function create()
     {
-        return view('paises.create')
+        return view('pages.paises.create')
         ->with('title', 'Crear pais');
     }
 
@@ -43,7 +43,7 @@ class PaisController extends Controller
 
     public function show(Pais $pais)
     {
-        return view('paises.show')
+        return view('pages.paises.show')
         ->with('pais', $pais)
         ->with('title', 'Ver pais');
     }
@@ -51,7 +51,7 @@ class PaisController extends Controller
     public function edit($id)
     {   
         $pais = Pais::find($id);
-        return view('paises.edit')
+        return view('pages.paises.edit')
         ->with('pais', $pais)
         ->with('title', 'Editar pais');
     }

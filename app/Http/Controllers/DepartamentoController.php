@@ -11,7 +11,7 @@ class DepartamentoController extends Controller
     public function index()
     {
         $departamentos = Departamento::where('deleted_at', null)->get();
-        return view('departamentos.index')
+        return view('pages.departamentos.index')
         ->with('departamentos', $departamentos)
         ->with('title', 'Listado de Departamentos');
     }
@@ -19,7 +19,7 @@ class DepartamentoController extends Controller
     public function create()
     {
         $paises = Pais::where('deleted_at', null)->get();
-        return view('departamentos.create')
+        return view('pages.departamentos.create')
         ->with('title', 'Crear departamento')
         ->with('paises', $paises);
     }
@@ -54,7 +54,7 @@ class DepartamentoController extends Controller
     {
         $departamento = Departamento::find($id);
         $paises = Pais::where('deleted_at', null)->get();
-        return view('departamentos.edit')
+        return view('pages.departamentos.edit')
         ->with('departamento', $departamento)
         ->with('title', 'Editar departamento')
         ->with('paises', $paises);

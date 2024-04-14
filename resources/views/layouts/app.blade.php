@@ -1,81 +1,98 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
 
-    <!-- CSRF Token -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Frest admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Frest admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <title>Capsi</title>
+    <link rel="icon" type="image/png" href=""/>
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
+    <meta name="author" content="GTOV">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
+    <script src="{{asset('js/sweetalert2@11.js')}}"></script>
+    @yield('page-styles')
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+<body class="hold-transition sidebar-mini layout-fixed">
+    @if (!Auth::guest())
+        <div id="wrapper">
+            @include('includes.header')
+            @include('includes.menu')
+            
+            <div class="app-content content">
+                <div class="content-wrapper p-0">
+                    @yield('content')
                 </div>
             </div>
-        </nav>
+        </div>
+    @else
+        @yield('content')
+    @endif
+    <script src="{{ asset('vendor/AdminLTE-3.2.0/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/AdminLTE-3.2.0/dist/js/adminlte.js') }}"></script>
+    <script src="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2/js/es.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.js"></script>
+    <script src="{{asset('js/datatables.min.js')}}"></script>
+    <script src="{{asset('js/lang/es.js')}}"></script>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    <script src="{{ asset('js/flatpickr.js') }}"></script>
+    <script src="{{ asset('js/lang/es.js') }}"></script>
+
+    <script>
+        $('.select2').select2()
+
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+        
+        $(document).ready(function(){
+            $("[decimal-mask]").inputmask({
+                alias: 'numeric',
+                groupSeparator: ' ',
+                radixPoint: ',',
+                digits: 2,
+                autoGroup: true,
+                autoUnmask: true,
+                numericInput: true
+            });
+            $("[date-mask]").inputmask({
+                alias: 'datetime',
+                inputFormat: 'dd/mm/yyyy',
+                placeholder: 'dd/mm/yyyy',
+                clearIncomplete: true
+            });
+
+            $(".datepicker").flatpickr({
+                dateFormat: "d-m-Y",
+                locale: "es"
+            });
+
+            $("[invoice-mask]").inputmask({
+                mask: '999-999-9999999',
+                placeholder: '_',
+                showMaskOnHover: true,
+                clearIncomplete: true
+            });
+
+            $(".dataTable").DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
+    @yield('page-scripts')
 </body>
 </html>
