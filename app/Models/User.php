@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function especialidades()
     {
-        return $this->belongsToMany(Especialidad::class);
+        return $this->belongsToMany(Especialidad::class, 'user_especialidades');
     }
 
     public function userDetalles()

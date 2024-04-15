@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Especialidad extends Model
 {
     use HasFactory, SoftDeletes;
-
+    protected $table = 'especialidades';
     protected $fillable = ['nombre'];
     public function detalleEspecialidades()
     {

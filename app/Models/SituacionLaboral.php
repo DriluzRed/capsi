@@ -9,6 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class SituacionLaboral extends Model
 {
     use HasFactory, SoftDeletes;
-
+    protected $table = 'situacion_laboral';
     protected $fillable = ['descripcion'];
 }

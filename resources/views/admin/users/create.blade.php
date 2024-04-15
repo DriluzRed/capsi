@@ -34,16 +34,7 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="form-group
-                                @error('nombre_profesional')
-                                    has-danger
-                                @enderror">
-                                <label for="nombre_profesional">Nombre Profesional si es psicologo</label>
-                                <input type="text" name="nombre_profesional" id="nombre_profesional" class="form-control" required>
-                                @error('nombre_profesional')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
+                                
                                 <div class="form-group
                                     @error('email')
                                         has-danger
@@ -79,9 +70,23 @@
                                     @enderror
                                 </div>
                                 <div class="form-group
-                                    @error('permissions')
+                                    @error('es_paciente')
                                         has-danger
                                     @enderror">
+                                    <label for="es_paciente">Es Paciente</label>
+                                    <select class="form-control" id="es_paciente" name="es_paciente">
+                                        <option value="">Seleccione una opcion</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Si</option>
+                                    </select>
+                                    @error('es_paciente')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group
+                                    @error('permissions')
+                                        has-danger
+                                    @enderror" id="permissionsDiv">
                                     <label for="permissions">Permisos</label>
                                     <select class="form-control select2" id="permissions" name="permissions[]" multiple="multiple">
                                         @foreach($permissions as $permission)
@@ -93,18 +98,30 @@
                                     @enderror
                                 </div>
                                 <div class="form-group
-                                    @error('es_paciente')
+                                    @error('permissions')
                                         has-danger
-                                    @enderror">
-                                    <label for="es_paciente">Paciente</label>
-                                    <select class="form-control" id="es_paciente" name="es_paciente">
-                                        <option value="0">No</option>
-                                        <option value="1">Si</option>
+                                    @enderror" id="especialidadesDiv">
+                                    <label for="permissions">Especialidades</label>
+                                    <select class="form-control select2" id="especialidades" name="especialidades[]" multiple="multiple">
+                                        @foreach($especialidades as $especialidad)
+                                            <option value="{{ $especialidad->id }}">{{ $especialidad->nombre }}</option>
+                                        @endforeach
                                     </select>
-                                    @error('es_paciente')
+                                    @error('permissions')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <div class="form-group
+                                @error('nombre_profesional')
+                                    has-danger
+                                @enderror" id="nombre_profesionalDiv">
+                                <label for="nombre_profesional">Nombre Profesional</label>
+                                <input type="text" name="nombre_profesional" id="nombre_profesional" class="form-control">
+                                @error('nombre_profesional')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                </div>
+                                
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </form>
                         </div>
@@ -114,4 +131,22 @@
         </div>
     </section>
 </div>
+@endsection
+@section('page-scripts')
+    <script>
+        $('#es_paciente').change(function() {
+            console.log($(this).val());
+                if ($(this).val() === '0') {
+                    $('#permissionsDiv').show();
+                    $('#especialidadesDiv').show();
+                    $('#nombre_profesionalDiv').show();
+
+                } else {
+                    $('#permissionsDiv').hide();
+                    $('#especialidadesDiv').hide();
+                    $('#nombre_profesionalDiv').hide();
+
+                }
+            });
+    </script>
 @endsection

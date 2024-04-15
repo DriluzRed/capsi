@@ -51,6 +51,15 @@
     <script src="{{ asset('js/lang/es.js') }}"></script>
 
     <script>
+        
+         $('#permissionsDiv').hide();
+        $('#especialidadesDiv').hide();
+        $('#nombre_profesionalDiv').hide();
+        if ($('#es_paciente').val() == 0) {
+            $('#permissionsDiv').show();
+            $('#especialidadesDiv').show();
+            $('#nombre_profesionalDiv').show();
+        }
         $('.select2').select2()
 
         $('.select2bs4').select2({
@@ -60,7 +69,7 @@
         $(document).ready(function(){
             $("[decimal-mask]").inputmask({
                 alias: 'numeric',
-                groupSeparator: ' ',
+                groupSeparator: '.',
                 radixPoint: ',',
                 digits: 2,
                 autoGroup: true,
@@ -75,7 +84,7 @@
             });
 
             $(".datepicker").flatpickr({
-                dateFormat: "d-m-Y",
+                dateFormat: "Y-m-d",
                 locale: "es"
             });
 
@@ -88,7 +97,7 @@
 
             $(".dataTable").DataTable({
                 "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                    "url": "{{ asset('js/lang/datatable-es.json') }}"
                 }
             });
         });

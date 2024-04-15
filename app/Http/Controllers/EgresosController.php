@@ -16,14 +16,14 @@ class EgresosController extends Controller
 
     public function create()
     {
-        return view('egresos.create')
+        return view('pages.egresos.create')
         ->with('title', 'Crear egreso');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:15|min:2'
+            'nombre' => 'required|string'
         ],
         [
             'nombre.required' => __('El campo nombre es requerido'),
@@ -31,19 +31,18 @@ class EgresosController extends Controller
             'nombre.max' => __('El campo nombre debe tener máximo 15 caracteres'),
             'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
         ]);
-
+        $fecha = date('Y-m-d', strtotime($request->fecha));
         $egreso = new Egreso();
-        $egreso::create(
-            [
-                'nombre' => $request->nombre
-            ]
-        );
+        $egreso->descripcion = $request->nombre;
+        $egreso->fecha = $fecha;
+        $egreso->total = $request->monto;
+        $egreso->save();
         return redirect()->route('egresos.index');
     }
 
     public function show(Egreso $egreso)
     {
-        return view('egresos.show')
+        return view('pages.egresos.show')
         ->with('egreso', $egreso)
         ->with('title', 'Ver egreso');
     }
@@ -51,15 +50,17 @@ class EgresosController extends Controller
     public function edit($id)
     {   
         $egreso = Egreso::find($id);
-        return view('egresos.edit')
+        return view('pages.egresos.edit')
         ->with('egreso', $egreso)
         ->with('title', 'Editar egreso');
     }
 
-    public function update(Request $request, Egreso $egreso)
+    public function update(Request $request, $id)
     {
+        $egreso = Egreso::find($id);
         $request->validate([
-            'nombre' => 'required|string|max:15|min:2'
+            'nombre' => 'required|string',
+            
         ],
         [
             'nombre.required' => __('El campo nombre es requerido'),
@@ -68,11 +69,11 @@ class EgresosController extends Controller
             'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
         ]);
 
-        $egreso->update(
-            [
-                'nombre' => $request->nombre
-            ]
-        );
+        $fecha = date('Y-m-d', strtotime($request->fecha));
+        $egreso->descripcion = $request->nombre;
+        $egreso->fecha = $fecha;
+        $egreso->total = $request->monto;
+        $egreso->save();
         return redirect()->route('egresos.index');
     }
 
