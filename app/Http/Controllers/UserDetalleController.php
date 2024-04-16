@@ -73,8 +73,8 @@ class UserDetalleController extends Controller
         return redirect()->route('users_detalles.show', $user_detalle->id);
     }
 
-    public function miFicha(){
-        $id = auth()->user()->id;
+    public function miFicha($id){
+
         $paciente = User::where('id', $id)->first();
         $ciudades = Ciudad::where('deleted_at', null)->get();
         $profesiones = Profesion::where('deleted_at', null)->get();
@@ -115,5 +115,18 @@ class UserDetalleController extends Controller
         $pacientes = User::where('es_paciente', 1)->get();
         return view('pages.pacientes.index')
             ->with('pacientes', $pacientes);
+    }
+
+    public function showPaciente($id){
+        $paciente = User::where('id', $id)->first();
+       
+        return view('pages.pacientes.show')
+            ->with('paciente', $paciente);
+    }
+
+    public function seguimiento($id){
+        $paciente = User::where('id', $id)->first();
+        return view('pages.pacientes.seguimiento')
+            ->with('paciente', $paciente);
     }
 }

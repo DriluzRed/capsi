@@ -28,7 +28,8 @@
                                         <tr>
                                             <th class="">Nombre</th>
                                             <th>Apellido</th>
-                                            <th>Fecha de Nacimiento</th>
+                                            <th>Edad</th>
+                                            <th>Motivo de Consulta</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -36,10 +37,16 @@
                                         
                                         @foreach($pacientes as $paciente)
                                             <tr>
-                                                <td>{{ $paciente->userDetalles->nombres}}</td>
-                                                {{-- <td>{{ $paciente->userDetalles->apellidos }}</td>
-                                                <td>{{ $paciente->userDetalles->fecha_nacimiento }}</td> --}}
+                                                @if(count($paciente->userDetalles) > 0)
+                                                    <td>{{ $paciente->userDetalles[0]->nombres}}</td>
+                                                    <td>{{ $paciente->userDetalles[0]->apellidos }}</td>
+                                                    <td>{{ $paciente->userDetalles[0]->edad }}</td>
+                                                    <td>{{ $paciente->userDetalles[0]->motivo_consutla }}</td>
+                                                @else
+                                                    <td colspan="3">No hay detalles disponibles para este paciente</td>
+                                                @endif
                                                 <td>
+                                                    <a href="{{ route('pacientes.show', $paciente->id) }}" class="btn btn-primary btn-sm">Ver ficha completa</a>
                                                     <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-primary btn-sm">Editar</a>
                                                     <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="POST" style="display: inline;">
                                                         @csrf

@@ -104,6 +104,7 @@ Route::delete('/egresos/{egreso}', [App\Http\Controllers\EgresosController::clas
 Route::get('/pacientes', [App\Http\Controllers\UserDetalleController::class, 'getPacientes'])->middleware('auth')->name('pacientes.index');
 Route::get('/pacientes_by_psico', [App\Http\Controllers\UserDetalleController::class, 'createPacienteByPsico'])->middleware('auth')->name('pacientes.create_psico');
 Route::get('/pacientes/edit/{id}', [App\Http\Controllers\UserDetalleController::class, 'editPaciente'])->middleware('auth')->name('pacientes.edit');
+Route::get('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'showPaciente'])->middleware('auth')->name('pacientes.show');
 Route::put('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'updatePaciente'])->middleware('auth')->name('pacientes.update');
 Route::delete('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'destroyPaciente'])->middleware('auth')->name('pacientes.destroy');
 
@@ -111,3 +112,4 @@ Route::get('/pacientes_by_paciente', [App\Http\Controllers\UserDetalleController
 Route::get('/pacientes/mi-ficha', [App\Http\Controllers\UserDetalleController::class, 'miFicha'])->middleware('auth')->name('pacientes.mi-ficha');
 Route::get('/pacientes/mi-ficha-create', [App\Http\Controllers\UserDetalleController::class, 'createMiFicha'])->middleware('auth')->name('pacientes.mi-ficha-create');
 Route::post('/pacientes', [App\Http\Controllers\UserDetalleController::class, 'storePaciente'])->middleware('auth')->name('pacientes.store');
+Route::get('/pacientes/seguimiento/{id}', [App\Http\Controllers\UserDetalleController::class, 'edit'])->middleware('auth')->name('pacientes.seguimiento');
