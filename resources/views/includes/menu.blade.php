@@ -52,6 +52,9 @@
                             <li class="nav-item">
                                 <a href="{{ url('paises') }}" class="nav-link {{ request()->is('paises') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Paises</p></a>            
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ url('especialidades') }}" class="nav-link {{ request()->is('especialidades') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Especialidades</p></a>            
+                            </li>
                         </ul>
                 </li>
                 <li class="nav-item {{ request()->is(['egresos', 'ingresos']) ? 'menu-open' : '' }}">

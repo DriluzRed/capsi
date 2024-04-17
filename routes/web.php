@@ -116,3 +116,11 @@ Route::get('/pacientes/seguimiento/{id}', [App\Http\Controllers\UserDetalleContr
 
 Route::get('/agenda', [App\Http\Controllers\AgendaController::class, 'index'])->middleware('auth')->name('agenda.index');
 Route::get('/agenda/events', [App\Http\Controllers\AgendaController::class, 'events'])->middleware('auth')->name('agenda.events');
+
+Route::get('/especialidades', [App\Http\Controllers\EspecialidadController::class, 'index'])->middleware('auth')->name('especialidades.index');
+Route::get('/especialidades/create', [App\Http\Controllers\EspecialidadController::class, 'create'])->middleware('auth')->name('especialidades.create');
+Route::post('/especialidades', [App\Http\Controllers\EspecialidadController::class, 'store'])->middleware('auth')->name('especialidades.store');
+Route::get('/especialidades/{especialidad}', [App\Http\Controllers\EspecialidadController::class, 'show'])->middleware('auth')->name('especialidades.show');
+Route::get('/especialidades/{especialidad}/edit', [App\Http\Controllers\EspecialidadController::class, 'edit'])->middleware('auth')->name('especialidades.edit');
+Route::put('/especialidades/{especialidad}', [App\Http\Controllers\EspecialidadController::class, 'update'])->middleware('auth')->name('especialidades.update');
+Route::delete('/especialidades/{especialidad}', [App\Http\Controllers\EspecialidadController::class, 'destroy'])->middleware('auth')->name('especialidades.destroy');

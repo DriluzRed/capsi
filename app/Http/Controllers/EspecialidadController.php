@@ -9,14 +9,14 @@ class EspecialidadController extends Controller
     public function index()
     {
         $especialidades = Especialidad::where('deleted_at', null)->get();
-        return view('especialidades.index')
+        return view('pages.especialidades.index')
         ->with('especialidades', $especialidades)
         ->with('title', 'Listado de especialidades');
     }
 
     public function create()
     {
-        return view('especialidades.create')
+        return view('pages.especialidades.create')
         ->with('title', 'Crear especialidad');
     }
 
@@ -51,7 +51,7 @@ class EspecialidadController extends Controller
     public function edit($id)
     {   
         $especialidad = Especialidad::find($id);
-        return view('especialidades.edit')
+        return view('pages.especialidades.edit')
         ->with('especialidad', $especialidad)
         ->with('title', 'Editar especialidad');
     }
