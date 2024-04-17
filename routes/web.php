@@ -105,13 +105,13 @@ Route::get('/pacientes', [App\Http\Controllers\UserDetalleController::class, 'ge
 Route::get('/pacientes_by_psico', [App\Http\Controllers\UserDetalleController::class, 'createPsicologo'])->middleware('auth')->name('pacientes.create_psico');
 Route::get('/pacientes/edit/{id}', [App\Http\Controllers\UserDetalleController::class, 'editPaciente'])->middleware('auth')->name('pacientes.edit');
 Route::get('/pacientes/{id}/show', [App\Http\Controllers\UserDetalleController::class, 'showPaciente'])->middleware('auth')->name('pacientes.show');
-Route::put('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'updatePaciente'])->middleware('auth')->name('pacientes.update');
+Route::put('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'update'])->middleware('auth')->name('pacientes.update');
 Route::delete('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'destroyPaciente'])->middleware('auth')->name('pacientes.destroy');
 
 Route::get('/pacientes_by_paciente', [App\Http\Controllers\UserDetalleController::class, 'createPacienteByPaciente'])->middleware('auth')->name('pacientes.create_paciente');
 Route::get('/pacientes/mi-ficha', [App\Http\Controllers\UserDetalleController::class, 'miFicha'])->middleware('auth')->name('pacientes.mi-ficha');
 Route::get('/pacientes/mi-ficha-create', [App\Http\Controllers\UserDetalleController::class, 'createMiFicha'])->middleware('auth')->name('pacientes.mi-ficha-create');
-Route::post('/pacientes', [App\Http\Controllers\UserDetalleController::class, 'storePaciente'])->middleware('auth')->name('pacientes.store');
+Route::post('/pacientes', [App\Http\Controllers\UserDetalleController::class, 'store'])->middleware('auth')->name('pacientes.store');
 Route::get('/pacientes/seguimiento/{id}', [App\Http\Controllers\UserDetalleController::class, 'edit'])->middleware('auth')->name('pacientes.seguimiento');
 
 Route::get('/agenda', [App\Http\Controllers\AgendaController::class, 'index'])->middleware('auth')->name('agenda.index');

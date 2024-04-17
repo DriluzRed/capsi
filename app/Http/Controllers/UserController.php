@@ -43,6 +43,7 @@ class UserController extends Controller
         $usuario->nombre_profesional = $request->nombre_profesional;
         $usuario->password = bcrypt($request->password);
         $usuario->es_paciente = $request->es_paciente;
+        $usuario->ci = $request->ci;
         
         $usuario->save();
         if($request->roles){
@@ -90,6 +91,7 @@ class UserController extends Controller
 
     $usuario->name = $request->name;
     $usuario->email = $request->email;
+    $usuario->ci = $request->ci;
     if ($request->filled('password')) {
         $request->validate([
             'password' => 'required',

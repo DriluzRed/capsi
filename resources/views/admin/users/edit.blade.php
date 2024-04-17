@@ -26,6 +26,16 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group
+                                    @error('ci')
+                                        has-danger
+                                    @enderror">
+                                    <label for="ci">Documento de Identidad</label>
+                                    <input type="text" name="ci" id="ci" class="form-control" value="{{old('ci', $user->ci)}}"required>
+                                    @error('ci')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group
                                     @error('name')
                                         has-danger
                                     @enderror">

@@ -10,16 +10,26 @@
                 <div class="card-body">
                     <form action="{{ route('pacientes.store') }}" method="POST">
                         @csrf
+                    <div class="form-group
+                        @error('ci')
+                            has-danger
+                        @enderror">
+                        <label for="ci">Documento de Identidad</label>
+                        <input type="text" name="ci" id="ci" class="form-control" value="{{old('ci')}}"required>
+                        @error('ci')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                         <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre') }}" required>
+                            <label for="nombres">Nombre</label>
+                            <input type="text" name="nombres" id="nombre" class="form-control" value="{{ old('nombre') }}" required>
                             @error('nombre')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="apellido">Apellido</label>
-                            <input type="text" name="apellido" id="apellido" class="form-control" value="{{ old('apellido') }}" required>
+                            <label for="apellidos">Apellido</label>
+                            <input type="text" name="apellidos" id="apellido" class="form-control" value="{{ old('apellido') }}" required>
                             @error('apellido')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -58,14 +68,14 @@
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono</label>
-                            <input type="text" name="telefono" id="telefono" class="form-control" value="{{ old('telefono') }}" required>
+                            <input type="text" name="telefono" id="telefono" class="form-control" value="{{ old('telefono') }}">
                             @error('telefono')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="direccion">Dirección</label>
-                            <input type="text" name="direccion" id="direccion" class="form-control" value="{{ old('direccion') }}" required>
+                            <input type="text" name="direccion" id="direccion" class="form-control" value="{{ old('direccion') }}">
                             @error('direccion')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -75,7 +85,7 @@
                                 has-danger
                             @enderror">
                             <label for="pais">Pais</label>
-                            <select name="pais" id="pais" class="form-control select2" required>
+                            <select name="pais_id" id="pais_id" class="form-control select2" required>
                                 <option value="">Seleccione...</option>
                                 @foreach($paises as $pais)
                                     <option value="{{ $pais->id }}">{{ $pais->nombre }}</option>
@@ -87,7 +97,7 @@
                                 has-danger
                             @enderror">
                             <label for="ocupacion">Departamento</label>
-                            <select name="departamento" id="departamento" class="form-control select2" required>
+                            <select name="departamento_id" id="departamento" class="form-control select2" required>
                                 <option value="">Seleccione...</option>
                                 @foreach($departamentos as $departamento)
                                     <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
@@ -112,7 +122,7 @@
                                 has-danger
                             @enderror">
                             <label for="religion">Religión</label>
-                            <input type="text" name="religion" id="religion" class="form-control" value="{{ old('religion') }}" required>
+                            <input type="text" name="religion" id="religion" class="form-control" value="{{ old('religion') }}">
                             @error('religion')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -122,7 +132,7 @@
                                 has-danger
                             @enderror">
                             <label for="nombre_padre">Nombre del Padre</label>
-                            <input type="text" name="nombre_padre" id="nombre_padre" class="form-control" value="{{ old('nombre_padre') }}" required>
+                            <input type="text" name="nombre_padre" id="nombre_padre" class="form-control" value="{{ old('nombre_padre') }}">
                             @error('nombre_padre')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -132,7 +142,7 @@
                                 has-danger
                             @enderror">
                             <label for="nombre_madre">Nombre de la Madre</label>
-                            <input type="text" name="nombre_madre" id="nombre_madre" class="form-control" value="{{ old('nombre_madre') }}" required>
+                            <input type="text" name="nombre_madre" id="nombre_madre" class="form-control" value="{{ old('nombre_madre') }}">
                             @error('nombre_madre')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -142,7 +152,7 @@
                                 has-danger
                             @enderror">
                             <label for="tiene_tutor">¿Tiene Tutor?</label>
-                            <select name="tiene_tutor" id="tiene_tutor" class="form-control" required>
+                            <select name="tiene_tutor" id="tiene_tutor" class="form-control">
                                 <option value="">Seleccione...</option>
                                 <option value="1" {{ old('tiene_tutor')}}>Si</option>
                                 <option value="0" {{ old('tiene_tutor')}}>No</option>
@@ -156,7 +166,7 @@
                                 has-danger
                             @enderror">
                             <label for="nombre_tutor">Nombre del Tutor</label>
-                            <input type="text" name="tutor" id="nombre_tutor" class="form-control" value="{{old('nombre_tutor')}}" required>
+                            <input type="text" name="tutor" id="nombre_tutor" class="form-control" value="{{old('nombre_tutor')}}">
                             @error('nombre_tutor')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -166,7 +176,7 @@
                                 has-danger
                             @enderror">
                             <label for="cant_hermanos">Cantidad de Hermanos</label>
-                            <input type="number" name="cant_hermanos" id="cant_hermanos" class="form-control" value="{{ old('cant_hermanos')}}" required>
+                            <input type="number" name="cant_hermanos" id="cant_hermanos" class="form-control" value="{{ old('cant_hermanos')}}">
                             @error('cant_hermanos')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -176,7 +186,7 @@
                                 has-danger
                             @enderror">
                             <label for="lugar_trabajo">Lugar de Trabajo</label>
-                            <input type="text" name="lugar_trabajo" id="lugar_trabajo" class="form-control" value="{{ old('lugar_trabajo')}}" required>
+                            <input type="text" name="lugar_trabajo" id="lugar_trabajo" class="form-control" value="{{ old('lugar_trabajo')}}">
                             @error('lugar_trabajo')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -186,7 +196,7 @@
                                 has-danger
                                 @enderror">
                             <label for="situacion_laboral_id">Situación Laboral</label>
-                            <select name="situacion_laboral_id" id="situacion_laboral_id" class="form-control" required>
+                            <select name="situacion_laboral_id" id="situacion_laboral_id" class="form-control">
                                 <option value="">Seleccione...</option>
                                 @foreach($situaciones_laborales as $situacion_laboral)
                                     <option value="{{ $situacion_laboral->id }}" {{ old('situacion_laboral_id')}}>{{ $situacion_laboral->descripcion }}</option>
@@ -201,7 +211,7 @@
                                 has-danger
                             @enderror">
                             <label for="nivel_escolaridad_id">Nivel de Estudio</label>
-                            <select name="nivel_escolaridad_id" id="nivel_escolaridad_id" class="form-control" required>
+                            <select name="nivel_escolaridad_id" id="nivel_escolaridad_id" class="form-control">
                                 <option value="">Seleccione...</option>
                                 @foreach($escolaridades as $escolaridad)
                                     <option value="{{ $escolaridad->id }}" {{ old('nivel_estudio_id')}}>{{ $escolaridad->descripcion }}</option>
@@ -216,8 +226,18 @@
                                 has-danger
                             @enderror">
                             <label for="nro_emergencia">Numero de Emergencia</label>
-                            <input type="text" name="nro_emergencia" id="nro_emergencia" class="form-control" value="{{ old('nro_emergencia')}}" required>
+                            <input type="text" name="nro_emergencia" id="nro_emergencia" class="form-control" value="{{ old('nro_emergencia')}}">
                             @error('nro_emergencia')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('motivo_consulta')
+                                has-danger
+                            @enderror">
+                            <label for="motivo_consulta">Motivo de Consulta</label>
+                            <input type="text" name="motivo_consulta" id="motivo_consulta" class="form-control" value="{{ old('motivo_consulta')}}">
+                            @error('motivo_consulta')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

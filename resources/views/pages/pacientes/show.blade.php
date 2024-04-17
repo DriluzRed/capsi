@@ -7,6 +7,11 @@
             <a href="{{ route('pacientes.index') }}" class="btn btn-primary">Ir al Inicio</a>
             <div class="card">
                 <div class="card-body">
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <h5 class="card-title">Nombre: {{ $paciente->userDetalles[0]->nombres }} {{ $paciente->userDetalles[0]->apellidos }}</h5>
                     <br>
                     <div class="col-sm-6">
@@ -16,22 +21,23 @@
                         <p class="card-text">Ciudad: {{ $paciente->userDetalles[0]->ciudad->nombre }}</p>
                         <p class="card-text">Departamento: {{ $paciente->userDetalles[0]->departamento->nombre }}</p>
                         <p class="card-text">País: {{ $paciente->userDetalles[0]->pais->nombre }}</p>
-                        <p class="card-text">Dirección: {{ $paciente->userDetalles[0]->direccion }}</p>
-                        <p class="card-text">Teléfono: {{ $paciente->userDetalles[0]->telefono }}</p>
-                        <p class="card-text">Correo: {{ $paciente->email }}</p>
-                        <p class="card-text">Motivo de Consulta: {{ $paciente->userDetalles[0]->motivo_consutla }}</p>
-                        <p class="card-text">Nombre del Padre: {{ $paciente->userDetalles[0]->nombre_padre }}</p>
-                        <p class="card-text">Nombre de la Madre: {{ $paciente->userDetalles[0]->nombre_madre }}</p>
+                        <p class="card-text">Dirección: {{ $paciente->userDetalles[0]->direccion?? 'No proporcionado' }}</p>
+                        <p class="card-text">Teléfono: {{ $paciente->userDetalles[0]->telefono ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Correo: {{ $paciente->email ?? 'No proporcionado' }}</p>
+                        <p class="card-text">Motivo de Consulta: {{ $paciente->userDetalles[0]->motivo_consutla ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Nombre del Padre: {{ $paciente->userDetalles[0]->nombre_padre ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Nombre de la Madre: {{ $paciente->userDetalles[0]->nombre_madre ?? 'No proporcionado'}}</p>
                         <p class="card-text">Tutor: {{ $paciente->userDetalles[0]->tiene_tutor == 1 ? 'Sí' : 'No' }}</p>
-                        <p class="card-text">Nombre del Tutor: {{ $paciente->userDetalles[0]->turo }}</p>
-                        <p class="card-text">Cantidad de Hermanos: {{ $paciente->userDetalles[0]->cant_hermanos }}</p>
-                        <p class="card-text">Lugar de Trabajo: {{ $paciente->userDetalles[0]->lugar_trabajo }}</p>
-                        <p class="card-text">Religion: {{ $paciente->userDetalles[0]->religion }}</p>
-                        <p class="card-text">Situacion Laboral: {{$paciente->userDetalles[0]->situacion_laboral->descripcion}}</p>
-                        <p class="card-text">Escolaridad: {{ $paciente->userDetalles[0]->nivel_escolar->descripcion}}</p>
-                        <p class="card-text">Numero de Emergencia: {{ $paciente->userDetalles[0]->nro_emergencia }}</p><p class="card-text">Motivo de Consulta: {{ $paciente->userDetalles[0]->motivo_consutla }}</p>
-                        <p class="card-text">Antecedentes Personales: {{ $paciente->userDetalles[0]->antecedentes_personales }}</p>
-                        <p class="card-text">Antecedentes Familiares: {{ $paciente->userDetalles[0]->antecedentes_familiares }}</p>
+                        <p class="card-text">Nombre del Tutor: {{ $paciente->userDetalles[0]->tutor ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Cantidad de Hermanos: {{ $paciente->userDetalles[0]->cant_hermanos ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Lugar de Trabajo: {{ $paciente->userDetalles[0]->lugar_trabajo ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Religion: {{ $paciente->userDetalles[0]->religion ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Situacion Laboral: {{$paciente->userDetalles[0]->situacion_laboral->descripcion ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Escolaridad: {{ $paciente->userDetalles[0]->nivel_escolar->descripcion ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Numero de Emergencia: {{ $paciente->userDetalles[0]->nro_emergencia ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Motivo de Consulta: {{ $paciente->userDetalles[0]->motivo_consutla ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Antecedentes Personales: {{ $paciente->userDetalles[0]->antecedentes_personales ?? 'No proporcionado'}}</p>
+                        <p class="card-text">Antecedentes Familiares: {{ $paciente->userDetalles[0]->antecedentes_familiares ?? 'No proporcionado'}}</p>
                         <p class="card-text">Examen Médico: {{ $paciente->userDetalles[0]->examen_medico ?? 'No proporcionado' }}</p>
                         <p class="card-text">Examen Psicopatológico: {{ $paciente->userDetalles[0]->examen_psicopatolico ?? 'No proporcionado' }}</p>
                         <p class="card-text">Disimulación: {{ $paciente->userDetalles[0]->disimulacion ?? 'No proporcionado' }}</p>

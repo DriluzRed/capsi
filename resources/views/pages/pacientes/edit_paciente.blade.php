@@ -1,17 +1,13 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">Editar mi ficha</h1>
+            <h1 class="text-center">Editar la ficha del paciente</h1>
             <a href="{{ route('home') }}" class="btn btn-primary">Ir al Inicio</a>
             <div class="card">
                 <div class="card-body">
-                    @if ($message != "")
-                        <div class="alert alert-danger">
-                            {{ $message }}
-                        </div>
-                        @endif
                     <form action="{{ route('pacientes.update', $paciente->id) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -91,7 +87,7 @@
                                 has-danger
                             @enderror">
                             <label for="telefono">Teléfono</label>
-                            <input type="text" name="telefono" id="telefono" class="form-control" value="{{ old('telefono', $paciente->userDetalles[0]->telefono) }}" required>
+                            <input type="text" name="telefono" id="telefono" class="form-control" value="{{ old('telefono', $paciente->userDetalles[0]->telefono) }}">
                             @error('telefono')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -101,7 +97,7 @@
                                 has-danger
                             @enderror">
                             <label for="direccion">Dirección</label>
-                            <input type="text" name="direccion" id="direccion" class="form-control" value="{{ old('direccion', $paciente->userDetalles[0]->direccion) }}" required>
+                            <input type="text" name="direccion" id="direccion" class="form-control" value="{{ old('direccion', $paciente->userDetalles[0]->direccion) }}">
                             @error('direccion')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -148,7 +144,7 @@
                                 has-danger
                             @enderror">
                             <label for="religion">Religión</label>
-                            <input type="text" name="religion" id="religion" class="form-control" value="{{ old('religion', $paciente->userDetalles[0]->religion) }}" required>
+                            <input type="text" name="religion" id="religion" class="form-control" value="{{ old('religion', $paciente->userDetalles[0]->religion) }}">
                             @error('religion')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -158,7 +154,7 @@
                                 has-danger
                             @enderror">
                             <label for="nombre_padre">Nombre del Padre</label>
-                            <input type="text" name="nombre_padre" id="nombre_padre" class="form-control" value="{{ old('nombre_padre', $paciente->userDetalles[0]->nombre_padre) }}" required>
+                            <input type="text" name="nombre_padre" id="nombre_padre" class="form-control" value="{{ old('nombre_padre', $paciente->userDetalles[0]->nombre_padre) }}">
                             @error('nombre_padre')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -168,7 +164,7 @@
                                 has-danger
                             @enderror">
                             <label for="nombre_madre">Nombre de la Madre</label>
-                            <input type="text" name="nombre_madre" id="nombre_madre" class="form-control" value="{{ old('nombre_madre', $paciente->userDetalles[0]->nombre_madre) }}" required>
+                            <input type="text" name="nombre_madre" id="nombre_madre" class="form-control" value="{{ old('nombre_madre', $paciente->userDetalles[0]->nombre_madre) }}">
                             @error('nombre_madre')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -178,7 +174,7 @@
                                 has-danger
                             @enderror">
                             <label for="tiene_tutor">¿Tiene Tutor?</label>
-                            <select name="tiene_tutor" id="tiene_tutor" class="form-control" required>
+                            <select name="tiene_tutor" id="tiene_tutor" class="form-control">
                                 <option value="">Seleccione...</option>
                                 <option value="1" {{ old('tiene_tutor', $paciente->userDetalles[0]->tiene_tutor) == 1 ? 'selected' : '' }}>Si</option>
                                 <option value="0" {{ old('tiene_tutor', $paciente->userDetalles[0]->tiene_tutor) == 0 ? 'selected' : '' }}>No</option>
@@ -192,7 +188,7 @@
                                 has-danger
                             @enderror">
                             <label for="nombre_tutor">Nombre del Tutor</label>
-                            <input type="text" name="tutor" id="nombre_tutor" class="form-control" value="{{ old('nombre_tutor', $paciente->userDetalles[0]->nombre_tutor) }}" required>
+                            <input type="text" name="tutor" id="nombre_tutor" class="form-control" value="{{ old('nombre_tutor', $paciente->userDetalles[0]->nombre_tutor) }}">
                             @error('nombre_tutor')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -202,7 +198,7 @@
                                 has-danger
                             @enderror">
                             <label for="cant_hermanos">Cantidad de Hermanos</label>
-                            <input type="number" name="cant_hermanos" id="cant_hermanos" class="form-control" value="{{ old('cant_hermanos', $paciente->userDetalles[0]->cant_hermanos) }}" required>
+                            <input type="number" name="cant_hermanos" id="cant_hermanos" class="form-control" value="{{ old('cant_hermanos', $paciente->userDetalles[0]->cant_hermanos) }}">
                             @error('cant_hermanos')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -212,7 +208,7 @@
                                 has-danger
                             @enderror">
                             <label for="lugar_trabajo">Lugar de Trabajo</label>
-                            <input type="text" name="lugar_trabajo" id="lugar_trabajo" class="form-control" value="{{ old('lugar_trabajo', $paciente->userDetalles[0]->lugar_trabajo) }}" required>
+                            <input type="text" name="lugar_trabajo" id="lugar_trabajo" class="form-control" value="{{ old('lugar_trabajo', $paciente->userDetalles[0]->lugar_trabajo) }}">
                             @error('lugar_trabajo')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -222,7 +218,7 @@
                                 has-danger
                                 @enderror">
                             <label for="situacion_laboral_id">Situación Laboral</label>
-                            <select name="situacion_laboral_id" id="situacion_laboral_id" class="form-control" required>
+                            <select name="situacion_laboral_id" id="situacion_laboral_id" class="form-control">
                                 <option value="">Seleccione...</option>
                                 @foreach($situaciones_laborales as $situacion_laboral)
                                     <option value="{{ $situacion_laboral->id }}" {{ old('situacion_laboral_id', $paciente->userDetalles[0]->situacion_laboral_id) == $situacion_laboral->id ? 'selected' : '' }}>{{ $situacion_laboral->descripcion }}</option>
@@ -237,7 +233,7 @@
                                 has-danger
                             @enderror">
                             <label for="nivel_escolaridad_id">Nivel de Estudio</label>
-                            <select name="nivel_escolaridad_id" id="nivel_escolaridad_id" class="form-control" required>
+                            <select name="nivel_escolaridad_id" id="nivel_escolaridad_id" class="form-control">
                                 <option value="">Seleccione...</option>
                                 @foreach($escolaridades as $escolaridad)
                                     <option value="{{ $escolaridad->id }}" {{ old('nivel_estudio_id', $paciente->userDetalles[0]->nivel_escolaridad_id) == $escolaridad->id ? 'selected' : '' }}>{{ $escolaridad->descripcion }}</option>
@@ -252,7 +248,7 @@
                                 has-danger
                             @enderror">
                             <label for="nro_emergencia">Numero de Emergencia</label>
-                            <input type="text" name="nro_emergencia" id="nro_emergencia" class="form-control" value="{{ old('nro_emergencia', $paciente->userDetalles[0]->nro_emergencia) }}" required>
+                            <input type="text" name="nro_emergencia" id="nro_emergencia" class="form-control" value="{{ old('nro_emergencia', $paciente->userDetalles[0]->nro_emergencia) }}" >
                             @error('nro_emergencia')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -267,6 +263,210 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="antecedentes_personales">Antecedentes Personales</label>
+                            <input type="text" name="antecedentes_personales" id="antecedentes_personales" class="form-control" value="{{ old('antecedentes_personales', $paciente->userDetalles[0]->antecedentes_personales) }}">
+                            @error('antecedentes_personales')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="antecedentes_familiares">Antecedentes Familiares</label>
+                            <input type="text" name="antecedentes_familiares" id="antecedentes_familiares" class="form-control" value="{{ old('antecedentes_familiares', $paciente->userDetalles[0]->antecedentes_familiares) }}">
+                            @error('antecedentes_familiares')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="examen_medico">Examen Médico</label>
+                            <input type="text" name="examen_medico" id="examen_medico" class="form-control" value="{{ old('examen_medico', $paciente->userDetalles[0]->examen_medico) }}" >
+                            @error('examen_medico')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('examen_psicopatolico')
+                                has-danger
+                            @enderror">
+                            <label for="examen_psicopatolico">Examen Psicopatológico</label>
+                            <input type="text" name="examen_psicopatolico" id="examen_psicopatolico" class="form-control" value="{{ old('examen_psicopatolico', $paciente->userDetalles[0]->examen_psicopatolico) }}">
+                            @error('examen_psicopatolico')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('disimulacion')
+                                has-danger
+                            @enderror">
+                            <label for="disimulacion">Disimulación</label>
+                            <input type="text" name="disimulacion" id="disimulacion" class="form-control" value="{{ old('disimulacion', $paciente->userDetalles[0]->disimulacion) }}">
+                            @error('disimulacion')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('aspecto_del_paciente')
+                                has-danger
+                            @enderror">
+                            <label for="aspecto_del_paciente">Aspecto del Paciente</label>
+                            <input type="text" name="aspecto_del_paciente" id="aspecto_del_paciente" class="form-control" value="{{ old('aspecto_del_paciente', $paciente->userDetalles[0]->aspecto_del_paciente) }}">
+                            @error('aspecto_del_paciente')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('actitud')
+                                has-danger
+                            @enderror">
+                            <label for="actitud">Actitud</label>
+                            <input type="text" name="actitud" id="actitud" class="form-control" value="{{ old('actitud', $paciente->userDetalles[0]->actitud) }}">
+                            @error('actitud')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('contacto_visual')
+                                has-danger
+                            @enderror">
+                            <label for="contacto_visual">Contacto Visual</label>
+                            <input type="text" name="contacto_visual" id="contacto_visual" class="form-control" value="{{ old('contacto_visual', $paciente->userDetalles[0]->contacto_visual) }}">
+                            @error('contacto_visual')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('atencion_orientacion_temp_espa')
+                                has-danger
+                            @enderror">
+                            <label for="atencion_orientacion_temp_espa">Atención y Orientación Temporal y Espacial</label>
+                            <input type="text" name="atencion_orientacion_temp_espa" id="atencion_orientacion_temp_espa" class="form-control" value="{{ old('atencion_orientacion_temp_espa', $paciente->userDetalles[0]->atencion_orientacion_temp_espa) }}">
+                            @error('atencion_orientacion_temp_espa')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('memoria')
+                                has-danger
+                            @enderror">
+                            <label for="memoria">Memoria</label>
+                            <input type="text" name="memoria" id="memoria" class="form-control" value="{{ old('memoria', $paciente->userDetalles[0]->memoria) }}">
+                            @error('memoria')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('sensoperecepcion')
+                                has-danger
+                            @enderror">
+                            <label for="sensoperecepcion">Sensopercepción</label>
+                            <input type="text" name="sensoperecepcion" id="sensoperecepcion" class="form-control" value="{{ old('sensoperecepcion', $paciente->userDetalles[0]->sensoperecepcion) }}">
+                            @error('sensoperecepcion')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('pensamiento')
+                                has-danger
+                            @enderror">
+                            <label for="pensamiento">Pensamiento</label>
+                            <input type="text" name="pensamiento" id="pensamiento" class="form-control" value="{{ old('pensamiento', $paciente->userDetalles[0]->pensamiento) }}">
+                            @error('pensamiento')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('afectividad')
+                                has-danger
+                            @enderror">
+                            <label for="afectividad">Afectividad</label>
+                            <input type="text" name="afectividad" id="afectividad" class="form-control" value="{{ old('afectividad', $paciente->userDetalles[0]->afectividad) }}">
+                            @error('afectividad')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('psicomotricidad')
+                                has-danger
+                            @enderror">
+                            <label for="psicomotricidad">Psicomotricidad</label>
+                            <input type="text" name="psicomotricidad" id="psicomotricidad" class="form-control" value="{{ old('psicomotricidad', $paciente->userDetalles[0]->psicomotricidad) }}">
+                            @error('psicomotricidad')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('insigth')
+                                has-danger
+                            @enderror">
+                            <label for="insigth">Insigth</label>
+                            <input type="text" name="insigth" id="insigth" class="form-control" value="{{ old('insigth', $paciente->userDetalles[0]->insigth) }}">
+                            @error('insigth')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('diagnostico_presuntivo')
+                                has-danger
+                            @enderror">
+                            <label for="diagnostico_presuntivo">Diagnóstico Presuntivo</label>
+                            <input type="text" name="diagnostico_presuntivo" id="diagnostico_presuntivo" class="form-control" value="{{ old('diagnostico_presuntivo', $paciente->userDetalles[0]->diagnostico_presuntivo) }}">
+                            @error('diagnostico_presuntivo')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('diagnostico_diferencial')
+                                has-danger
+                            @enderror">
+                            <label for="diagnostico_diferencial">Diagnóstico Diferencial</label>
+                            <input type="text" name="diagnostico_diferencial" id="diagnostico_diferencial" class="form-control" value="{{ old('diagnostico_diferencial', $paciente->userDetalles[0]->diagnostico_diferencial) }}">
+                            @error('diagnostico_diferencial')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('plan_tratamiento')
+                                has-danger
+                            @enderror">
+                            <label for="plan_tratamiento">Plan de Tratamiento</label>
+                            <input type="text" name="plan_tratamiento" id="plan_tratamiento" class="form-control" value="{{ old('plan_tratamiento', $paciente->userDetalles[0]->plan_tratamiento) }}" >
+                            @error('plan_tratamiento')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('pronostico')
+                                has-danger
+                            @enderror">
+                            <label for="pronostico">Pronóstico</label>
+                            <input type="text" name="pronostico" id="pronostico" class="form-control" value="{{ old('pronostico', $paciente->userDetalles[0]->pronostico) }}" >
+                            @error('pronostico')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('evolucion')
+                                has-danger
+                            @enderror">
+                            <label for="evolucion">Evolución</label>
+                            <input type="text" name="evolucion" id="evolucion" class="form-control" value="{{ old('evolucion', $paciente->userDetalles[0]->evolucion) }}">
+                            @error('evolucion')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('epicrisis')
+                                has-danger
+                            @enderror">
+                            <label for="epicrisis">Epicrisis</label>
+                            <input type="text" name="epicrisis" id="epicrisis" class="form-control" value="{{ old('epicrisis', $paciente->userDetalles[0]->epicrisis) }}">
+                            @error('epicrisis')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
                 </div>
@@ -275,4 +475,3 @@
     </div>
 </div>
 @endsection
-                    

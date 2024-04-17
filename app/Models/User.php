@@ -45,9 +45,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function especialidades()
+
+    public function user_especialidades()
     {
-        return $this->belongsToMany(Especialidad::class, 'user_especialidades');
+        return $this->hasMany(UserEspecialidad::class);
     }
 
     public function userDetalles()
