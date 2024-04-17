@@ -19,7 +19,7 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Auth::routes();
-
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
@@ -49,18 +49,6 @@ Route::get('/ciudades/{ciudad}/edit', [App\Http\Controllers\CiudadController::cl
 Route::put('/ciudades/{ciudad}', [App\Http\Controllers\CiudadController::class, 'update'])->middleware('auth')->name('ciudades.update');
 Route::delete('/ciudades/{ciudad}', [App\Http\Controllers\CiudadController::class, 'destroy'])->middleware('auth')->name('ciudades.destroy');
 
-Route::get('/egresos', [App\Http\Controllers\EgresoController::class, 'index'])->middleware('auth')->name('egresos.index');
-Route::get('/egresos/create', [App\Http\Controllers\EgresoController::class, 'create'])->middleware('auth')->name('egresos.create');
-Route::post('/egresos', [App\Http\Controllers\EgresoController::class, 'store'])->middleware('auth')->name('egresos.store');
-Route::get('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'show'])->middleware('auth')->name('egresos.show');
-Route::get('/egresos/{egreso}/edit', [App\Http\Controllers\EgresoController::class, 'edit'])->middleware('auth')->name('egresos.edit');
-Route::put('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'update'])->middleware('auth')->name('egresos.update');
-Route::delete('/egresos/{egreso}', [App\Http\Controllers\EgresoController::class, 'destroy'])->middleware('auth')->name('egresos.destroy');
-
-// Route::get('/ingresos', [App\Http\Controllers\IngresoController::class, 'index'])->middleware('auth')->name('ingresos.index');
-// Route::get('/ingresos/create', [App\Http\Controllers\IngresoController::class, 'create'])->middleware('auth')->name('ingresos.create');
-// Route::post('/ingresos', [App\Http\Controllers\IngresoController::class, 'store'])->middleware('auth')->name('ingresos.store');
-// Route::get('/ingresos/{ingreso}', [App\Http\Controllers\IngresoController::class, 'show'])->middleware('auth')->name('ingresos.show');
 
 Route::get('/users_detalles', [App\Http\Controllers\UserDetalleController::class, 'index'])->middleware('auth')->name('users_detalles.index');
 Route::get('/users_detalles/create_pac', [App\Http\Controllers\UserDetalleController::class, 'createPaciente'])->middleware('auth')->name('users_detalles.create_pac');
@@ -112,3 +100,29 @@ Route::get('/egresos/{egreso}', [App\Http\Controllers\EgresosController::class, 
 Route::get('/egresos/{egreso}/edit', [App\Http\Controllers\EgresosController::class, 'edit'])->middleware('auth')->name('egresos.edit');
 Route::put('/egresos/{egreso}', [App\Http\Controllers\EgresosController::class, 'update'])->middleware('auth')->name('egresos.update');
 Route::delete('/egresos/{egreso}', [App\Http\Controllers\EgresosController::class, 'destroy'])->middleware('auth')->name('egresos.destroy');
+
+Route::get('/pacientes', [App\Http\Controllers\UserDetalleController::class, 'getPacientes'])->middleware('auth')->name('pacientes.index');
+Route::get('/pacientes_by_psico', [App\Http\Controllers\UserDetalleController::class, 'createPsicologo'])->middleware('auth')->name('pacientes.create_psico');
+Route::get('/pacientes/edit/{id}', [App\Http\Controllers\UserDetalleController::class, 'editPaciente'])->middleware('auth')->name('pacientes.edit');
+Route::get('/pacientes/{id}/show', [App\Http\Controllers\UserDetalleController::class, 'showPaciente'])->middleware('auth')->name('pacientes.show');
+Route::put('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'update'])->middleware('auth')->name('pacientes.update');
+Route::delete('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'destroyPaciente'])->middleware('auth')->name('pacientes.destroy');
+
+Route::get('/pacientes_by_paciente', [App\Http\Controllers\UserDetalleController::class, 'createPacienteByPaciente'])->middleware('auth')->name('pacientes.create_paciente');
+Route::get('/pacientes/mi-ficha', [App\Http\Controllers\UserDetalleController::class, 'miFicha'])->middleware('auth')->name('pacientes.mi-ficha');
+Route::get('/pacientes/mi-ficha-create', [App\Http\Controllers\UserDetalleController::class, 'createMiFicha'])->middleware('auth')->name('pacientes.mi-ficha-create');
+Route::post('/pacientes', [App\Http\Controllers\UserDetalleController::class, 'store'])->middleware('auth')->name('pacientes.store');
+Route::get('/pacientes/seguimiento/{id}', [App\Http\Controllers\UserDetalleController::class, 'edit'])->middleware('auth')->name('pacientes.seguimiento');
+
+Route::get('/agenda', [App\Http\Controllers\AgendaController::class, 'index'])->middleware('auth')->name('agenda.index');
+Route::get('/agenda/events', [App\Http\Controllers\AgendaController::class, 'events'])->middleware('auth')->name('agenda.events');
+Route::get('/agenda/solicitar-turno', [App\Http\Controllers\AgendaController::class, 'solicitarTurno'])->middleware('auth')->name('agenda.solicitar-turno');
+Route::post('/agenda', [App\Http\Controllers\AgendaController::class, 'store'])->middleware('auth')->name('agenda.store');
+
+Route::get('/especialidades', [App\Http\Controllers\EspecialidadController::class, 'index'])->middleware('auth')->name('especialidades.index');
+Route::get('/especialidades/create', [App\Http\Controllers\EspecialidadController::class, 'create'])->middleware('auth')->name('especialidades.create');
+Route::post('/especialidades', [App\Http\Controllers\EspecialidadController::class, 'store'])->middleware('auth')->name('especialidades.store');
+Route::get('/especialidades/{especialidad}', [App\Http\Controllers\EspecialidadController::class, 'show'])->middleware('auth')->name('especialidades.show');
+Route::get('/especialidades/{especialidad}/edit', [App\Http\Controllers\EspecialidadController::class, 'edit'])->middleware('auth')->name('especialidades.edit');
+Route::put('/especialidades/{especialidad}', [App\Http\Controllers\EspecialidadController::class, 'update'])->middleware('auth')->name('especialidades.update');
+Route::delete('/especialidades/{especialidad}', [App\Http\Controllers\EspecialidadController::class, 'destroy'])->middleware('auth')->name('especialidades.destroy');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Models\Especialidad;
+use App\Models\UserEspecialidad;
 
 class UserController extends Controller
 {
@@ -20,9 +22,11 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $permssions = Permission::all();
+        $especialidades = Especialidad::all();
         return view('admin.users.create')
             ->with('roles', $roles)
-            ->with('permissions', $permssions);
+            ->with('permissions', $permssions)
+            ->with('especialidades', $especialidades);
     }
 
     public function store(Request $request)
@@ -34,15 +38,27 @@ class UserController extends Controller
         ]);
 
         $usuario = new User();
-        $usuario->name = $request->nombre;
+        $usuario->name = $request->name;
         $usuario->email = $request->email;
         $usuario->nombre_profesional = $request->nombre_profesional;
         $usuario->password = bcrypt($request->password);
-        $usuario->es_pacietne = $request->es_paciente;
-        $usuario->assignRole($request->roles);
-        $usuario->givePermissionTo($request->permissions);
+        $usuario->es_paciente = $request->es_paciente;
+        $usuario->ci = $request->ci;
+        $usuario->rango_hora_start = $request->rango_hora_start;
+        $usuario->rango_hora_end = $request->rango_hora_end;
         $usuario->save();
-
+        if($request->roles){
+            $roles = Role::whereIn('id', $request->roles)->pluck('name');
+            $usuario->assignRole($roles);
+        }
+        if($request->permissions){
+            $permissions = Permission::whereIn('id', $request->permissions)->pluck('name');
+            $usuario->givePermissionTo($permissions);
+        }
+        $usuario->especialidades()->attach($request->especialidades);
+        // $user_especialidades = new UserEspecialidad();
+        // $user_especialidades->user_id = $usuario->id;
+        // $user_especialidades->especialidad_id = $request->especialidades;
         return redirect()->route('admin.users.index')
             ->with('success', 'Rol creado con éxito');
     }
@@ -57,10 +73,12 @@ class UserController extends Controller
         $user = User::find($id);
         $roles = Role::all();
         $permissions = Permission::all();
+        $especialidades = Especialidad::all();
         return view('admin.users.edit')
             ->with('user', $user)
             ->with('roles', $roles)
-            ->with('permissions', $permissions);
+            ->with('permissions', $permissions)
+            ->with('especialidades', $especialidades);
     }
 
     public function update(Request $request, $id)
@@ -74,6 +92,11 @@ class UserController extends Controller
 
     $usuario->name = $request->name;
     $usuario->email = $request->email;
+    $usuario->ci = $request->ci;
+    $usuario->nombre_profesional = $request->nombre_profesional;
+    $usuario->es_paciente = $request->es_paciente;
+    $usuario->rango_hora_start = $request->rango_hora_start;
+    $usuario->rango_hora_end = $request->rango_hora_end;
     if ($request->filled('password')) {
         $request->validate([
             'password' => 'required',
@@ -82,7 +105,6 @@ class UserController extends Controller
     }
     $usuario->save();
 
-    // Obtener los nombres de los roles y permisos
     if($request->roles) {
         $roles = Role::whereIn('id', $request->roles)->pluck('name');
         $usuario->syncRoles($roles);
@@ -91,6 +113,8 @@ class UserController extends Controller
         $permissions = Permission::whereIn('id', $request->permissions)->pluck('name');
         $usuario->syncPermissions($permissions);
     }
+    $usuario->especialidades()->detach();
+    $usuario->especialidades()->attach($request->especialidades);
 
     return redirect()->route('admin.users.index');
 }
@@ -100,5 +124,6 @@ class UserController extends Controller
         $usuario->delete();
         return redirect()->route('admin.users.index');
     }
+
 
 }

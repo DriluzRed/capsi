@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
-<!-- BEGIN: Head-->
-
+<html class="loading" lang="es" data-textdirection="ltr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
+
     <script src="{{asset('js/sweetalert2@11.js')}}"></script>
     @yield('page-styles')
 </head>
@@ -49,8 +48,21 @@
 
     <script src="{{ asset('js/flatpickr.js') }}"></script>
     <script src="{{ asset('js/lang/es.js') }}"></script>
+    <script src="{{ asset('js/index.global.min.js') }}"></script>
+
+
+
 
     <script>
+        
+         $('#permissionsDiv').hide();
+        $('#especialidadesDiv').hide();
+        $('#nombre_profesionalDiv').hide();
+        if ($('#es_paciente').val() == 0) {
+            $('#permissionsDiv').show();
+            $('#especialidadesDiv').show();
+            $('#nombre_profesionalDiv').show();
+        }
         $('.select2').select2()
 
         $('.select2bs4').select2({
@@ -60,7 +72,7 @@
         $(document).ready(function(){
             $("[decimal-mask]").inputmask({
                 alias: 'numeric',
-                groupSeparator: ' ',
+                groupSeparator: '.',
                 radixPoint: ',',
                 digits: 2,
                 autoGroup: true,
@@ -75,7 +87,14 @@
             });
 
             $(".datepicker").flatpickr({
-                dateFormat: "d-m-Y",
+                dateFormat: "Y-m-d",
+                locale: "es"
+            });
+            $(".timepicker").flatpickr({
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: true,
                 locale: "es"
             });
 
@@ -88,9 +107,30 @@
 
             $(".dataTable").DataTable({
                 "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                    "url": "{{ asset('js/lang/datatable-es.json') }}"
                 }
             });
+            let calendarElement = $("#calendar");
+            if (calendarElement.length) {
+                let calendar = new FullCalendar.Calendar(calendarElement[0], {
+                    initialView: 'dayGridMonth',
+                    locale: 'es',
+                    events: "{{ route('agenda.events') }}",
+                    eventContent: function(arg) {
+                        var title = arg.event.title;
+                        var description = arg.event.extendedProps.description;
+                        var turno = arg.event.extendedProps.turno;
+                        var paciente = arg.event.extendedProps.paciente;
+                        var psicologo = arg.event.extendedProps.psicologo;
+                        var hora = arg.event.extendedProps.hora;
+
+                        return {
+                            html: title + '<br> Descripcion: ' + description + '<br>' + turno + '<br> Hora turno: ' + hora + '<br> Paciente: ' + paciente + '<br> Profesional: ' + psicologo 
+                        }
+                    }
+                });
+                calendar.render();
+            }
         });
     </script>
     @yield('page-scripts')

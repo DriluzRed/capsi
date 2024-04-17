@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class NivelEscolar extends Model
 {
     use HasFactory;
+    protected $table = 'nivel_escolar';
 
     public function user_detalles()
     {
-        return $this->hasMany(UserDetalle::class);
+        return $this->hasMany(UserDetalle::class, 'nivel_escolaridad_id');
     }
 }
