@@ -66,7 +66,9 @@
                             
                         </ul>
                 </li>
-                
+                <li class="nav-item">
+                    <a href="{{ url('agenda') }}" class="nav-link {{ request()->is('agenda') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Agenda</p></a>            
+                </li>
                 @endif
                 @if(auth()->user()->hasAnyRole('Paciente', 'Administrador', 'Psicologo'))
                 @if (auth()->user()->hasRole('Paciente'))

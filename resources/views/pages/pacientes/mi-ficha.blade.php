@@ -7,7 +7,7 @@
             <a href="{{ route('home') }}" class="btn btn-primary">Ir al Inicio</a>
             <div class="card">
                 <div class="card-body">
-                    
+                 
                     <form action="{{ route('pacientes.update', $paciente->id) }}" method="POST">
                         @csrf
                         @method('PUT')

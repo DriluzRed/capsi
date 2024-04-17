@@ -44,6 +44,11 @@ class UserDetalle extends Model
         return $this->belongsTo(Departamento::class);
     }
 
+    public function seguimientos()
+    {
+        return $this->hasMany(Seguimiento::class);
+    }
+
     
 
 }

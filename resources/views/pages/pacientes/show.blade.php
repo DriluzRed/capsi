@@ -19,7 +19,6 @@
                         <p class="card-text">Dirección: {{ $paciente->userDetalles[0]->direccion }}</p>
                         <p class="card-text">Teléfono: {{ $paciente->userDetalles[0]->telefono }}</p>
                         <p class="card-text">Correo: {{ $paciente->email }}</p>
-                        <p class="card-text">Fecha de Nacimiento: {{ $paciente->userDetalles[0]->fecha_nacimiento }}</p>
                         <p class="card-text">Motivo de Consulta: {{ $paciente->userDetalles[0]->motivo_consutla }}</p>
                         <p class="card-text">Nombre del Padre: {{ $paciente->userDetalles[0]->nombre_padre }}</p>
                         <p class="card-text">Nombre de la Madre: {{ $paciente->userDetalles[0]->nombre_madre }}</p>

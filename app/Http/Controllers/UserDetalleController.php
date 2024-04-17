@@ -19,13 +19,14 @@ class UserDetalleController extends Controller
     public function index()
     {
         if(auth()->user()->es_paciente == 1){
-            $this->miFicha(auth()->user()->id);
+
+            $this->miFicha();
         }
         $users = User::where('es_paciente', 1)->get()->pluck('id');
         $users_ids = $users->toArray(); 
         $user_detalles = UserDetalle::whereIn('user_id', $users_ids)->get();
         return view('users_detalles.index');
-        // ->with('user_detalles', $user_detalles);
+        //->with('user_detalles', $user_detalles);
     }
 
     public function createPaciente()
@@ -56,7 +57,7 @@ class UserDetalleController extends Controller
         $paises = Pais::where('deleted_at', null)->get();
 
         
-        return view('users_detalles.create_psicologo')
+        return view('pages.pacientes.create')
             ->with('departamentos', $departamentos)
             ->with('ciudades', $ciudades)
             ->with('profesiones', $profesiones)
@@ -73,8 +74,11 @@ class UserDetalleController extends Controller
         return redirect()->route('users_detalles.show', $user_detalle->id);
     }
 
-    public function miFicha($id){
-
+    public function miFicha(){
+        $id = auth()->user()->id;
+        if(!auth()->user()->userDetalles){
+            return $this->createMiFicha();
+        }
         $paciente = User::where('id', $id)->first();
         $ciudades = Ciudad::where('deleted_at', null)->get();
         $profesiones = Profesion::where('deleted_at', null)->get();
@@ -91,10 +95,12 @@ class UserDetalleController extends Controller
             ->with('escolaridades', $escolaridades)
             ->with('paises', $paises)
             ->with('departamentos', $departamentos);
-
     }
 
     public function createMiFicha(){
+        if(auth()->user()->userDetalles){
+            return $this->miFicha();
+        }
         $ciudades = Ciudad::where('deleted_at', null)->get();
         $profesiones = Profesion::where('deleted_at', null)->get();
         $situaciones_laborales = SituacionLaboral::where('deleted_at', null)->get();
@@ -128,5 +134,14 @@ class UserDetalleController extends Controller
         $paciente = User::where('id', $id)->first();
         return view('pages.pacientes.seguimiento')
             ->with('paciente', $paciente);
+    }
+
+    public function store(Request $request)
+    {
+
+        $user_detalle = new UserDetalle();
+        $user_detalle->fill($request->all());
+        $user_detalle->save();
+        return redirect()->route('users_detalles.show', $user_detalle->id);
     }
 }

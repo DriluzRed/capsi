@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Agenda extends Model
-{
+{   
+    protected $table = 'agenda';
     use HasFactory;
 
     public function user()
@@ -18,4 +19,15 @@ class Agenda extends Model
     {
         return $this->belongsTo(Turno::class);
     }
+
+    public function paciente()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function profesional()
+    {
+        return $this->belongsTo(User::class, 'profesional_id');
+    }
+    
 }

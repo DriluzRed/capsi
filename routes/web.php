@@ -102,9 +102,9 @@ Route::put('/egresos/{egreso}', [App\Http\Controllers\EgresosController::class, 
 Route::delete('/egresos/{egreso}', [App\Http\Controllers\EgresosController::class, 'destroy'])->middleware('auth')->name('egresos.destroy');
 
 Route::get('/pacientes', [App\Http\Controllers\UserDetalleController::class, 'getPacientes'])->middleware('auth')->name('pacientes.index');
-Route::get('/pacientes_by_psico', [App\Http\Controllers\UserDetalleController::class, 'createPacienteByPsico'])->middleware('auth')->name('pacientes.create_psico');
+Route::get('/pacientes_by_psico', [App\Http\Controllers\UserDetalleController::class, 'createPsicologo'])->middleware('auth')->name('pacientes.create_psico');
 Route::get('/pacientes/edit/{id}', [App\Http\Controllers\UserDetalleController::class, 'editPaciente'])->middleware('auth')->name('pacientes.edit');
-Route::get('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'showPaciente'])->middleware('auth')->name('pacientes.show');
+Route::get('/pacientes/{id}/show', [App\Http\Controllers\UserDetalleController::class, 'showPaciente'])->middleware('auth')->name('pacientes.show');
 Route::put('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'updatePaciente'])->middleware('auth')->name('pacientes.update');
 Route::delete('/pacientes/{id}', [App\Http\Controllers\UserDetalleController::class, 'destroyPaciente'])->middleware('auth')->name('pacientes.destroy');
 
@@ -113,3 +113,6 @@ Route::get('/pacientes/mi-ficha', [App\Http\Controllers\UserDetalleController::c
 Route::get('/pacientes/mi-ficha-create', [App\Http\Controllers\UserDetalleController::class, 'createMiFicha'])->middleware('auth')->name('pacientes.mi-ficha-create');
 Route::post('/pacientes', [App\Http\Controllers\UserDetalleController::class, 'storePaciente'])->middleware('auth')->name('pacientes.store');
 Route::get('/pacientes/seguimiento/{id}', [App\Http\Controllers\UserDetalleController::class, 'edit'])->middleware('auth')->name('pacientes.seguimiento');
+
+Route::get('/agenda', [App\Http\Controllers\AgendaController::class, 'index'])->middleware('auth')->name('agenda.index');
+Route::get('/agenda/events', [App\Http\Controllers\AgendaController::class, 'events'])->middleware('auth')->name('agenda.events');

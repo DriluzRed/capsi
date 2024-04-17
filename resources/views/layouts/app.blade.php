@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
+
     <script src="{{asset('js/sweetalert2@11.js')}}"></script>
     @yield('page-styles')
 </head>
@@ -47,6 +48,10 @@
 
     <script src="{{ asset('js/flatpickr.js') }}"></script>
     <script src="{{ asset('js/lang/es.js') }}"></script>
+    <script src="{{ asset('js/index.global.min.js') }}"></script>
+
+
+
 
     <script>
         
@@ -98,6 +103,28 @@
                     "url": "{{ asset('js/lang/datatable-es.json') }}"
                 }
             });
+            let calendarElement = $("#calendar");
+            if (calendarElement.length) {
+                let calendar = new FullCalendar.Calendar(calendarElement[0], {
+                    initialView: 'dayGridMonth',
+                    locale: 'es',
+                    events: "{{ route('agenda.events') }}",
+                    eventContent: function(arg) {
+                        var title = arg.event.title;
+                        var description = arg.event.extendedProps.description;
+                        var turno = arg.event.extendedProps.turno;
+                        // Accede a las propiedades adicionales aquí
+                        var paciente = arg.event.extendedProps.paciente;
+                        var psicologo = arg.event.extendedProps.psicologo;
+                        var hora = arg.event.extendedProps.hora;
+
+                        return {
+                            html: title + '<br>' + description + '<br>' + turno + '<br>' + hora + '<br>' + paciente + '<br>' + psicologo 
+                        }
+                    }
+                });
+                calendar.render();
+            }
         });
     </script>
     @yield('page-scripts')
