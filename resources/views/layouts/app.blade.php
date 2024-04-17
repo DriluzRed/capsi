@@ -120,13 +120,12 @@
                         var title = arg.event.title;
                         var description = arg.event.extendedProps.description;
                         var turno = arg.event.extendedProps.turno;
-                        // Accede a las propiedades adicionales aquí
                         var paciente = arg.event.extendedProps.paciente;
                         var psicologo = arg.event.extendedProps.psicologo;
                         var hora = arg.event.extendedProps.hora;
 
                         return {
-                            html: title + '<br>' + description + '<br>' + turno + '<br>' + hora + '<br>' + paciente + '<br>' + psicologo 
+                            html: title + '<br> Descripcion: ' + description + '<br>' + turno + '<br> Hora turno: ' + hora + '<br> Paciente: ' + paciente + '<br> Profesional: ' + psicologo 
                         }
                     }
                 });

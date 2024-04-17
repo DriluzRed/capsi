@@ -17,7 +17,8 @@ class AgendaController extends Controller
 
     public function events()
     {
-        $agenda = Agenda::where('profesional_id', auth()->user()->id)->get();
+        $agenda = Agenda::where('profesional_id', auth()->user()->id)
+        ->with(['paciente', 'paciente.userDetalles'])->get();
         $events = [];
 
         foreach ($agenda as $item) {
@@ -25,11 +26,12 @@ class AgendaController extends Controller
                 'title' => 'Turno ocupado',
                 'description' => $item->descripcion,
                 'turno' => "Turno ".$item->turno->descripcion,
-                'paciente' => $item->paciente->name,
-                'psicologo' => $item->profesional->name,
+                'paciente' => $item->paciente->userDetalles[0]->nombres . ' ' . $item->paciente->userDetalles[0]->apellidos,
+                'psicologo' => $item->profesional->nombre_profesional,
                 'start' => $item->fecha,
                 'end' => $item->fecha,
                 'hora' => $item->hora,
+                
             ];
         }
         return response()->json($events);
@@ -37,7 +39,7 @@ class AgendaController extends Controller
 
     public function solicitarTurno()
     {
-        $turnos = Turno::where('deleted_at', null);
+        $turnos = Turno::all();
         $profesionales = User::where('es_paciente', 0)
         ->where('ci', '<>', 0)
         ->get();
