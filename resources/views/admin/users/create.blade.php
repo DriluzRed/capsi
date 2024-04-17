@@ -131,6 +131,28 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                                 </div>
+
+                                <div class="form-group
+                                @error('rango_hora_start')
+                                    has-danger
+                                @enderror" id="rango_hora_start_div">
+                                <label for="nombre_profesional">Inicio de Hora de Atencion</label>
+                                <input type="text" name="rango_hora_start" id="rango_hora_start" class="form-control timepicker">
+                                @error('rango_hora_start')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                </div>
+
+                                <div class="form-group
+                                @error('rango_hora_end')
+                                    has-danger
+                                @enderror" id="rango_hora_end_div">
+                                <label for="nombre_profesional">Fin de Hora de Atencion</label>
+                                <input type="text" name="rango_hora_end" id="rango_hora_end" class="form-control timepicker">
+                                @error('rango_hora_end')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                </div>
                                 
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </form>

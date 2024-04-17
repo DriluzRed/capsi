@@ -90,6 +90,13 @@
                 dateFormat: "Y-m-d",
                 locale: "es"
             });
+            $(".timepicker").flatpickr({
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: true,
+                locale: "es"
+            });
 
             $("[invoice-mask]").inputmask({
                 mask: '999-999-9999999',

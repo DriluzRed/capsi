@@ -82,6 +82,9 @@
                     <li class="nav-item">
                         <a href="{{ url('pacientes/mi-ficha') }}" class="nav-link {{ request()->is('pacientes/mi-ficha') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Mi ficha</p></a>            
                     </li> 
+                    <li class="nav-item">
+                        <a href="{{ url('/agenda/solicitar-turno') }}" class="nav-link {{ request()->is('/agenda/solicitar-turno') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Solicitar un turno</p></a>            
+                    </li> 
                 @endif
                     <li class="nav-item {{ request()->is(['pacientes']) ? 'menu-open' : '' }}">
                         @if(auth()->user()->hasAnyRole('Administrador', 'Psicologo'))

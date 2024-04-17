@@ -44,7 +44,8 @@ class UserController extends Controller
         $usuario->password = bcrypt($request->password);
         $usuario->es_paciente = $request->es_paciente;
         $usuario->ci = $request->ci;
-        
+        $usuario->rango_hora_start = $request->rango_hora_start;
+        $usuario->rango_hora_end = $request->rango_hora_end;
         $usuario->save();
         if($request->roles){
             $roles = Role::whereIn('id', $request->roles)->pluck('name');
@@ -92,6 +93,10 @@ class UserController extends Controller
     $usuario->name = $request->name;
     $usuario->email = $request->email;
     $usuario->ci = $request->ci;
+    $usuario->nombre_profesional = $request->nombre_profesional;
+    $usuario->es_paciente = $request->es_paciente;
+    $usuario->rango_hora_start = $request->rango_hora_start;
+    $usuario->rango_hora_end = $request->rango_hora_end;
     if ($request->filled('password')) {
         $request->validate([
             'password' => 'required',
@@ -108,8 +113,8 @@ class UserController extends Controller
         $permissions = Permission::whereIn('id', $request->permissions)->pluck('name');
         $usuario->syncPermissions($permissions);
     }
-
-    $usuario->especialidades()->sync($request->especialidades);
+    $usuario->especialidades()->detach();
+    $usuario->especialidades()->attach($request->especialidades);
 
     return redirect()->route('admin.users.index');
 }

@@ -11,13 +11,9 @@ class Especialidad extends Model
     use HasFactory, SoftDeletes;
     protected $table = 'especialidades';
     protected $fillable = ['nombre'];
-    public function detalleEspecialidades()
-    {
-        return $this->hasMany(DetalleEspecialidad::class);
-    }
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'user_especialidades');
     }
 }

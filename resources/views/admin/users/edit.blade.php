@@ -138,11 +138,32 @@
                                 has-danger
                             @enderror" id="nombre_profesionalDiv">
                             <label for="nombre_profesional">Nombre Profesional</label>
-                            <input type="text" name="nombre_profesional" id="nombre_profesional" class="form-control">
+                            <input type="text" name="nombre_profesional" id="nombre_profesional" class="form-control" value="{{ old('nombre_profesional', $user->nombre_profesional ?? '') }}">
                             @error('nombre_profesional')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                             </div>
+                            <div class="form-group
+                                @error('rango_hora_start')
+                                    has-danger
+                                @enderror" id="rango_hora_start_div">
+                                <label for="nombre_profesional">Inicio de Hora de Atencion</label>
+                                <input type="text" name="rango_hora_start" id="rango_hora_start" class="form-control timepicker" value="{{$user->rango_hora_start}}">
+                                @error('rango_hora_start')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                </div>
+
+                                <div class="form-group
+                                @error('rango_hora_end')
+                                    has-danger
+                                @enderror" id="rango_hora_end_div">
+                                <label for="nombre_profesional">Fin de Hora de Atencion</label>
+                                <input type="text" name="rango_hora_end" id="rango_hora_end" class="form-control timepicker" value="{{$user->rango_hora_end}}">
+                                @error('rango_hora_end')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                </div>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </form>
                         </div>
