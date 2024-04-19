@@ -46,7 +46,7 @@ class SituacionLaboralController extends Controller
     public function edit($id)
     {   
         $situacionLaboral = SituacionLaboral::find($id);
-        return view('situacionLaboral.edit')
+        return view('pages.situacionLaboral.edit')
         ->with('situacionLaboral', $situacionLaboral)
         ->with('title', 'Editar situacionLaboral');
     }
