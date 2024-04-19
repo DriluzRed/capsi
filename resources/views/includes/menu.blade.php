@@ -55,6 +55,15 @@
                             <li class="nav-item">
                                 <a href="{{ url('especialidades') }}" class="nav-link {{ request()->is('especialidades') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Especialidades</p></a>            
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ url('nivelEscolar') }}" class="nav-link {{ request()->is('nivelEscolar') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Nivel Escolaridad</p></a>            
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('situacionLaboral') }}" class="nav-link {{ request()->is('situacionLaboral') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Situacion Laboral</p></a>            
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('profesiones') }}" class="nav-link {{ request()->is('profesiones') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Profesiones</p></a>            
+                            </li>
                         </ul>
                 </li>
                 <li class="nav-item {{ request()->is(['egresos', 'ingresos']) ? 'menu-open' : '' }}">

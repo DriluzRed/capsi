@@ -10,14 +10,14 @@ class NivelEscolarController extends Controller
     public function index()
     {
         $nivelEscolar = NivelEscolar::where('deleted_at', null)->get();
-        return view('nivelEscolar.index')
+        return view('pages.nivelEscolar.index')
         ->with('nivelEscolar', $nivelEscolar)
         ->with('title', 'Listado de  Nivel Escolar');
     }
 
     public function create()
     {
-        return view('nivelEscolar.create')
+        return view('pages.nivelEscolar.create')
         ->with('title', 'Crear Nivel Escolar');
     }
 
@@ -42,17 +42,11 @@ class NivelEscolarController extends Controller
         return redirect()->route('nivelEscolar.index');
     }
 
-    public function show(NivelEscolar $nivelEscolar)
-    {
-        return view('nivelEscolar.show')
-        ->with('nivelEscolar', $nivelEscolar)
-        ->with('title', 'Ver nivelEscolar');
-    }
-
+    
     public function edit($id)
     {   
         $nivelEscolar = NivelEscolar::find($id);
-        return view('nivelEscolar.edit')
+        return view('pages.nivelEscolar.edit')
         ->with('nivelEscolar', $nivelEscolar)
         ->with('title', 'Editar nivelEscolar');
     }

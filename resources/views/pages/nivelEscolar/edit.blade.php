@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12">
             <h1 class="text-center">{{$title}}</h1>
-            <form action="{{ route('nivelEscolar.update', $pais->id) }}" method="POST">
+            <form action="{{ route('nivelEscolar.update', $nivelEscolar->id) }}" method="POST">
                 @method('PUT')
                 @csrf
                 <div class="form-group
@@ -16,7 +16,7 @@
                     <input type="text" class="form-control
                         @error('descripcion')
                             is-invalid
-                        @enderror" id="descripcion" name="descripcion" value="{{$pais->descripcion}}">
+                        @enderror" id="descripcion" name="descripcion" value="{{$nivelEscolar->descripcion}}">
                     @error('descripcion')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

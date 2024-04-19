@@ -9,14 +9,14 @@ class ProfesionController extends Controller
     public function index()
     {
         $profesiones = Profesion::where('deleted_at', null)->get();
-        return view('profesiones.index')
+        return view('pages.profesiones.index')
         ->with('profesiones', $profesiones)
         ->with('title', 'Listado de profesiones');
     }
 
     public function create()
     {
-        return view('profesiones.create')
+        return view('pages.profesiones.create')
         ->with('title', 'Crear profesion');
     }
 
@@ -43,7 +43,7 @@ class ProfesionController extends Controller
 
     public function show(Profesion $profesion)
     {
-        return view('profesiones.show')
+        return view('pages.profesiones.show')
         ->with('profesion', $profesion)
         ->with('title', 'Ver profesion');
     }
@@ -51,7 +51,7 @@ class ProfesionController extends Controller
     public function edit($id)
     {   
         $profesion = Profesion::find($id);
-        return view('profesiones.edit')
+        return view('pages.profesiones.edit')
         ->with('profesion', $profesion)
         ->with('title', 'Editar profesion');
     }

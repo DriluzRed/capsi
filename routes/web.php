@@ -122,7 +122,27 @@ Route::post('/agenda', [App\Http\Controllers\AgendaController::class, 'store'])-
 Route::get('/especialidades', [App\Http\Controllers\EspecialidadController::class, 'index'])->middleware('auth')->name('especialidades.index');
 Route::get('/especialidades/create', [App\Http\Controllers\EspecialidadController::class, 'create'])->middleware('auth')->name('especialidades.create');
 Route::post('/especialidades', [App\Http\Controllers\EspecialidadController::class, 'store'])->middleware('auth')->name('especialidades.store');
-Route::get('/especialidades/{especialidad}', [App\Http\Controllers\EspecialidadController::class, 'show'])->middleware('auth')->name('especialidades.show');
 Route::get('/especialidades/{especialidad}/edit', [App\Http\Controllers\EspecialidadController::class, 'edit'])->middleware('auth')->name('especialidades.edit');
 Route::put('/especialidades/{especialidad}', [App\Http\Controllers\EspecialidadController::class, 'update'])->middleware('auth')->name('especialidades.update');
 Route::delete('/especialidades/{especialidad}', [App\Http\Controllers\EspecialidadController::class, 'destroy'])->middleware('auth')->name('especialidades.destroy');
+
+Route::get('/profesiones', [App\Http\Controllers\ProfesionController::class, 'index'])->middleware('auth')->name('profesiones.index');
+Route::get('/profesiones/create', [App\Http\Controllers\ProfesionController::class, 'create'])->middleware('auth')->name('profesiones.create');
+Route::post('/profesiones', [App\Http\Controllers\ProfesionController::class, 'store'])->middleware('auth')->name('profesiones.store');
+Route::get('/profesiones/{profesion}/edit', [App\Http\Controllers\ProfesionController::class, 'edit'])->middleware('auth')->name('profesiones.edit');
+Route::put('/profesiones/{profesion}', [App\Http\Controllers\ProfesionController::class, 'update'])->middleware('auth')->name('profesiones.update');
+Route::delete('/profesiones/{profesion}', [App\Http\Controllers\ProfesionController::class, 'destroy'])->middleware('auth')->name('profesiones.destroy');
+
+Route::get('/nivelEscolar', [App\Http\Controllers\NivelEscolarController::class, 'index'])->middleware('auth')->name('nivelEscolar.index');
+Route::get('/nivelEscolar/create', [App\Http\Controllers\NivelEscolarController::class, 'create'])->middleware('auth')->name('nivelEscolar.create');
+Route::post('/nivelEscolar', [App\Http\Controllers\NivelEscolarController::class, 'store'])->middleware('auth')->name('nivelEscolar.store');
+Route::get('/nivelEscolar/{nivelEscolar}/edit', [App\Http\Controllers\NivelEscolarController::class, 'edit'])->middleware('auth')->name('nivelEscolar.edit');
+Route::put('/nivelEscolar/{nivelEscolar}', [App\Http\Controllers\NivelEscolarController::class, 'update'])->middleware('auth')->name('nivelEscolar.update');
+Route::delete('/nivelEscolar/{nivelEscolar}', [App\Http\Controllers\NivelEscolarController::class, 'destroy'])->middleware('auth')->name('nivelEscolar.destroy');
+
+Route::get('/situacionLaboral', [App\Http\Controllers\SituacionLaboralController::class, 'index'])->middleware('auth')->name('situacionLaboral.index');
+Route::get('/situacionLaboral/create', [App\Http\Controllers\SituacionLaboralController::class, 'create'])->middleware('auth')->name('situacionLaboral.create');
+Route::post('/situacionLaboral', [App\Http\Controllers\SituacionLaboralController::class, 'store'])->middleware('auth')->name('situacionLaboral.store');
+Route::get('/situacionLaboral/{situacionLaboral}/edit', [App\Http\Controllers\SituacionLaboralController::class, 'edit'])->middleware('auth')->name('situacionLaboral.edit');
+Route::put('/situacionLaboral/{situacionLaboral}', [App\Http\Controllers\SituacionLaboralController::class, 'update'])->middleware('auth')->name('situacionLaboral.update');
+Route::delete('/situacionLaboral/{situacionLaboral}', [App\Http\Controllers\SituacionLaboralController::class, 'destroy'])->middleware('auth')->name('situacionLaboral.destroy');

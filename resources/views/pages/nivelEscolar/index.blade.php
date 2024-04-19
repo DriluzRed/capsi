@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-    @section('content')
+@section('content')
     <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2">
-            <h3 class="content-header-title mb-0">Profesion</h3>
+            <h3 class="content-header-title mb-0">Nivel Escolar</h3>
         </div>
         <div class="content-header-right col-md-6 col-12">
            
@@ -16,9 +16,9 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title
-                            ">Lista de Profesiones</h4>
+                            ">Lista de Nivel Escolar</h4>
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                                <a href="{{ route('profesiones.create') }}" class="btn btn-primary btn-sm">Crear Profesion</a>
+                                <a href="{{ route('nivelEscolar.create') }}" class="btn btn-primary btn-sm">Crear Nivel Escolar</a>
                             </div>
                         </div>
                         <div class="card-content">
@@ -32,12 +32,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($profesiones as $profesion)
+                                            @foreach($nivelEscolar as $nivelEscolar)
                                                 <tr>
-                                                    <td>{{ $profesion->descripcion }}</td>
+                                                    <td>{{ $nivelEscolar->descripcion }}</td>
                                                     <td>
-                                                        <a href="{{ route('profesiones.edit', $profesion->id) }}" class="btn btn-primary btn-sm">Editar</a>
-                                                        <form action="{{ route('profesiones.destroy', $profesion->id) }}" method="POST" style="display: inline;">
+                                                        <a href="{{ route('nivelEscolar.edit', $nivelEscolar->id) }}" class="btn btn-primary btn-sm">Editar</a>
+                                                        <form action="{{ route('nivelEscolar.destroy', $nivelEscolar->id) }}" method="POST" style="display: inline;">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>

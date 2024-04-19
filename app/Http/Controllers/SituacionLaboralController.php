@@ -10,14 +10,14 @@ class SituacionLaboralController extends Controller
     public function index()
     {
         $situacionLaboral = SituacionLaboral::where('deleted_at', null)->get();
-        return view('situacionLaboral.index')
+        return view('pages.situacionLaboral.index')
         ->with('situacionLaboral', $situacionLaboral)
         ->with('title', 'Listado de  Situacion Laboral');
     }
 
     public function create()
     {
-        return view('situacionLaboral.create')
+        return view('pages.situacionLaboral.create')
         ->with('title', 'Crear Situacion Laboral');
     }
 
@@ -42,13 +42,7 @@ class SituacionLaboralController extends Controller
         return redirect()->route('situacionLaboral.index');
     }
 
-    public function show(SituacionLaboral $situacionLaboral)
-    {
-        return view('situacionLaboral.show')
-        ->with('situacionLaboral', $situacionLaboral)
-        ->with('title', 'Ver situacionLaboral');
-    }
-
+    
     public function edit($id)
     {   
         $situacionLaboral = SituacionLaboral::find($id);
