@@ -31,6 +31,7 @@
             <div class="app-content content">
                 <div class="content-wrapper p-0">
                     @yield('content')
+                    
                 </div>
             </div>
         </div>

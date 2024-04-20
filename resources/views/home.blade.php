@@ -76,5 +76,16 @@
             </div>
         </div>
     @endif
+
+    @if(auth()->user()->es_paciente == 0)
+
+    
+
+
+    @endif
+
+
+
 </div>
 @endsection
+
