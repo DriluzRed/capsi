@@ -38,6 +38,9 @@
                             <li class="nav-item">
                                 <a href="{{ url('users') }}" class="nav-link {{ request()->is('users') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Usuarios</p></a>            
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ url('chat-ia') }}" class="nav-link {{ request()->is('chat-ia') ? 'active' : '' }}"><i class="fas fa-regular fa-address-book nav-icon"></i><p>Chat IA</p></a>            
+                            </li>
                         </ul>
                 </li>
                 <li class="nav-item {{ request()->is(['departamentos', 'paises', 'ciudades', 'especialidades']) ? 'menu-open' : '' }}">
@@ -104,6 +107,7 @@
                                 <li class="nav-item">
                                     <a href="{{ url('pacientes') }}" class="nav-link {{ request()->is('pacientes') ? 'active' : '' }}"><i class="fas fa-regular fa-address-book nav-icon"></i><p>Pacientes</p></a>            
                                 </li>
+                               
                             @endif
                            
                         </ul>

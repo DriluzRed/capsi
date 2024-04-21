@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Agenda;
+use App\Models\Message;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $mensajes = Message::where('user_id', auth()->user()->id)->get();
         $user = auth()->user();
         $psicologos = User::where('es_paciente', 0)
         ->where('ci', '<>', 0)

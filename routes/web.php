@@ -146,3 +146,7 @@ Route::post('/situacionLaboral', [App\Http\Controllers\SituacionLaboralControlle
 Route::get('/situacionLaboral/{situacionLaboral}/edit', [App\Http\Controllers\SituacionLaboralController::class, 'edit'])->middleware('auth')->name('situacionLaboral.edit');
 Route::put('/situacionLaboral/{situacionLaboral}', [App\Http\Controllers\SituacionLaboralController::class, 'update'])->middleware('auth')->name('situacionLaboral.update');
 Route::delete('/situacionLaboral/{situacionLaboral}', [App\Http\Controllers\SituacionLaboralController::class, 'destroy'])->middleware('auth')->name('situacionLaboral.destroy');
+
+
+Route::get('/chat-ia', [App\Http\Controllers\OpenAIController::class, 'index'])->middleware('auth')->name('chat-ia.index');
+Route::post('/send-message', [App\Http\Controllers\OpenAIController::class, 'sendMessage'])->middleware('auth')->name('send-message');
