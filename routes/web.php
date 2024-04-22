@@ -150,3 +150,5 @@ Route::delete('/situacionLaboral/{situacionLaboral}', [App\Http\Controllers\Situ
 
 Route::get('/chat-ia', [App\Http\Controllers\OpenAIController::class, 'index'])->middleware('auth')->name('chat-ia.index');
 Route::post('/send-message', [App\Http\Controllers\OpenAIController::class, 'sendMessage'])->middleware('auth')->name('send-message');
+
+Route::get('/download-pdf/{id}', [App\Http\Controllers\PDFController::class, 'downloadPDF'])->name('download.pdf');

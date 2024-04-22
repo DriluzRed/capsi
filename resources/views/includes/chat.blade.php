@@ -203,10 +203,10 @@
                 <hr>
             @endforeach
         </div>
-        <form method="post" id="chat-message">
+        <form method="post" id="chat-message" action="{{ route('send-message') }}">
             <fieldset>
-                <input type="text" id="message" placeholder="Enivar mensaje..." autofocus>
-                <input type="hidden">
+                <input type="text" name="message" id="message" placeholder="Enviar mensaje..." autofocus>
+                <input type="submit" value="Enviar">          
             </fieldset>
         </form>
     </div>
