@@ -32,7 +32,11 @@ class OpenAIController extends Controller
                 ],
                 'json' => [
                     'model' => 'gpt-3.5-turbo', 
-                    'messages' => [['role' => 'user', 'content' => $request->input('message')]],
+                    'messages' => 
+                    [
+                        ['role' => 'system', 'content' => 'Este asistente se especializa en información del DSM-5. Si no se le consulta algo relacionado, el asistente se negara a responder.'], 
+                        ['role' => 'user', 'content' => $request->input('message')]
+                    ],
                 ],
             ]);
             \Log::info("Request received", ['response' => $response]); 
