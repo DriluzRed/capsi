@@ -124,7 +124,7 @@
             <h5>XII. EPICRISIS:</h5>
             <div class="content"> {{ $paciente->userDetalles[0]->epicrisis ?? 'No proporcionado' }}<span class="line"></span></div>
         </div>
-        <!-- Repite para las secciones III y IV -->
+
     </div>
 </body>
 </html>

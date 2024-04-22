@@ -31,7 +31,7 @@ class OpenAIController extends Controller
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'model' => 'gpt-3.5-turbo', // Ajusta el modelo según tus necesidades
+                    'model' => 'gpt-3.5-turbo', 
                     'messages' => [['role' => 'user', 'content' => $request->input('message')]],
                 ],
             ]);
@@ -45,8 +45,6 @@ class OpenAIController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
-
-        
 
         
         // Guardar el mensaje enviado

@@ -4,8 +4,13 @@
     <div class="row">
         <div class="col-sm-12">
             <h1 class="text-center">Ficha del paciente</h1>
-            <a href="{{ route('download.pdf', ['id' => $paciente->id]) }}" class="btn btn-primary">Exportar PDF</a>
-            <a href="{{ route('pacientes.index') }}" class="btn btn-primary">Ir al Inicio</a>
+    
+            <div class="d-flex justify-content-between">
+                <a href="{{ route('pacientes.index') }}" class="btn btn-primary">Ir al Inicio</a>
+                <div class="ms-auto"> 
+                    <a href="{{ route('download.pdf', ['id' => $paciente->id]) }}" class="btn btn-danger">Exportar PDF</a>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-body">
                     @if (session('error'))
