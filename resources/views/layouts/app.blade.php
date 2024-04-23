@@ -125,6 +125,7 @@
             let calendarElement = $("#calendar");
             if (calendarElement.length) {
                 let calendar = new FullCalendar.Calendar(calendarElement[0], {
+                    height: '500px',
                     initialView: 'dayGridMonth',
                     locale: 'es',
                     events: "{{ route('agenda.events') }}",

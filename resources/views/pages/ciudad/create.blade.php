@@ -2,11 +2,11 @@
 @section('content')
 <div class="content-header row">
     <div class="content-header-left col-md-6 col-12 mb-2">
-        <h3 class="content-header-title mb-0">Ciudades</h3>
     </div>
     <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-            <a href="{{ route('ciudades.index') }}" class="btn btn-primary btn-sm">Volver</a>
+            <a href="{{ route('ciudades.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-reply"></i></a>
+            </br>
         </div>
     </div>
 </div>
@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title
-                        ">Crear Ciudad</h4>
+                        ">CREAR CIUDAD</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body card-dashboard">

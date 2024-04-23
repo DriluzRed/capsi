@@ -3,8 +3,10 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">Editar mi ficha</h1>
-            <a href="{{ route('home') }}" class="btn btn-primary">Ir al Inicio</a>
+            <h1 class="text-center">EDITAR MIS DATOS</h1>
+            <a href="{{ route('home') }}" class="btn btn-primary"><i class="fas fa-solid fa-reply"></i></a>
+            </br>
+            </br>
             <div class="card">
                 <div class="card-body">
                     @if ($message != "")

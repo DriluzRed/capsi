@@ -4,8 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">Crear nueva ficha</h1>
-            <a href="{{ route('home') }}" class="btn btn-primary">Ir al Inicio</a>
+            <h1 class="text-center">DATOS PERSONALES</h1>
+            <a href="{{ route('home') }}" class="btn btn-primary"><i class="fas fa-solid fa-reply"></i></a>
+            </br>
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('pacientes.store') }}" method="POST">

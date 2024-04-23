@@ -38,9 +38,6 @@
                             <li class="nav-item">
                                 <a href="{{ url('users') }}" class="nav-link {{ request()->is('users') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Usuarios</p></a>            
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ url('chat-ia') }}" class="nav-link {{ request()->is('chat-ia') ? 'active' : '' }}"><i class="fas fa-regular fa-address-book nav-icon"></i><p>Chat IA</p></a>            
-                            </li>
                         </ul>
                 </li>
                 <li class="nav-item {{ request()->is(['departamentos', 'paises', 'ciudades', 'especialidades']) ? 'menu-open' : '' }}">
@@ -89,13 +86,13 @@
                 @if (auth()->user()->hasRole('Paciente'))
                    
                     <li class="nav-item">
-                        <a href="{{ url('pacientes/mi-ficha-create') }}" class="nav-link {{ request()->is('pacientes/mi-ficha-create') ? 'active' : '' }}"><i class="fas fa-regular fa-pen-to-square nav-icon"></i><p>Crear mi ficha</p></a>            
+                        <a href="{{ url('pacientes/mi-ficha-create') }}" class="nav-link {{ request()->is('pacientes/mi-ficha-create') ? 'active' : '' }}"><i class="fas fa-regular fa-address-card nav-icon"></i><p>Crear mi ficha</p></a>            
                     </li> 
                     <li class="nav-item">
-                        <a href="{{ url('pacientes/mi-ficha') }}" class="nav-link {{ request()->is('pacientes/mi-ficha') ? 'active' : '' }}"><i class="fas fa-regular fa-clipboard nav-icon"></i><p>Mi ficha</p></a>            
+                        <a href="{{ url('pacientes/mi-ficha') }}" class="nav-link {{ request()->is('pacientes/mi-ficha') ? 'active' : '' }}"><i class="fas fa-regular fa-folder nav-icon"></i><p>Mis datos</p></a>            
                     </li> 
                     <li class="nav-item">
-                        <a href="{{ url('/agenda/solicitar-turno') }}" class="nav-link {{ request()->is('/agenda/solicitar-turno') ? 'active' : '' }}"><i class="fas fa-regular fa-calendar-circle-plus nav-icon"></i><p>Solicitar un turno</p></a>            
+                        <a href="{{ url('/agenda/solicitar-turno') }}" class="nav-link {{ request()->is('/agenda/solicitar-turno') ? 'active' : '' }}"><i class="fas fa-regular fa-calendar-plus nav-icon"></i><p>Solicitar un turno</p></a>            
                     </li> 
                 @endif
                     <li class="nav-item {{ request()->is(['pacientes']) ? 'menu-open' : '' }}">

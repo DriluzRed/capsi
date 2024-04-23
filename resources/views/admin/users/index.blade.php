@@ -2,7 +2,6 @@
 @section('content')
     <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2">
-            <h3 class="content-header-title mb-0">Usuarios</h3>
         </div>
         <div class="content-header-right col-md-6 col-12">
            
@@ -15,9 +14,9 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title   
-                            ">Lista de Usuarios</h4>
+                            ">LISTA DE USUARIOS</h4>
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                                <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-sm">Crear Usuario</a>
+                                <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="card-content">
@@ -56,11 +55,11 @@
                                                             <span class="badge badge-danger">No</span>
                                                         @endif
                                                     <td>
-                                                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-sm">Editar</a>
+                                                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-pen"></i></a>
                                                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display: inline;">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-solid fa-trash"></i></button>
                                                         </form>
                                                     </td>
                                                 </tr>

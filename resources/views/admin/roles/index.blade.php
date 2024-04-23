@@ -2,7 +2,6 @@
 @section('content')
     <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2">
-            <h3 class="content-header-title mb-0">Roles</h3>
         </div>
         <div class="content-header-right col-md-6 col-12">
            
@@ -15,9 +14,9 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title
-                            ">Lista de Roles</h4>
+                            ">LISTA DE ROLES</h4>
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                                <a href="{{ route('admin.roles.create') }}" class="btn btn-primary btn-sm">Crear Rol</a>
+                                <a href="{{ route('admin.roles.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="card-content">
@@ -35,8 +34,8 @@
                                                 <tr>
                                                     <td>{{ $role->name }}</td>
                                                     <td>
-                                                        <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-primary btn-sm">Editar</a>
-                                                        <a href="{{ route('admin.roles.destroy', $role->id) }}" class="btn btn-danger btn-sm">Eliminar</a>
+                                                        <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-info btn-sm"><i class="fas fa-solid fa-pen"></i></a>
+                                                        <a href="{{ route('admin.roles.destroy', $role->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-solid fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach

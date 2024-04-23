@@ -4,8 +4,10 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">Editar Departamento</h1>
-            <a href="{{ route('departamentos.index') }}" class="btn btn-primary">Volver</a>
+            <h1 class="text-center">EDITAR DEPARTAMENTO</h1>
+            <a href="{{ route('departamentos.index') }}" class="btn btn-primary"><i class="fas fa-solid fa-reply"></i></a>
+            </br>
+            </br>
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('departamentos.update', $departamento->id) }}" method="POST">

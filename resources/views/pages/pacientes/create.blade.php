@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">Crear nueva ficha</h1>
+            <h1 class="text-center">CREAR NUEVA FICHA</h1>
             <a href="{{ route('home') }}" class="btn btn-primary">Ir al Inicio</a>
             <div class="card">
                 <div class="card-body">

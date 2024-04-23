@@ -4,8 +4,10 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">Editar la ficha del paciente</h1>
-            <a href="{{ route('home') }}" class="btn btn-primary">Ir al Inicio</a>
+            <h1 class="text-center">EDITAR FICHA DEL PACIENTE</h1>
+            <a href="{{ route('home') }}" class="btn btn-primary"><i class="fas fa-solid fa-reply"></i></a>
+            </br>
+            </br>
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('pacientes.update', $paciente->id) }}" method="POST">

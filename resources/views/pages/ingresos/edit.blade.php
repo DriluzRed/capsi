@@ -3,20 +3,22 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">Editar Ingreso</h1>
-            <a href="{{ route('ingresos.index') }}" class="btn btn-primary">Volver</a>
+            <h1 class="text-center">EDITAR INGRESO</h1>
+            <a href="{{ route('ingresos.index') }}" class="btn btn-primary"><i class="fas fa-solid fa-reply"></i></a>
+            </br>
+            </br>
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('ingresos.update', $ingreso->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group
-                            @error('nombre')
+                            @error('descripcion')
                                 has-danger
                             @enderror">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $ingreso->descripcion) }}" required>
-                            @error('nombre')
+                            <label for="descripcion">Descripcion</label>
+                            <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{ old('descripcion', $ingreso->descripcion) }}" required>
+                            @error('descripcion')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

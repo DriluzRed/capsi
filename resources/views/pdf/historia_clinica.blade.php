@@ -57,12 +57,12 @@
                 <li>Número de hermanos: <span class="line">{{ $paciente->userDetalles[0]->cant_hermanos ?? 'No proporcionado'}}</span></li>
                 <li>Tutor/a: <span class="line">{{ $paciente->userDetalles[0]->tiene_tutor == 1 ? 'Sí' : 'No' }}</span></li>
                 <br />
-                <li>Edad Cronológica: <span class="line">{{ $paciente->userDetalles[0]->edad }}</span></li>
+                <li>Edad <span class="line">{{ $paciente->userDetalles[0]->edad }}</span></li>
                 <li>Sexo: <span class="line">{{ $paciente->userDetalles[0]->sexo == 'M' ? 'Masculino' : 'Femenino' }}</span></li>
                 <li>Religión: <span class="line">{{ $paciente->userDetalles[0]->religion ?? 'No proporcionado'}}</span></li>
                 <li>Teléfono: <span class="line">{{ $paciente->userDetalles[0]->telefono ?? 'No proporcionado'}}</span></li>
                 <li>Ocupación: <span class="line">{{$paciente->userDetalles[0]->situacion_laboral->descripcion ?? 'No proporcionado'}}</span></li>
-                <li>Lugar que ocupa: <span class="line">{{ $paciente->userDetalles[0]->lugar_trabajo ?? 'No proporcionado'}}</span></li>
+                <li>Lugar de trabajo o estudios <span class="line">{{ $paciente->userDetalles[0]->lugar_trabajo ?? 'No proporcionado'}}</span></li>
                 <li>Fecha de Entrada: <span class="line"></span></li>
             </ul>
         </div>

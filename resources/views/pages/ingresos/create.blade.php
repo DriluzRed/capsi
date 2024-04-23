@@ -2,11 +2,11 @@
 @section('content')
 <div class="content-header row">
     <div class="content-header-left col-md-6 col-12 mb-2">
-        <h3 class="content-header-title mb-0">Ingresos</h3>
     </div>
     <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-            <a href="{{ route('ingresos.index') }}" class="btn btn-primary btn-sm">Volver</a>
+            <a href="{{ route('ingresos.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-reply"></i></a>
+            </br>
         </div>
     </div>
 </div>
@@ -18,19 +18,19 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title
-                        ">Crear Ingreso</h4>
+                        ">CREAR INGRESO</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body card-dashboard">
                             <form action="{{ route('ingresos.store') }}" method="POST">
                                 @csrf
                                 <div class="form-group
-                                    @error('nombre')
+                                    @error('descripcion')
                                         has-danger
                                     @enderror">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control" required value="{{old('nombre')}}">
-                                    @error('nombre')
+                                    <label for="descripcion">Descripcion</label>
+                                    <input type="text" name="descripcion" id="descripcion" class="form-control" required value="{{old('descripcion')}}">
+                                    @error('descripcion')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

@@ -78,9 +78,14 @@
     @endif
 
     @if(auth()->user()->es_paciente == 0)
-
     
-
+    @section('styles')
+    <style>
+        body {
+            background-image: url('{{ asset('capsifotoalfin.png') }}');
+        }
+    </style>
+    @endsection
 
     @endif
 

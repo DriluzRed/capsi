@@ -3,14 +3,13 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h1 class="text-center">Ficha del paciente</h1>
+            <h1 class="text-center">FICHA DEL PACIENTE</h1>
     
             <div class="d-flex justify-content-between">
-                <a href="{{ route('pacientes.index') }}" class="btn btn-primary">Ir al Inicio</a>
-                <div class="ms-auto"> 
-                    <a href="{{ route('download.pdf', ['id' => $paciente->id]) }}" class="btn btn-danger">Exportar PDF</a>
-                </div>
+                <a href="{{ route('pacientes.index') }}" class="btn btn-primary"><i class="fas fa-solid fa-reply"></i></a>
+                
             </div>
+            </br>
             <div class="card">
                 <div class="card-body">
                     @if (session('error'))
@@ -65,13 +64,14 @@
                         <p class="card-text">Epicrisis: {{ $paciente->userDetalles[0]->epicrisis ?? 'No proporcionado' }}</p>
 
                     </div>
-
+                    </br>
                     <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-warning">Dar seguimiento</a>
                     <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-solid fa-trash"></i></button>
                     </form>
+                    <a href="{{ route('download.pdf', ['id' => $paciente->id]) }}" class="btn btn-info"><i class="fas fa-solid fa-file-export"></i></a>
                 </div>
             </div>
         </div>
