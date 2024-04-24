@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         $adminRole = Role::create(['name' => 'admin', 'guard_name' => 'web']);
         $adminUser = User::create([
+            'ci' => 0,
             'name' => 'Administrador',
             'email' => 'admin@capsi.com',
             'password' => Hash::make('123456'),
