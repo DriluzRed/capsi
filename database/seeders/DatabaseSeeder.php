@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Administrador',
             'email' => 'admin@capsi.com',
             'password' => Hash::make('123456'),
-            'role' => 'admin',
         ]);
 
         $adminUser->assignRole($adminRole);
