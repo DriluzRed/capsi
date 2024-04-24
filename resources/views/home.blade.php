@@ -7,7 +7,7 @@
         {{-- {{dd($agendas)}} --}}
     @if(auth()->user()->es_paciente == 1)
 
-        <h1 class="text-center">Bienvenido {{ auth()->user()->name }}</h1>
+        <h1 class="text-center">Bienvenido/a {{ auth()->user()->name }}</h1>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -75,22 +75,9 @@
                 </div>
             </div>
         </div>
+    @else
+        @include('includes.loog')
     @endif
-
-    @if(auth()->user()->es_paciente == 0)
-    
-    @section('styles')
-    <style>
-        body {
-            background-image: url('{{ asset('capsifotoalfin.png') }}');
-        }
-    </style>
-    @endsection
-
-    @endif
-
-
-
 </div>
 @endsection
 

@@ -51,8 +51,20 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'ci' => ['required', 'integer', 'unique:users'],
+        ],
+        ['ci.unique' => 'El número de cédula ya está en uso.',
+        'ci.integer' => 'El número de cédula debe ser un número entero.',
+        'ci.required' => 'El número de cédula es requerido.',
+        'name.required' => 'El nombre es requerido.',
+        'email.required' => 'El correo electrónico es requerido.',
+        'email.email' => 'El correo electrónico debe ser válido.',
+        'email.unique' => 'El correo electrónico ya está en uso.',
+        'password.required' => 'La contraseña es requerida.',
+        'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
+        'password.confirmed' => 'Las contraseñas no coinciden.'
+    ]);
     }
 
     /**
@@ -63,10 +75,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->ci = $data['ci'];
+        $user->es_paciente = true;
+        $user->save();
+        $user->assignRole('Paciente');
+        return $user;
+
     }
 }

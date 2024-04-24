@@ -6,7 +6,7 @@
             <h1 class="text-center">FICHA DEL PACIENTE</h1>
     
             <div class="d-flex justify-content-between">
-                <a href="{{ route('pacientes.index') }}" class="btn btn-primary"><i class="fas fa-solid fa-reply"></i></a>
+                <a href="{{ route('pacientes.index') }}" class="btn btn-primary" id="volver"><i class="fas fa-solid fa-reply"></i></a>
                 
             </div>
             </br>
@@ -62,19 +62,68 @@
                         <p class="card-text">Pronóstico: {{ $paciente->userDetalles[0]->pronostico ?? 'No proporcionado' }}</p>
                         <p class="card-text">Evolución: {{ $paciente->userDetalles[0]->evolucion ?? 'No proporcionado' }}</p>
                         <p class="card-text">Epicrisis: {{ $paciente->userDetalles[0]->epicrisis ?? 'No proporcionado' }}</p>
-
+                        @php
+                            $data = [
+                                'id' => $paciente->id,
+                                'name' => $paciente->userDetalles[0]->nombres . ' ' . $paciente->userDetalles[0]->apellidos,
+                                'edad' => $paciente->userDetalles[0]->edad,
+                                'sexo' => $paciente->userDetalles[0]->sexo == 'M' ? 'Masculino' : 'Femenino',
+                                'estado_civil' => $paciente->userDetalles[0]->estado_civil,
+                                'ciudad' => $paciente->userDetalles[0]->ciudad->nombre,
+                                'departamento' => $paciente->userDetalles[0]->departamento->nombre,
+                                'pais' => $paciente->userDetalles[0]->pais->nombre,
+                                'direccion' => $paciente->userDetalles[0]->direccion?? 'No proporcionado',
+                                'telefono' => $paciente->userDetalles[0]->telefono ?? 'No proporcionado',
+                                'correo' => $paciente->email ?? 'No proporcionado',
+                                'motivo_consulta' => $paciente->userDetalles[0]->motivo_consutla ?? 'No proporcionado',
+                                'nombre_padre' => $paciente->userDetalles[0]->nombre_padre ?? 'No proporcionado',
+                                'nombre_madre' => $paciente->userDetalles[0]->nombre_madre ?? 'No proporcionado',
+                                'tutor' => $paciente->userDetalles[0]->tiene_tutor == 1 ? 'Sí' : 'No',
+                                'nombre_tutor' => $paciente->userDetalles[0]->tutor ?? 'No proporcionado',
+                                'cant_hermanos' => $paciente->userDetalles[0]->cant_hermanos ?? 'No proporcionado',
+                                'lugar_trabajo' => $paciente->userDetalles[0]->lugar_trabajo ?? 'No proporcionado',
+                                'religion' => $paciente->userDetalles[0]->religion ?? 'No proporcionado',
+                                'situacion_laboral' => $paciente->userDetalles[0]->situacion_laboral->descripcion ?? 'No proporcionado',
+                                
+                            ];
+                            $data = json_encode($data);
+                        @endphp
                     </div>
                     </br>
-                    <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-warning">Dar seguimiento</a>
-                    <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="POST" style="display: inline;">
+                    <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-warning" id="seguimiento">Dar seguimiento</a>
+                    <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="POST" style="display: inline;" >
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i class="fas fa-solid fa-trash"></i></button>
+                        <button type="submit" class="btn btn-danger"id="delete"><i class="fas fa-solid fa-trash"></i></button>
                     </form>
-                    <a href="{{ route('download.pdf', ['id' => $paciente->id]) }}" class="btn btn-info"><i class="fas fa-solid fa-file-export"></i></a>
+                    {{-- <a href="{{ route('download.pdf', ['id' => $paciente->id]) }}" class="btn btn-info"><i class="fas fa-solid fa-file-export"></i></a> --}}
+                    <button class="btn btn-info" id="generatePdf" onclick='generatePdf()'>Exportar a pdf</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('page-scripts')
+<script>
+    function generatePdf(data) {
+        console.log(data);
+        let chat = $('#live-chat')
+        let volver = $('#volver')
+        let seguimiento = $('#seguimiento')
+        let deleteButton = $('#delete')
+        let generatePdf = $('#generatePdf')
+        volver.hide();
+        seguimiento.hide();
+        deleteButton.hide();
+        generatePdf.hide();
+        chat.hide();
+        window.print();
+        chat.show();
+        volver.show();
+        seguimiento.show();
+        deleteButton.show();
+        generatePdf.show();
+    }
+</script>
 @endsection

@@ -55,7 +55,14 @@ class AgendaController extends Controller
             'hora' => 'required',
             'profesional_id' => 'required',
             'descripcion' => 'required',
-        ]);
+        ],
+            [ 
+                'fecha.required' => 'El campo fecha es obligatorio',
+                'hora.required' => 'El campo hora es obligatorio',
+                'profesional_id.required' => 'El profesional es obligatorio',
+                'descripcion.required' => 'El campo descripción es obligatorio',
+            ]
+        );
 
             $existingAgenda = Agenda::where('fecha', $request->fecha)
                 ->where('hora', '=', $request->hora)

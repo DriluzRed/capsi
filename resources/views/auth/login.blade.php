@@ -33,12 +33,17 @@
                             @enderror
                         </div>
 
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">
+                        <div class="d-flex flex-row justify-content-center gap-2">
+                            <button type="submit" class="btn btn-primary pr-3">
                                 {{ "Iniciar Sesion"}}
                             </button>
+                            
+                            <a href="{{ route('register') }}" class="ml-3 btn btn-success">
+                                {{ "Registrarse"}}
+                            </a>
 
                         </div>
+                        
                     </form>
                 </div>
             </div>

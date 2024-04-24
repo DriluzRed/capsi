@@ -13,11 +13,11 @@
     <link rel="icon" type="image/png" href="" />
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700"
         rel="stylesheet">
-    <meta name="author" content="GTOV">
+    <meta name="author" content="CAPSI">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/dist/css/adminlte.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
@@ -35,9 +35,9 @@
             @include('includes.menu')
 
             <div class="app-content content">
+                
                 <div class="content-wrapper p-0">
                     @yield('content')
-
                 </div>
             </div>
         </div>
@@ -46,7 +46,9 @@
     @endif
     @if(auth()->check())
         @if (auth()->user()->hasAnyRole('Administrador', 'Psicologo'))
-            @include('includes.chat')
+            @if(!request()->is('agenda'))
+                @include('includes.chat')
+            @endif
         @endif
     @endif
     <script src="{{ asset('vendor/AdminLTE-3.2.0/plugins/jquery/jquery.min.js') }}"></script>

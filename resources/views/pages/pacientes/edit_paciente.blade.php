@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-group @error('sexo') has-danger @enderror">
                             <label for="sexo">Sexo</label>
-                            <select name="sexo" id="sexo" class="form-control" required>
+                            <select name="sexo" id="sexo" class="form-control select2" required>
                                 <option value="">Seleccione...</option>
                                 <option value="M" {{ old('sexo', $paciente->userDetalles[0]->sexo) == 'M' ? 'selected' : '' }}>Masculino</option>
                                 <option value="F" {{ old('sexo', $paciente->userDetalles[0]->sexo) == 'F' ? 'selected' : '' }}>Femenino</option>
