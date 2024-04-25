@@ -27,12 +27,10 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:30',
+            'nombre' => 'required',
             'pais' => 'required'
         ], [
-            'nombre.required' => 'El campo nombre es obligatorio',
-            'nombre.string' => 'El campo nombre debe ser un texto',
-            'nombre.max' => 'El campo nombre debe tener máximo 30 caracteres',
+            'nombre.required' => 'El nombre del departamento es obligatorio',
             'pais.required' => 'El campo país es obligatorio'
         ]
         );
@@ -63,12 +61,10 @@ class DepartamentoController extends Controller
     public function update(Request $request, Departamento $departamento)
     {
         $request->validate([
-            'nombre' => 'required|string|max:30',
+            'nombre' => 'required',
             'pais' => 'required'
         ], [
-            'nombre.required' => 'El campo nombre es obligatorio',
-            'nombre.string' => 'El campo nombre debe ser un texto',
-            'nombre.max' => 'El campo nombre debe tener máximo 30 caracteres',
+            'nombre.required' => 'El nombre del departamento es obligatorio',
             'pais.required' => 'El campo país es obligatorio'
         ]
         );

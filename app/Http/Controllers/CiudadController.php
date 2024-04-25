@@ -26,12 +26,10 @@ class CiudadController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:30',
+            'nombre' => 'required',
             'departamento_id' => 'required'
         ], [
             'nombre.required' => 'El campo nombre es obligatorio',
-            'nombre.string' => 'El campo nombre debe ser un texto',
-            'nombre.max' => 'El campo nombre debe tener máximo 30 caracteres',
             'departamento_id.required' => 'El campo departamento es obligatorio'
         ]
         );
@@ -62,12 +60,10 @@ class CiudadController extends Controller
     public function update(Request $request, Ciudad $ciudad)
     {
         $request->validate([
-            'nombre' => 'required|string|max:30',
+            'nombre' => 'required',
             'departamento_id' => 'required'
         ], [
             'nombre.required' => 'El campo nombre es obligatorio',
-            'nombre.string' => 'El campo nombre debe ser un texto',
-            'nombre.max' => 'El campo nombre debe tener máximo 30 caracteres',
             'departamento_id.required' => 'El campo departamento es obligatorio'
         ]
         );
