@@ -12,7 +12,8 @@ use App\Models\NivelEscolar;
 use App\Models\Pais;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Validator;
+use App\Models\Seguimiento;
 
 class UserDetalleController extends Controller
 {
@@ -260,5 +261,50 @@ class UserDetalleController extends Controller
         $ficha->epicrisis = $request->epicrisis;
         $ficha->save();
         return redirect()->route('pacientes.show', $user->id);
+    }
+
+    public function sendSeguimiento(Request $request){
+
+       
+        $validator = Validator::make($request->all(), [
+            'seguimiento_data' => 'required'
+        ], [
+            'seguimiento_data.required' => 'El campo seguimiento es obligatorio',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()->first()]);
+        }
+        $user = auth()->user();
+        $ficha = UserDetalle::where('user_id', $request->paciente_id)->first();
+        $seguimiento = new Seguimiento();
+        $seguimiento->user_id = $user->id;
+        $seguimiento->user_detalle_id = $ficha->id;
+        $seguimiento->observaciones = $request->seguimiento_data;
+        $seguimiento->fecha = date('Y-m-d');
+        $seguimiento->save();
+        return response()->json(['success' => 'Seguimiento guardado correctamente']);
+    }
+
+    public function getSeguimientos(Request $request){
+        // dd($request->all());
+        $ficha = UserDetalle::where('user_id', $request->paciente_id)->first();
+        $seguimientos = Seguimiento::where('user_detalle_id', $ficha->id)->get();
+
+        if($seguimientos->count() == 0){
+            return response()->json(['data' => [
+                'observaciones' => 'No hay seguimientos',
+                'fecha' => '',
+                'user' => ''
+            ]]);
+        }
+        $data = [];
+        foreach($seguimientos as $seguimiento){
+            $data[] = [
+                'observaciones' => $seguimiento->observaciones,
+                'fecha' => $seguimiento->created_at->format('d-m-Y H:i'),
+            ];
+        }
+        return response()->json(['data' => $data]);
     }
 }
