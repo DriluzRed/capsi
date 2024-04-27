@@ -281,9 +281,9 @@
                     } else {
                         let seguimientos = response.data;
                         let html = '<table class="table">';
-                        html += '<thead><tr><th>Seguimiento</th><th>Fecha</th></tr></thead><tbody>';
+                        html += '<thead><tr><th>Seguimiento</th><th>Fecha</th><th>Psicologo</th></tr></thead><tbody>';
                         for(let i = 0; i < seguimientos.length; i++) {
-                            html += '<tr><td>' + seguimientos[i].observaciones + '</td><td>' + seguimientos[i].fecha + '</td></tr>';
+                            html += '<tr><td>' + seguimientos[i].observaciones + '</td><td>' + seguimientos[i].fecha + '</td><td>' + seguimientos[i].psicologo + '</td></tr>';
                             html += '<tr></tr>';
                         }
                         html += '</tbody></table>';

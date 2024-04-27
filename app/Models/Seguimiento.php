@@ -15,4 +15,9 @@ class Seguimiento extends Model
     {
         return $this->belongsTo(UserDetalle::class);
     }
+
+    public function psicologo()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

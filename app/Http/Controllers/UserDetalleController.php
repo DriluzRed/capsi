@@ -290,7 +290,7 @@ class UserDetalleController extends Controller
         // dd($request->all());
         $ficha = UserDetalle::where('user_id', $request->paciente_id)->first();
         $seguimientos = Seguimiento::where('user_detalle_id', $ficha->id)->get();
-
+        $psicologo = User::where('id', $seguimientos->first()->user_id)->first();
         if($seguimientos->count() == 0){
             return response()->json(['data' => [
                 'observaciones' => 'No hay seguimientos',
@@ -303,6 +303,7 @@ class UserDetalleController extends Controller
             $data[] = [
                 'observaciones' => $seguimiento->observaciones,
                 'fecha' => $seguimiento->created_at->format('d-m-Y H:i'),
+                'psicologo' => $psicologo->nombre_profesional,
             ];
         }
         return response()->json(['data' => $data]);
