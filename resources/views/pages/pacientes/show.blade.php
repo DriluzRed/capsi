@@ -106,24 +106,45 @@
 @endsection
 @section('page-scripts')
 <script>
-    function generatePdf(data) {
-        console.log(data);
-        let chat = $('#live-chat')
-        let volver = $('#volver')
-        let seguimiento = $('#seguimiento')
-        let deleteButton = $('#delete')
-        let generatePdf = $('#generatePdf')
-        volver.hide();
-        seguimiento.hide();
-        deleteButton.hide();
-        generatePdf.hide();
-        chat.hide();
-        window.print();
-        chat.show();
-        volver.show();
-        seguimiento.show();
-        deleteButton.show();
-        generatePdf.show();
-    }
+
+document.addEventListener('DOMContentLoaded', function () {
+    var jsonData = @json($data);
+
+    $.ajax({
+        url: ,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            jsonData
+        },
+        success: function(response){
+            console.log(response);
+        },
+        error:function(xhr, status, error){
+            console.error(error);
+        }
+    });
+});
+
+
+    // function generatePdf(data) {
+    //     console.log(data);
+    //     let chat = $('#live-chat')
+    //     let volver = $('#volver')
+    //     let seguimiento = $('#seguimiento')
+    //     let deleteButton = $('#delete')
+    //     let generatePdf = $('#generatePdf')
+    //     volver.hide();
+    //     seguimiento.hide();
+    //     deleteButton.hide();
+    //     generatePdf.hide();
+    //     chat.hide();
+    //     window.print();
+    //     chat.show();
+    //     volver.show();
+    //     seguimiento.show();
+    //     deleteButton.show();
+    //     generatePdf.show();
+    // }
 </script>
 @endsection

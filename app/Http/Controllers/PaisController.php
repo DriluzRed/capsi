@@ -23,13 +23,10 @@ class PaisController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:15|min:2'
+            'nombre' => 'required'
         ],
         [
-            'nombre.required' => __('El campo nombre es requerido'),
-            'nombre.string' => __('El campo nombre debe ser un texto'),
-            'nombre.max' => __('El campo nombre debe tener máximo 15 caracteres'),
-            'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
+            'nombre.required' => 'El nombre del país es obligatorio',
         ]);
 
         $pais = new Pais();
@@ -59,13 +56,10 @@ class PaisController extends Controller
     public function update(Request $request, Pais $pais)
     {
         $request->validate([
-            'nombre' => 'required|string|max:15|min:2'
+            'nombre' => 'required'
         ],
         [
-            'nombre.required' => __('El campo nombre es requerido'),
-            'nombre.string' => __('El campo nombre debe ser un texto'),
-            'nombre.max' => __('El campo nombre debe tener máximo 15 caracteres'),
-            'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
+            'nombre.required' => 'El nombre del país es obligatorio',
         ]);
 
         $pais->update(

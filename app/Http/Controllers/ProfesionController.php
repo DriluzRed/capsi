@@ -23,13 +23,10 @@ class ProfesionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'descripcion' => 'required|string|max:15|min:2'
+            'descripcion' => 'required'
         ],
         [
-            'descripcion.required' => __('El campo descripcion es requerido'),
-            'descripcion.string' => __('El campo descripcion debe ser un texto'),
-            'descripcion.max' => __('El campo descripcion debe tener máximo 15 caracteres'),
-            'descripcion.min' => __('El campo descripcion debe tener mínimo 2 caracteres')
+            'descripcion.required' => 'El campo descripción es obligatorio',
         ]);
 
         $profesion = new Profesion();
@@ -59,13 +56,10 @@ class ProfesionController extends Controller
     public function update(Request $request, Profesion $profesion)
     {
         $request->validate([
-            'descripcion' => 'required|string|max:15|min:2'
+            'descripcion' => 'required'
         ],
         [
-            'descripcion.required' => __('El campo descripcion es requerido'),
-            'descripcion.string' => __('El campo descripcion debe ser un texto'),
-            'descripcion.max' => __('El campo descripcion debe tener máximo 15 caracteres'),
-            'descripcion.min' => __('El campo descripcion debe tener mínimo 2 caracteres')
+            'descripcion.required' => 'El campo descripción es obligatorio',
         ]);
 
         $profesion->update(

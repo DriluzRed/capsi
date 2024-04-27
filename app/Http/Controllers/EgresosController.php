@@ -23,17 +23,18 @@ class EgresosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string'
+            'descripcion' => 'required',
+            'fecha' => 'required',
+            'monto' => 'required',
         ],
         [
-            'nombre.required' => __('El campo nombre es requerido'),
-            'nombre.string' => __('El campo nombre debe ser un texto'),
-            'nombre.max' => __('El campo nombre debe tener máximo 15 caracteres'),
-            'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
+            'descripcion.required' => 'El campo descripcion es obligatorio',
+            'fecha.required' => 'El campo fecha es obligatorio',
+            'monto.required' => 'El monto es obligatorio',
         ]);
         $fecha = date('Y-m-d', strtotime($request->fecha));
         $egreso = new Egreso();
-        $egreso->descripcion = $request->nombre;
+        $egreso->descripcion = $request->descripcion;
         $egreso->fecha = $fecha;
         $egreso->total = $request->monto;
         $egreso->save();
@@ -59,18 +60,18 @@ class EgresosController extends Controller
     {
         $egreso = Egreso::find($id);
         $request->validate([
-            'nombre' => 'required|string',
-            
+            'descripcion' => 'required',
+            'fecha' => 'required',
+            'monto' => 'required',
         ],
         [
-            'nombre.required' => __('El campo nombre es requerido'),
-            'nombre.string' => __('El campo nombre debe ser un texto'),
-            'nombre.max' => __('El campo nombre debe tener máximo 15 caracteres'),
-            'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
+            'descripcion.required' => 'El campo descripcion es obligatorio',
+            'fecha.required' => 'El campo fecha es obligatorio',
+            'monto.required' => 'El monto es obligatorio',
         ]);
 
         $fecha = date('Y-m-d', strtotime($request->fecha));
-        $egreso->descripcion = $request->nombre;
+        $egreso->descripcion = $request->descripcion;
         $egreso->fecha = $fecha;
         $egreso->total = $request->monto;
         $egreso->save();

@@ -28,7 +28,7 @@ class EspecialidadController extends Controller
         [
             'nombre.required' => __('El campo nombre es requerido'),
             'nombre.string' => __('El campo nombre debe ser un texto'),
-            'nombre.max' => __('El campo nombre debe tener máximo 15 caracteres'),
+            'nombre.max' => __('El campo nombre debe tener máximo 35 caracteres'),
             'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
         ]);
 
@@ -59,12 +59,11 @@ class EspecialidadController extends Controller
     public function update(Request $request, Especialidad $especialidad)
     {
         $request->validate([
-            'nombre' => 'required|string|max:15|min:2'
+            'nombre' => 'required|string|max:35|min:2'
         ],
         [
             'nombre.required' => __('El campo nombre es requerido'),
-            'nombre.string' => __('El campo nombre debe ser un texto'),
-            'nombre.max' => __('El campo nombre debe tener máximo 15 caracteres'),
+            'nombre.max' => __('El campo nombre debe tener máximo 35 caracteres'),
             'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
         ]);
 

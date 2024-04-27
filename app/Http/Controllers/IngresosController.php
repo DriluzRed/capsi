@@ -25,18 +25,18 @@ class IngresosController extends Controller
     {
 
         $request->validate([
-
+            'descripcion' => 'required',
+            'fecha' => 'required',
+            'monto' => 'required',
         ],
         [
-            'nombre.required' => __('El campo nombre es requerido'),
-            'nombre.string' => __('El campo nombre debe ser un texto'),
-            'nombre.max' => __('El campo nombre debe tener máximo 15 caracteres'),
-            'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres'),
-            'fecha.required' => 'El campo fecha es requerido',
+            'descripcion.required' => 'El campo descripcion es obligatorio',
+            'fecha.required' => 'El campo fecha es obligatorio',
+            'monto.required' => 'El monto es obligatorio',
         ]);
         $fecha = date('Y-m-d', strtotime($request->fecha));
         $ingreso = new Ingreso();
-        $ingreso->descripcion = $request->nombre;
+        $ingreso->descripcion = $request->descripcion;
         $ingreso->fecha = $fecha;
         $ingreso->total = $request->monto;
         $ingreso->save();
@@ -63,17 +63,18 @@ class IngresosController extends Controller
     {
         $ingreso = Ingreso::find($id);
         $request->validate([
-
+            'descripcion' => 'required',
+            'fecha' => 'required',
+            'monto' => 'required',
         ],
         [
-            'nombre.required' => __('El campo nombre es requerido'),
-            'nombre.string' => __('El campo nombre debe ser un texto'),
-            'nombre.max' => __('El campo nombre debe tener máximo 15 caracteres'),
-            'nombre.min' => __('El campo nombre debe tener mínimo 2 caracteres')
+            'descripcion.required' => 'El campo descripcion es obligatorio',
+            'fecha.required' => 'El campo fecha es obligatorio',
+            'monto.required' => 'El monto es obligatorio',
         ]);
 
         $fecha = date('Y-m-d', strtotime($request->fecha));
-        $ingreso->descripcion = $request->nombre;
+        $ingreso->descripcion = $request->descripcion;
         $ingreso->fecha = $fecha;
         $ingreso->total = $request->monto;
         $ingreso->save();
