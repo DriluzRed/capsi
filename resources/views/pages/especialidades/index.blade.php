@@ -14,8 +14,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title
-                            ">LISTA DE ESPECIALIDADES</h4>
+                            <h4 class="card-titlecol text-center
+                        font-weight-bold">LISTA DE ESPECIALIDADES</h4>
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
                                 <a href="{{ route('especialidades.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-plus"></i></a>
                             </div>
@@ -23,7 +23,7 @@
                         <div class="card-content">
                             <div class="card-body card-dashboard">
                                 <div class="table-responsive">
-                                    <table class="table dataTable">
+                                    <table class="table dataTable mb-0" style="width: 100%;">
                                         <thead>
                                             <tr>
                                                 <th class="">Nombre</th>

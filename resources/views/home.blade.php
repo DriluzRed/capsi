@@ -11,14 +11,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header bg-primary text-white text-center">
-                        <h3>Nuestros Doctores</h3>
+                    <div class="card-header bg-purple text-white text-center">
+                        <h3>Nuestros Profesionales</h3>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Doctor</th>
+                                    <th>Psicólogo/a</th>
                                     <th>Especialidades</th>
                                     <th>Hora Inicio de Consultas</th>
                                     <th>Hora Fin de Consultas</th>
@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header bg-primary text-white text-center">
+                    <div class="card-header bg-purple text-white text-center">
                         <h3>Tus turnos para hoy</h3>
                     </div>
                     <div class="card-body">
@@ -55,7 +55,7 @@
                             <thead>
                                 <tr>
                                     <th>Descripcion</th>
-                                    <th>Doctor</th>
+                                    <th>Psicólogo/a</th>
                                     <th>Hora</th>
                                 </tr>
                             </thead>

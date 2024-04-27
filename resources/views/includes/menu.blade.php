@@ -9,17 +9,6 @@
             </div>
         </div>
 
-        {{-- <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div> --}}
-
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item {{ request()->is('/') ? 'menu-open' : '' }}">
@@ -92,7 +81,7 @@
                         <a href="{{ url('pacientes/mi-ficha') }}" class="nav-link {{ request()->is('pacientes/mi-ficha') ? 'active' : '' }}"><i class="fas fa-regular fa-folder nav-icon"></i><p>Mis datos</p></a>            
                     </li> 
                     <li class="nav-item">
-                        <a href="{{ url('/agenda/solicitar-turno') }}" class="nav-link {{ request()->is('/agenda/solicitar-turno') ? 'active' : '' }}"><i class="fas fa-regular fa-calendar-plus nav-icon"></i><p>Solicitar un turno</p></a>            
+                        <a href="{{ url('/agenda/solicitar-turno') }}" class="nav-link {{ request()->is('/agenda/solicitar-turno') ? 'active' : '' }}"><i class="fas fa-regular fa-calendar-plus nav-icon"></i><p>Agendar un turno</p></a>            
                     </li> 
                 @endif
                     <li class="nav-item {{ request()->is(['pacientes']) ? 'menu-open' : '' }}">

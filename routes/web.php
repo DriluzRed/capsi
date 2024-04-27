@@ -152,3 +152,5 @@ Route::get('/chat-ia', [App\Http\Controllers\OpenAIController::class, 'index'])-
 Route::post('/send-message', [App\Http\Controllers\OpenAIController::class, 'sendMessage'])->middleware('auth')->name('send-message');
 
 Route::get('/download-pdf/{id}', [App\Http\Controllers\PDFController::class, 'downloadPDF'])->name('download.pdf');
+
+Route::get('/pdf', function () {return view('pages.pacientes.pdf');})->name('pdf');

@@ -53010,4 +53010,10 @@ a.text-muted:hover {
 .dark-mode .border-dark {
   border-color: #4b545c !important;
 }
+
+#calendar {
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
 /*# sourceMappingURL=adminlte.css.map */
