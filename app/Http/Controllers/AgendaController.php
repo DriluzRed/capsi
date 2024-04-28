@@ -93,4 +93,12 @@ class AgendaController extends Controller
         return redirect()->route('home')
         ->with('success', 'Turno solicitado con éxito');
     }
+
+    public function cancelarTurno($id)
+    {
+        $agenda = Agenda::find($id);
+        $agenda->delete();
+        return redirect()->route('home')
+        ->with('success', 'Turno cancelado con éxito');
+    }
 }

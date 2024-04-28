@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Agenda::class);
     }
+
+    public function seguimientos()
+    {
+        return $this->hasMany(Seguimiento::class);
+    }
 }

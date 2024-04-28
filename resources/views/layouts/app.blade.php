@@ -19,8 +19,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/dist/css/adminlte.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/AdminLTE-3.2.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
 
