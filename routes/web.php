@@ -118,6 +118,7 @@ Route::get('/agenda', [App\Http\Controllers\AgendaController::class, 'index'])->
 Route::get('/agenda/events', [App\Http\Controllers\AgendaController::class, 'events'])->middleware('auth')->name('agenda.events');
 Route::get('/agenda/solicitar-turno', [App\Http\Controllers\AgendaController::class, 'solicitarTurno'])->middleware('auth')->name('agenda.solicitar-turno');
 Route::post('/agenda', [App\Http\Controllers\AgendaController::class, 'store'])->middleware('auth')->name('agenda.store');
+Route::get('/agenda/cancelarTurno/{id}', [App\Http\Controllers\AgendaController::class, 'cancelarTurno'])->middleware('auth')->name('agenda.cancelarTurno');
 
 Route::get('/especialidades', [App\Http\Controllers\EspecialidadController::class, 'index'])->middleware('auth')->name('especialidades.index');
 Route::get('/especialidades/create', [App\Http\Controllers\EspecialidadController::class, 'create'])->middleware('auth')->name('especialidades.create');

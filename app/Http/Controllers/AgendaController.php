@@ -6,6 +6,7 @@ use App\Models\Agenda;
 use Illuminate\Http\Request;
 use App\Models\Turno;
 use App\Models\User;
+use App\Models\UserDetalle;
 use Carbon\Carbon;
 
 class AgendaController extends Controller
@@ -18,6 +19,7 @@ class AgendaController extends Controller
     public function events()
     {
         $agenda = Agenda::where('profesional_id', auth()->user()->id)
+        ->where('estado', 'pendiente')
         ->with(['paciente', 'paciente.userDetalles'])->get();
         $events = [];
 
@@ -31,6 +33,8 @@ class AgendaController extends Controller
                 'start' => $item->fecha,
                 'end' => $item->fecha,
                 'hora' => $item->hora,
+                'estado' => $item->estado,
+                'ficha' => $item->paciente->userDetalles[0]->user_id,
                 
             ];
         }
@@ -39,6 +43,7 @@ class AgendaController extends Controller
 
     public function solicitarTurno()
     {
+
         $turnos = Turno::all();
         $profesionales = User::where('es_paciente', 0)
         ->where('ci', '<>', 0)
@@ -63,7 +68,7 @@ class AgendaController extends Controller
                 'descripcion.required' => 'El campo descripción es obligatorio',
             ]
         );
-
+           
             $existingAgenda = Agenda::where('fecha', $request->fecha)
                 ->where('hora', '=', $request->hora)
                 ->where('profesional_id', $request->profesional_id)
@@ -72,6 +77,9 @@ class AgendaController extends Controller
             $horaSolicitada = Carbon::parse($request->hora);
             $horaInicioProfesional = Carbon::parse($profesional->rango_hora_start);
             $horaFinProfesional = Carbon::parse($profesional->rango_hora_end);
+            $existingFicha = UserDetalle::where('user_id', auth()->user()->id)->first();
+
+
             if (!$horaSolicitada->between($horaInicioProfesional, $horaFinProfesional)) {
                 return redirect()->back()
                     ->with('error', 'La hora solicitada está fuera del rango de horas disponibles del profesional');
@@ -79,6 +87,10 @@ class AgendaController extends Controller
             if ($existingAgenda) {
                 return redirect()->back()
                     ->with('error', 'Ya existe un agendamiento para esa fecha y hora con el mismo profesional');
+            }
+            if(!$existingFicha){
+                return redirect()->back()
+                    ->with('error', 'Debe completar su ficha antes de solicitar un turno');
             }
 
         $agenda = new Agenda();
@@ -96,8 +108,11 @@ class AgendaController extends Controller
 
     public function cancelarTurno($id)
     {
+        // dd($id);
         $agenda = Agenda::find($id);
-        $agenda->delete();
+        $agenda->update([
+            'estado' => 'cancelado'
+        ]);
         return redirect()->route('home')
         ->with('success', 'Turno cancelado con éxito');
     }

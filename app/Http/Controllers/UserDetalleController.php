@@ -14,6 +14,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Seguimiento;
+use App\Models\Agenda;
 
 class UserDetalleController extends Controller
 {
@@ -283,6 +284,11 @@ class UserDetalleController extends Controller
         $seguimiento->observaciones = $request->seguimiento_data;
         $seguimiento->fecha = date('Y-m-d');
         $seguimiento->save();
+        $agenda = Agenda::where('user_id', $ficha->user_id)->where('estado', 'pendiente')->first();
+        if($agenda){
+            $agenda->estado = 'finalizado';
+            $agenda->save();
+        }
         return response()->json(['success' => 'Seguimiento guardado correctamente']);
     }
 

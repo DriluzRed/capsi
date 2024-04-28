@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Agenda extends Model
 {   
     protected $table = 'agenda';
+    protected $fillable = [
+        'fecha',
+        'hora',
+        'profesional_id',
+        'user_id',
+        'turno_id',
+        'descripcion',
+        'estado',
+    ];
     use HasFactory;
 
     public function user()

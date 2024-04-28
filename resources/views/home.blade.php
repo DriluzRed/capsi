@@ -48,7 +48,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header bg-primary text-white text-center">
-                        <h3>Tus turnos para hoy</h3>
+                        <h3>Tus turnos</h3>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped">
@@ -57,6 +57,8 @@
                                     <th>Descripcion</th>
                                     <th>Doctor</th>
                                     <th>Hora</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,6 +69,18 @@
                                             {{ $agenda->profesional->nombre_profesional }}
                                         </td>
                                         <td>{{$agenda->hora}}</td>
+                                        <td> {{strtoupper($agenda->estado)}}</td>
+                                        @if ($agenda->estado == 'pendiente')
+                                            <td>
+                                                <form action="{{ route('agenda.cancelarTurno', $agenda->id) }}" method="GET" style="display: inline;">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger">Cancelar Turno</button>
+                                                </form>
+                                            </td>
+                                        @endif
+                                        <td>
+                                            No tiene acciones disponibles
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -126,7 +126,8 @@
             let calendarElement = $("#calendar");
             if (calendarElement.length) {
                 let calendar = new FullCalendar.Calendar(calendarElement[0], {
-                    height: '500px',
+                    height: 'auto',
+                    width: 'auto',
                     initialView: 'dayGridMonth',
                     locale: 'es',
                     events: "{{ route('agenda.events') }}",
@@ -137,11 +138,14 @@
                         var paciente = arg.event.extendedProps.paciente;
                         var psicologo = arg.event.extendedProps.psicologo;
                         var hora = arg.event.extendedProps.hora;
+                        var estado = arg.event.extendedProps.estado;
+                        var ficha = arg.event.extendedProps.ficha;
 
                         return {
-                            html: title + '<br> Descripcion: ' + description + '<br>' + turno +
-                                '<br> Hora turno: ' + hora + '<br> Paciente: ' + paciente +
-                                '<br> Profesional: ' + psicologo
+                            html: 'Hora turno: ' + hora + '<br> Paciente: ' + paciente +
+                                '<br> Profesional: ' + psicologo + '<br> Estado: ' + estado +
+                                '<br> Nro de Ficha: ' + ficha +
+                                '<br> <a href="/pacientes/'+ ficha + '/show" class="btn btn-primary">Ver Ficha</a>'
                         }
                     }
                 });
