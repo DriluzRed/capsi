@@ -108,7 +108,11 @@ class AgendaController extends Controller
 
     public function cancelarTurno($id)
     {
-        // dd($id);
+        $date = Carbon::now()->format('Y-m-d');
+        if($date >= Agenda::find($id)->fecha){
+            return redirect()->route('home')
+            ->with('error', 'No se puede cancelar un turno en el dia de la consulta');
+        }
         $agenda = Agenda::find($id);
         $agenda->update([
             'estado' => 'cancelado'

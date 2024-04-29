@@ -4,6 +4,9 @@
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
         {{-- {{dd($agendas)}} --}}
     @if(auth()->user()->es_paciente == 1)
 
@@ -56,6 +59,7 @@
                                 <tr>
                                     <th>Descripcion</th>
                                     <th>Doctor</th>
+                                    <td>Fecha</td>
                                     <th>Hora</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
@@ -68,6 +72,7 @@
                                         <td>
                                             {{ $agenda->profesional->nombre_profesional }}
                                         </td>
+                                        <td>{{$agenda->fecha}}</td> 
                                         <td>{{$agenda->hora}}</td>
                                         <td> {{strtoupper($agenda->estado)}}</td>
                                         @if ($agenda->estado == 'pendiente')
