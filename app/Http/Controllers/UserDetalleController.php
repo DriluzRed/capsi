@@ -149,6 +149,29 @@ class UserDetalleController extends Controller
     //store o save es para ambos
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'apellidos' => 'required',
+            'ci' => 'required|numeric',
+            'telefono' => 'required|numeric|max:10',
+            'nro_emergencia' => 'required|numeric|max:10',
+            'motivo_consulta' => 'required',
+        ], [
+            'nombre.required' => 'El nombre es obligatorio',
+            'apellidos.required' => 'El apellido es obligatorio',
+            'ci.required' => 'El documento de identidad es obligatorio', 
+            'ci.numeric' => 'El documento de identidad solo debe contener números',
+            'telefono.required' => 'El número de teléfono es obligatorio',
+            'telefono.numeric' => 'El número de teléfono solo debe contener números',
+            'telefono.max' => 'El número de teléfono debe contener un máximo de 10 dígitos',
+            'nro_emergencia.required' => 'El número de telefono de emergencia es obligatorio',
+            'nro_emergencia.numeric' => 'El número de telefono de emergencia olo debe contener números',
+            'nro_emergencia.max' => 'El número de telefono de emergencia debe contener un máximo de 10 dígitos',
+            'motivo_consulta.required' => 'El motivo de consulta es obligatorio',           
+
+        ]
+        );
+
         $user = User::where('ci', $request->ci)->first();
         $user_id = $user->id;
         $ficha = UserDetalle::where('user_id', $user_id)->first();
@@ -211,6 +234,28 @@ class UserDetalleController extends Controller
     //update es para ambos
     public function update(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'apellidos' => 'required',
+            'ci' => 'required|numeric',
+            'telefono' => 'required|numeric|max:10',
+            'nro_emergencia' => 'required|numeric|max:10',
+            'motivo_consulta' => 'required',
+        ], [
+            'nombre.required' => 'El nombre es obligatorio',
+            'apellidos.required' => 'El apellido es obligatorio',
+            'ci.required' => 'El documento de identidad es obligatorio', 
+            'ci.numeric' => 'El documento de identidad solo debe contener números',
+            'telefono.required' => 'El número de teléfono es obligatorio',
+            'telefono.numeric' => 'El número de teléfono solo debe contener números',
+            'telefono.max' => 'El número de teléfono debe contener un máximo de 10 dígitos',
+            'nro_emergencia.required' => 'El número de telefono de emergencia es obligatorio',
+            'nro_emergencia.numeric' => 'El número de telefono de emergencia olo debe contener números',
+            'nro_emergencia.max' => 'El número de telefono de emergencia debe contener un máximo de 10 dígitos',
+            'motivo_consulta.required' => 'El motivo de consulta es obligatorio',           
+
+        ]
+        );
         $user = User::where('ci', $request->ci)->first();
 
         $user_id = $user->id;
@@ -267,7 +312,7 @@ class UserDetalleController extends Controller
 
        
         $validator = Validator::make($request->all(), [
-            'seguimiento_data' => 'required'
+            'seguimiento_data' => 'required''
         ], [
             'seguimiento_data.required' => 'El campo seguimiento es obligatorio',
         ]);
@@ -285,6 +330,7 @@ class UserDetalleController extends Controller
         $seguimiento->save();
         return response()->json(['success' => 'Seguimiento guardado correctamente']);
     }
+
 
     public function getSeguimientos(Request $request){
         // dd($request->all());

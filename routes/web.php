@@ -153,9 +153,5 @@ Route::post('/send-message', [App\Http\Controllers\OpenAIController::class, 'sen
 
 Route::get('/download-pdf/{id}', [App\Http\Controllers\PDFController::class, 'downloadPDF'])->name('download.pdf');
 
-<<<<<<< HEAD
-Route::get('/pdf', function () {return view('pages.pacientes.pdf');})->name('pdf');
-=======
 Route::post('/send-seguimiento', [App\Http\Controllers\UserDetalleController::class, 'sendSeguimiento'])->middleware('auth')->name('sendSeguimiento');
 Route::get('/get-seguimientos', [App\Http\Controllers\UserDetalleController::class, 'getSeguimientos'])->middleware('auth')->name('getSeguimiento');
->>>>>>> 56b28d9c944d439451dd0b371b411fe23eefc046
