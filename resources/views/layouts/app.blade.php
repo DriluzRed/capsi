@@ -126,9 +126,23 @@
             let calendarElement = $("#calendar");
             if (calendarElement.length) {
                 let calendar = new FullCalendar.Calendar(calendarElement[0], {
+<<<<<<< HEAD
                     height: 'auto',
                     width: 'auto',
+=======
+>>>>>>> TableControllerView
                     initialView: 'dayGridMonth',
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                    },
+                    height: 'auto',
+                    navLinks: true, 
+                    editable: true,
+                    selectable: true,
+                    selectMirror: true,
+                    nowIndicator: true,
                     locale: 'es',
                     events: "{{ route('agenda.events') }}",
                     eventContent: function(arg) {
@@ -153,21 +167,19 @@
             }
 
             (function() {
+            
+                $('.chat').hide();
+                $('.chat-message-counter').hide();
 
                 $('#live-chat header').on('click', function() {
-
                     $('.chat').slideToggle(300, 'swing');
                     $('.chat-message-counter').fadeToggle(300, 'swing');
-
                 });
-
+                
                 $('.chat-close').on('click', function(e) {
-
                     e.preventDefault();
                     $('#live-chat').fadeOut(300);
-
                 });
-
             })();
 
             $('#chat-message').submit(function(e) {

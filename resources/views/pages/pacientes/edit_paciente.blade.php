@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-group @error('sexo') has-danger @enderror">
                             <label for="sexo">Sexo</label>
-                            <select name="sexo" id="sexo" class="form-control select2" required>
+                            <select name="sexo" id="sexo" class="form-control" required>
                                 <option value="">Seleccione...</option>
                                 <option value="M" {{ old('sexo', $paciente->userDetalles[0]->sexo) == 'M' ? 'selected' : '' }}>Masculino</option>
                                 <option value="F" {{ old('sexo', $paciente->userDetalles[0]->sexo) == 'F' ? 'selected' : '' }}>Femenino</option>
@@ -109,7 +109,7 @@
                                 has-danger
                             @enderror">
                             <label for="pais">Pais</label>
-                            <select name="pais_id" id="pais" class="form-control select2" required>
+                            <select name="pais_id" id="pais" class="form-control " required>
                                 <option value="">Seleccione...</option>
                                 @foreach($paises as $pais)
                                     <option value="{{ $pais->id }}" {{ old('pais', $paciente->userDetalles[0]->pais_id) == $pais->id ? 'selected' : '' }}>{{ $pais->nombre }}</option>
@@ -121,7 +121,7 @@
                                 has-danger
                             @enderror">
                             <label for="ocupacion">Departamento</label>
-                            <select name="departamento_id" id="departamento" class="form-control select2" required>
+                            <select name="departamento_id" id="departamento" class="form-control " required>
                                 <option value="">Seleccione...</option>
                                 @foreach($departamentos as $departamento)
                                     <option value="{{ $departamento->id }}" {{ old('departamento', $paciente->userDetalles[0]->departamento_id) == $departamento->id ? 'selected' : '' }}>{{ $departamento->nombre }}</option>
@@ -133,7 +133,7 @@
                                 has-danger
                             @enderror">
                             <label for="ocupacion">Ciudad</label>
-                            <select name="ciudad_id" id="ciudad_id" class="form-control select2" required>
+                            <select name="ciudad_id" id="ciudad_id" class="form-control " required>
                                 <option value="">Seleccione...</option>
                                 @foreach($ciudades as $ciudad)
                                     <option value="{{ $ciudad->id }}" {{ old('ciudad_id', $paciente->userDetalles[0]->ciudad_id) == $ciudad->id ? 'selected' : '' }}>{{ $ciudad->nombre }}</option>
@@ -215,7 +215,19 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                       <div class="form-grouop 
+                        <div class="form-group
+                            @error('profesion')
+                                has-danger
+                            @enderror">
+                            <label for="profesion">Profesion</label>
+                            <select name="profesion_id" id="profesion_id" class="form-control " required>
+                                <option value="">Seleccione...</option>
+                                @foreach($profesiones as $profesion)
+                                    <option value="{{ $profesion->id }}">{{ $profesion->descripcion }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-grouop 
                             @error('situacion_laboral_id')
                                 has-danger
                                 @enderror">
@@ -238,7 +250,7 @@
                             <select name="nivel_escolaridad_id" id="nivel_escolaridad_id" class="form-control">
                                 <option value="">Seleccione...</option>
                                 @foreach($escolaridades as $escolaridad)
-                                    <option value="{{ $escolaridad->id }}" {{ old('nivel_estudio_id', $paciente->userDetalles[0]->nivel_escolaridad_id) == $escolaridad->id ? 'selected' : '' }}>{{ $escolaridad->descripcion }}</option>
+                                    <option value="{{ $escolaridad->id }}" {{ old('nivel_estudio_id')}}>{{ $escolaridad->descripcion }}</option>
                                 @endforeach
                             </select>
                             @error('nivel_escolaridad_id')
@@ -344,6 +356,16 @@
                             <label for="contacto_visual">Contacto Visual</label>
                             <input type="text" name="contacto_visual" id="contacto_visual" class="form-control" value="{{ old('contacto_visual', $paciente->userDetalles[0]->contacto_visual) }}">
                             @error('contacto_visual')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('conciencia')
+                                has-danger
+                            @enderror">
+                            <label for="conciencia">Conciencia</label>
+                            <input type="text" name="conciencia" id="conciencia" class="form-control" value="{{ old('conciencia') }}">
+                            @error('conciencia')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

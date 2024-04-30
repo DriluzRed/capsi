@@ -93,10 +93,10 @@
                             </select>
                         </div>
                         <div class="form-group
-                            @error('ocupacion')
+                            @error('departamento')
                                 has-danger
                             @enderror">
-                            <label for="ocupacion">Departamento</label>
+                            <label for="departamento">Departamento</label>
                             <select name="departamento_id" id="departamento" class="form-control select2" required>
                                 <option value="">Seleccione...</option>
                                 @foreach($departamentos as $departamento)
@@ -105,10 +105,10 @@
                             </select>
                         </div>
                         <div class="form-group
-                            @error('ocupacion')
+                            @error('ciudad')
                                 has-danger
                             @enderror">
-                            <label for="ocupacion">Ciudad</label>
+                            <label for="ciudad">Ciudad</label>
                             <select name="ciudad_id" id="ciudad_id" class="form-control select2" required>
                                 <option value="">Seleccione...</option>
                                 @foreach($ciudades as $ciudad)
@@ -180,6 +180,18 @@
                             @error('cant_hermanos')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
+                        </div>
+                        <div class="form-group
+                            @error('profesion')
+                                has-danger
+                            @enderror">
+                            <label for="profesion">Profesion</label>
+                            <select name="profesion_id" id="profesion_id" class="form-control select2" required>
+                                <option value="">Seleccione...</option>
+                                @foreach($profesiones as $profesion)
+                                    <option value="{{ $profesion->id }}">{{ $profesion->descripcion }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group
                             @error('lugar_trabajo')
@@ -320,6 +332,16 @@
                             <label for="contacto_visual">Contacto Visual</label>
                             <input type="text" name="contacto_visual" id="contacto_visual" class="form-control" value="{{ old('contacto_visual') }}">
                             @error('contacto_visual')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('conciencia')
+                                has-danger
+                            @enderror">
+                            <label for="conciencia">Conciencia</label>
+                            <input type="text" name="conciencia" id="conciencia" class="form-control" value="{{ old('conciencia') }}">
+                            @error('conciencia')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

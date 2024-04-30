@@ -13,8 +13,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title
-                        ">LISTA DE PACIENTES</h4>
+                        <h4 class="card-titlecol text-center
+                        font-weight-bold">LISTA DE PACIENTES</h4>
                         <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
                             <a href="{{ route('pacientes.create_psico') }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-plus"></i></a>
                         </div>

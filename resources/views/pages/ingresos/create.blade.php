@@ -54,7 +54,13 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg mt-4 mb-4">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>

@@ -210,6 +210,18 @@
                             @enderror
                         </div>
                         <div class="form-group
+                            @error('profesion')
+                                has-danger
+                            @enderror">
+                            <label for="profesion">Profesion</label>
+                            <select name="profesion_id" id="profesion_id" class="form-control " required>
+                                <option value="">Seleccione...</option>
+                                @foreach($profesiones as $profesion)
+                                    <option value="{{ $profesion->id }}">{{ $profesion->descripcion }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group
                             @error('lugar_trabajo')
                                 has-danger
                             @enderror">
@@ -269,7 +281,13 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg mt-4 mb-4">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
