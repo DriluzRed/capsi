@@ -312,7 +312,7 @@ class UserDetalleController extends Controller
 
        
         $validator = Validator::make($request->all(), [
-            'seguimiento_data' => 'required''
+            'seguimiento_data' => 'required'
         ], [
             'seguimiento_data.required' => 'El campo seguimiento es obligatorio',
         ]);
