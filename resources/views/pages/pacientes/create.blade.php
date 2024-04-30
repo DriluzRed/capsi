@@ -335,16 +335,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group
-                            @error('conciencia')
-                                has-danger
-                            @enderror">
-                            <label for="conciencia">Conciencia</label>
-                            <input type="text" name="conciencia" id="conciencia" class="form-control" value="{{ old('conciencia') }}">
-                            @error('conciencia')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                      
                         <div class="form-group
                             @error('atencion_orientacion_temp_espa')
                                 has-danger
