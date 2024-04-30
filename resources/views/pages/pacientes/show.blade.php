@@ -115,12 +115,16 @@
                                 <td>{{ $paciente->userDetalles[0]->examen_medico ?? 'No proporcionado' }}</td>
                             </tr>
                             <tr>
-                                <td>Examen Psicopatológico:</td>
-                                <td>{{ $paciente->userDetalles[0]->examen_psicopatologico ?? 'No proporcionado' }}</td>
-                            </tr>
-                            <tr>
                                 <td>Disimulación:</td>
                                 <td>{{ $paciente->userDetalles[0]->disimulacion ?? 'No proporcionado' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Simulación:</td>
+                                <td>{{ $paciente->userDetalles[0]->simulacion ?? 'No proporcionado' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Conciencia:</td>
+                                <td>{{ $paciente->userDetalles[0]->conciencia ?? 'No proporcionado' }}</td>
                             </tr>
                             <tr>
                                 <td>Aspecto del Paciente:</td>

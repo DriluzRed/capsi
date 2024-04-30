@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="sexo">Sexo</label>
-                            <select name="sexo" id="sexo" class="form-control" required>
+                            <select name="sexo" id="sexo" class="form-control select2" required>
                                 <option value="M">Masculino</option>
                                 <option value="F">Femenino</option>
                             </select>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label for="estado_civil">Estado Civil</label>
-                            <select name="estado_civil" id="estado_civil" class="form-control" required>
+                            <select name="estado_civil" id="estado_civil" class="form-control select2" required>
                                 <option value="Soltero">Soltero</option>
                                 <option value="Casado">Casado</option>
                                 <option value="Divorciado">Divorciado</option>
@@ -152,7 +152,7 @@
                                 has-danger
                             @enderror">
                             <label for="tiene_tutor">¿Tiene Tutor?</label>
-                            <select name="tiene_tutor" id="tiene_tutor" class="form-control">
+                            <select name="tiene_tutor" id="tiene_tutor" class="form-control select2">
                                 <option value="">Seleccione...</option>
                                 <option value="1" {{ old('tiene_tutor')}}>Si</option>
                                 <option value="0" {{ old('tiene_tutor')}}>No</option>
@@ -196,7 +196,7 @@
                                 has-danger
                                 @enderror">
                             <label for="situacion_laboral_id">Situación Laboral</label>
-                            <select name="situacion_laboral_id" id="situacion_laboral_id" class="form-control">
+                            <select name="situacion_laboral_id" id="situacion_laboral_id" class="form-control select2">
                                 <option value="">Seleccione...</option>
                                 @foreach($situaciones_laborales as $situacion_laboral)
                                     <option value="{{ $situacion_laboral->id }}" {{ old('situacion_laboral_id')}}>{{ $situacion_laboral->descripcion }}</option>
@@ -211,7 +211,7 @@
                                 has-danger
                             @enderror">
                             <label for="nivel_escolaridad_id">Nivel de Estudio</label>
-                            <select name="nivel_escolaridad_id" id="nivel_escolaridad_id" class="form-control">
+                            <select name="nivel_escolaridad_id" id="nivel_escolaridad_id" class="form-control select2">
                                 <option value="">Seleccione...</option>
                                 @foreach($escolaridades as $escolaridad)
                                     <option value="{{ $escolaridad->id }}" {{ old('nivel_estudio_id')}}>{{ $escolaridad->descripcion }}</option>
@@ -262,16 +262,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group
-                            @error('examen_psicopatolico')
-                                has-danger
-                            @enderror">
-                            <label for="examen_psicopatolico">Examen Psicopatológico</label>
-                            <input type="text" name="examen_psicopatolico" id="examen_psicopatolico" class="form-control" value="{{ old('examen_psicopatolico') }}">
-                            @error('examen_psicopatolico')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                       
                         <div class="form-group
                             @error('disimulacion')
                                 has-danger
@@ -279,6 +270,26 @@
                             <label for="disimulacion">Disimulación</label>
                             <input type="text" name="disimulacion" id="disimulacion" class="form-control" value="{{ old('disimulacion') }}">
                             @error('disimulacion')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('simulacion')
+                                has-danger
+                            @enderror">
+                            <label for="simulacion">Simulación</label>
+                            <input type="text" name="simulacion" id="simulacion" class="form-control" value="{{ old('simulacion') }}">
+                            @error('simulacion')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('conciencia')
+                                has-danger
+                            @enderror">
+                            <label for="conciencia">Conciencia</label>
+                            <input type="text" name="conciencia" id="conciencia" class="form-control" value="{{ old('conciencia') }}">
+                            @error('conciencia')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

@@ -286,16 +286,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group
-                            @error('examen_psicopatolico')
-                                has-danger
-                            @enderror">
-                            <label for="examen_psicopatolico">Examen Psicopatológico</label>
-                            <input type="text" name="examen_psicopatolico" id="examen_psicopatolico" class="form-control" value="{{ old('examen_psicopatolico', $paciente->userDetalles[0]->examen_psicopatolico) }}">
-                            @error('examen_psicopatolico')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        
                         <div class="form-group
                             @error('disimulacion')
                                 has-danger
@@ -303,6 +294,26 @@
                             <label for="disimulacion">Disimulación</label>
                             <input type="text" name="disimulacion" id="disimulacion" class="form-control" value="{{ old('disimulacion', $paciente->userDetalles[0]->disimulacion) }}">
                             @error('disimulacion')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('simulacion')
+                                has-danger
+                            @enderror">
+                            <label for="simulacion">Simulación</label>
+                            <input type="text" name="simulacion" id="simulacion" class="form-control" value="{{ old('disimulacion', $paciente->userDetalles[0]->simulacion) }}">
+                            @error('simulacion')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group
+                            @error('conciencia')
+                                has-danger
+                            @enderror">
+                            <label for="conciencia">Conciencia</label>
+                            <input type="text" name="conciencia" id="conciencia" class="form-control" value="{{ old('disimulacion', $paciente->userDetalles[0]->conciencia) }}">
+                            @error('conciencia')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

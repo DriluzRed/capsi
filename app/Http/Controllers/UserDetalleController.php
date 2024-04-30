@@ -185,8 +185,9 @@ class UserDetalleController extends Controller
         $user_detalle->antecedentes_personales = $request->antecedentes_personales;
         $user_detalle->antecedentes_familiares = $request->antecedentes_familiares;
         $user_detalle->examen_medico = $request->examen_medico;
-        $user_detalle->examen_psicopatolico = $request->examen_psicopatolico;
         $user_detalle->disimulacion = $request->disimulacion;
+        $user_detalle->simulacion = $request->simulacion;
+        $user_detalle->conciencia = $request->conciencia;
         $user_detalle->aspecto_del_paciente = $request->aspecto_del_paciente;
         $user_detalle->actitud = $request->actitud;
         $user_detalle->contacto_visual = $request->contacto_visual;
@@ -242,8 +243,9 @@ class UserDetalleController extends Controller
         $ficha->antecedentes_personales = $request->antecedentes_personales;
         $ficha->antecedentes_familiares = $request->antecedentes_familiares;
         $ficha->examen_medico = $request->examen_medico;
-        $ficha->examen_psicopatolico = $request->examen_psicopatolico;
         $ficha->disimulacion = $request->disimulacion;
+        $ficha->simulacion = $request->simulacion;
+        $ficha->conciencia = $request->conciencia;
         $ficha->aspecto_del_paciente = $request->aspecto_del_paciente;
         $ficha->actitud = $request->actitud;
         $ficha->contacto_visual = $request->contacto_visual;
