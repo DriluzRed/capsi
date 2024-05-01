@@ -24,7 +24,9 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">Nombre del Rol</label>
-                                        <input type="text" name="name" id="name" class="form-control" required>
+                                        <input type="text" name="name" id="name" class="form-control @error('name')
+                                        is-invalid
+                                    @enderror" required>
                                     </div>
                                     <div class="form-group
                                         @error('permissions')

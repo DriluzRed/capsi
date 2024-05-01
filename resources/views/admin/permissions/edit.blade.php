@@ -30,7 +30,9 @@
                                             has-danger
                                         @enderror">
                                         <label for="name">Nombre del Permiso</label>
-                                        <input type="text" name="name" id="name" class="form-control" value="{{ $permission->name }}" required>
+                                        <input type="text" name="name" id="name" class="form-control @error('name')
+                                        is-invalid
+                                    @enderror" value="{{ $permission->name }}" required>
                                         @error('name')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

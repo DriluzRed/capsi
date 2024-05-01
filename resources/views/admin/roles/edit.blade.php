@@ -32,7 +32,9 @@
                                             has-danger
                                         @enderror">
                                         <label for="name">Nombre del Rol</label>
-                                        <input type="text" name="name" id="name" class="form-control" value="{{ $role->name }}" required>
+                                        <input type="text" name="name" id="name" class="form-control @error('name')
+                                        is-invalid
+                                    @enderror" value="{{ $role->name }}" required>
                                         @error('name')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

@@ -31,7 +31,9 @@
                                         has-danger
                                     @enderror">
                                     <label for="ci">Documento de Identidad</label>
-                                    <input type="text" name="ci" id="ci" class="form-control" value="{{old('ci', $user->ci)}}"required>
+                                    <input type="text" name="ci" id="ci" class="form-control @error('ci')
+                                    is-invalid
+                                @enderror" value="{{old('ci', $user->ci)}}"required>
                                     @error('ci')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -41,7 +43,9 @@
                                         has-danger
                                     @enderror">
                                     <label for="name">Nombre</label>
-                                    <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}" required>
+                                    <input type="text" name="name" id="name" class="form-control @error('name')
+                                    is-invalid
+                                @enderror" value="{{ $user->name }}" required>
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -51,7 +55,7 @@
                                     has-danger
                                 @enderror">
                                 <label for="nombre_profesional">Nombre Profesional si es psicologo</label>
-                                <input type="text" name="nombre_profesional" id="nombre_profesional" class="form-control" value="{{ $user->nombre_profesional }}">
+                                <input type="text" name="nombre_profesional" id="nombre_profesional" class="form-control " value="{{ $user->nombre_profesional }}">
                                 @error('nombre_profesional')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -61,7 +65,9 @@
                                         has-danger
                                     @enderror">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}" required>
+                                    <input type="email" name="email" id="email" class="form-control @error('email')
+                                    is-invalid
+                                @enderror" value="{{ $user->email }}" required>
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

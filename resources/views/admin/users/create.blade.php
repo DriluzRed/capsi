@@ -29,7 +29,9 @@
                                         has-danger
                                     @enderror">
                                     <label for="ci">Documento de Identidad</label>
-                                    <input type="text" name="ci" id="ci" class="form-control" value="{{old('ci')}}"required>
+                                    <input type="text" name="ci" id="ci" class="form-control @error('ci')
+                                    is-invalid
+                                @enderror" value="{{old('ci')}}"required>
                                     @error('ci')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -39,7 +41,9 @@
                                         has-danger
                                     @enderror">
                                     <label for="name">Nombre</label>
-                                    <input type="text" name="name" id="name" class="form-control" required>
+                                    <input type="text" name="name" id="name" class="form-control @error('name')
+                                    is-invalid
+                                @enderror" required>
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -50,7 +54,9 @@
                                         has-danger
                                     @enderror">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" id="email" class="form-control" required>
+                                    <input type="email" name="email" id="email" class="form-control @error('email')
+                                    is-invalid
+                                @enderror" required>
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -60,7 +66,9 @@
                                         has-danger
                                     @enderror">
                                     <label for="password">Contraseña</label>
-                                    <input type="password" name="password" id="password" class="form-control" required>
+                                    <input type="password" name="password" id="password" class="form-control @error('password')
+                                    is-invalid
+                                @enderror" required>
                                     @error('password')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -84,7 +92,7 @@
                                         has-danger
                                     @enderror">
                                     <label for="es_paciente">Es Paciente</label>
-                                    <select class="form-control" id="es_paciente" name="es_paciente">
+                                    <select class="form-control" id="es_paciente" name="es_paciente" required>
                                         <option value="">Seleccione una opcion</option>
                                         <option value="0">No</option>
                                         <option value="1">Si</option>
