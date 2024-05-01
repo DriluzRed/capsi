@@ -28,7 +28,9 @@
                                 has-danger
                             @enderror">
                             <label for="departamento_id">Departamento</label>
-                            <select name="departamento_id" id="departamento_id" class="form-control" required>
+                            <select name="departamento_id" id="departamento_id" class="form-control @error('nombre')
+                            is-invalid
+                        @enderror" required>
                                 <option value="">Seleccione un departamento</option>
                                 @foreach($departamentos as $departamento)
                                     <option value="{{ $departamento->id }}" {{ $ciudad->departamento_id == $departamento->id ? 'selected' : '' }}>{{ $departamento->nombre }}</option>

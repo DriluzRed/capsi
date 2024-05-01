@@ -29,7 +29,9 @@
                                         has-danger
                                     @enderror">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control" required value="{{old('nombre')}}">
+                                    <input type="text" name="nombre" id="nombre" class="form-control @error('nombre')
+                                    is-invalid
+                                @enderror" required value="{{old('nombre')}}">
                                     @error('nombre')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -39,7 +41,9 @@
                                         has-danger
                                     @enderror">
                                     <label for="fecha">Fecha</label>
-                                    <input type="text" name="fecha" id="fecha" class="form-control datepicker" required value="{{old('fecha')}}">
+                                    <input type="text" name="fecha" id="fecha" class="form-control datepicker @error('fecha')
+                                    is-invalid
+                                @enderror" required value="{{old('fecha')}}">
                                     @error('fecha')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -49,7 +53,9 @@
                                         has-danger
                                     @enderror">
                                     <label for="monto">Monto</label>
-                                    <input type="numeric" name="monto" id="monto" class="form-control" required value="{{old('monto')}}">
+                                    <input type="number" name="monto" id="monto" class="form-control @error('monto')
+                                    is-invalid
+                                @enderror" required value="{{old('monto')}}">
                                     @error('monto')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

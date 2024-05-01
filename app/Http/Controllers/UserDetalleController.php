@@ -252,7 +252,7 @@ class UserDetalleController extends Controller
             'telefono.numeric' => 'El número de teléfono solo debe contener números',
             'telefono.max' => 'El número de teléfono debe contener un máximo de 10 dígitos',
             'nro_emergencia.required' => 'El número de telefono de emergencia es obligatorio',
-            'nro_emergencia.numeric' => 'El número de telefono de emergencia olo debe contener números',
+            'nro_emergencia.numeric' => 'El número de telefono de emergencia solo debe contener números',
             'nro_emergencia.max' => 'El número de telefono de emergencia debe contener un máximo de 10 dígitos',
             'motivo_consulta.required' => 'El motivo de consulta es obligatorio',           
 

@@ -126,11 +126,8 @@
             let calendarElement = $("#calendar");
             if (calendarElement.length) {
                 let calendar = new FullCalendar.Calendar(calendarElement[0], {
-<<<<<<< HEAD
                     height: 'auto',
                     width: 'auto',
-=======
->>>>>>> TableControllerView
                     initialView: 'dayGridMonth',
                     headerToolbar: {
                         left: 'prev,next today',

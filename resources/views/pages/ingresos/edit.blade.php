@@ -17,7 +17,9 @@
                                 has-danger
                             @enderror">
                             <label for="descripcion">Descripcion</label>
-                            <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{ old('descripcion', $ingreso->descripcion) }}" required>
+                            <input type="text" name="descripcion" id="descripcion" class="form-control @error('descripcion')
+                            is-invalid
+                        @enderror" value="{{ old('descripcion', $ingreso->descripcion) }}" required>
                             @error('descripcion')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -27,7 +29,9 @@
                                 has-danger
                             @enderror">
                             <label for="fecha">Fecha</label>
-                            <input type="text" name="fecha" id="fecha" class="form-control datepicker" value="{{old('fecha', $ingreso->fecha) }}" required>
+                            <input type="text" name="fecha" id="fecha" class="form-control datepicker @error('fecha')
+                            is-invalid
+                        @enderror" value="{{old('fecha', $ingreso->fecha) }}" required>
                             @error('fecha')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -37,7 +41,9 @@
                                 has-danger
                             @enderror">
                             <label for="monto">Monto</label>
-                            <input type="number" name="monto" id="monto" class="form-control" value="{{  old('monto', $ingreso->total)}}" required>
+                            <input type="number" name="monto" id="monto" class="form-control @error('monto')
+                            is-invalid
+                        @enderror" value="{{  old('monto', $ingreso->total)}}" required>
                             @error('monto')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

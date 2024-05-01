@@ -18,7 +18,9 @@
                                 has-danger
                             @enderror">
                             <label for="descripcion">Descripcion</label>
-                            <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{ $profesion->descripcion }}" required>
+                            <input type="text" name="descripcion" id="descripcion" class="form-control @error('descripcion')
+                            is-invalid
+                        @enderror" value="{{ $profesion->descripcion }}" required>
                             @error('descripcion')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

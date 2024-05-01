@@ -16,7 +16,9 @@
                     <input type="text" class="form-control
                         @error('descripcion')
                             is-invalid
-                        @enderror" id="descripcion" name="descripcion" value="{{$turno->descripcion}}">
+                        @enderror" id="descripcion" name="descripcion @error('descripcion')
+                        is-invalid
+                    @enderror" value="{{$turno->descripcion}}">
                     @error('descripcion')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

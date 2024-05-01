@@ -27,7 +27,7 @@
                                         has-danger
                                     @enderror">
                                     <label for="descripcion">Descripcion</label>
-                                    <input type="text" name="descripcion" id="descripcion" class="form-control" required value="{{old('descripcion')}}">
+                                    <input type="text" name="descripcion" id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" required value="{{old('descripcion')}}">
                                     @error('descripcion')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -37,7 +37,7 @@
                                         has-danger
                                     @enderror">
                                     <label for="profesional_id">Profesional</label>
-                                    <select name="profesional_id" id="profesional_id" class="form-control" required>
+                                    <select name="profesional_id" id="profesional_id" class="form-control @error('profesional_id') is-invalid @enderror" required>
                                         <option value="">Seleccione un profesional</option>
                                         @foreach($profesionales as $profesional)
                                             <option value="{{ $profesional->id }}">{{ $profesional->nombre_profesional }}</option>
@@ -52,7 +52,7 @@
                                         has-danger
                                     @enderror">
                                     <label for="turno_id">Turno</label>
-                                    <select name="turno_id" id="turno_id" class="form-control " required>
+                                    <select name="turno_id" id="turno_id" class="form-control @error('turno_id') is-invalid @enderror" required>
                                         <option value="">Seleccione un turno</option>
                                         @foreach($turnos as $turno)
                                             <option value="{{ $turno->id }}">{{ $turno->descripcion }}</option>
@@ -67,7 +67,7 @@
                                     has-danger
                                 @enderror">
                                     <label for="fecha">Fecha</label>
-                                    <input type="text" name="fecha" id="fecha" class="form-control datepicker" required>
+                                    <input type="text" name="fecha" id="fecha" class="form-control datepicker @error('fecha') is-invalid @enderror" required>
                                 @error('fecha')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -77,7 +77,7 @@
                                         has-danger
                                     @enderror">
                                     <label for="hora">Hora</label>
-                                    <input type="time" name="hora" id="hora" class="form-control timepicker" required>
+                                    <input type="time" name="hora" id="hora" class="form-control timepicker @error('hora') is-invalid @enderror" required>
                                     @error('hora')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
