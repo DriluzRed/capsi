@@ -99,7 +99,7 @@
                     @csrf
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="ci"><i class="fas fa-regular fa-id-card"></i></span>
-                            <input id="ci" type="ci" class="form-control @error('ci') is-invalid @enderror" ci="ci" value="{{ old('ci') }}" required autocomplete="ci" autofocus placeholder="N° de Documento">
+                            <input id="ci" type="number" name="ci" class="form-control @error('ci') is-invalid @enderror" value="{{ old('ci') }}" required autocomplete="ci" autofocus placeholder="N° de Documento">
                             @error('ci')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

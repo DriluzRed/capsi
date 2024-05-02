@@ -59,7 +59,7 @@
                                 <tr>
                                     <th>Descripcion</th>
                                     <th>Doctor</th>
-                                    <td>Fecha</td>
+                                    <th>Fecha</th>
                                     <th>Hora</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>

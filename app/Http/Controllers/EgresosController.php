@@ -23,18 +23,18 @@ class EgresosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'descripcion' => 'required',
+            'nombre' => 'required',
             'fecha' => 'required',
             'monto' => 'required',
         ],
         [
-            'descripcion.required' => 'El campo descripcion es obligatorio',
+            'nombre.required' => 'El campo descripcion es obligatorio',
             'fecha.required' => 'El campo fecha es obligatorio',
             'monto.required' => 'El monto es obligatorio',
         ]);
         $fecha = date('Y-m-d', strtotime($request->fecha));
         $egreso = new Egreso();
-        $egreso->descripcion = $request->descripcion;
+        $egreso->descripcion = $request->nombre;
         $egreso->fecha = $fecha;
         $egreso->total = $request->monto;
         $egreso->save();
@@ -60,18 +60,18 @@ class EgresosController extends Controller
     {
         $egreso = Egreso::find($id);
         $request->validate([
-            'descripcion' => 'required',
+            'nombre' => 'required',
             'fecha' => 'required',
             'monto' => 'required',
         ],
         [
-            'descripcion.required' => 'El campo descripcion es obligatorio',
+            'nombre.required' => 'El campo descripcion es obligatorio',
             'fecha.required' => 'El campo fecha es obligatorio',
             'monto.required' => 'El monto es obligatorio',
         ]);
 
         $fecha = date('Y-m-d', strtotime($request->fecha));
-        $egreso->descripcion = $request->descripcion;
+        $egreso->descripcion = $request->nombre;
         $egreso->fecha = $fecha;
         $egreso->total = $request->monto;
         $egreso->save();
