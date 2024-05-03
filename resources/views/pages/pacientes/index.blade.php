@@ -33,7 +33,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+
+                                        @if($pacientes->count() > 0)
                                         @foreach($pacientes as $paciente)
                                             <tr>
                                                 @if(count($paciente->userDetalles) > 0)
@@ -53,6 +54,7 @@
                                                 @endif
                                             </tr>
                                         @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
