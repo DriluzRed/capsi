@@ -36,7 +36,7 @@
                                         
                                         @forelse ($pacientes as $paciente)
                                             <tr>
-                                                @if(count($paciente->userDetalles[0])>0)
+                                                @if(count($paciente->userDetalles)>0)
                                                     <td>{{ $paciente->userDetalles[0]->nombres}}</td>
                                                     <td>{{ $paciente->userDetalles[0]->apellidos }}</td>
                                                     <td>{{ $paciente->userDetalles[0]->edad }}</td>
