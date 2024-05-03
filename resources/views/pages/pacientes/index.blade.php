@@ -33,28 +33,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        @if($pacientes->count() > 0)
+                                        
                                         @foreach($pacientes as $paciente)
                                             <tr>
-                                                @if(count($paciente->userDetalles) > 0)
-                                                    <td>{{ $paciente->userDetalles[0]->nombres}}</td>
-                                                    <td>{{ $paciente->userDetalles[0]->apellidos }}</td>
-                                                    <td>{{ $paciente->userDetalles[0]->edad }}</td>
-                                                    <td>{{ $paciente->userDetalles[0]->motivo_consutla }}</td>   
-                                                    <td>
-                                                        <a href="{{ route('pacientes.show', $paciente->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-expand"></i> Ver</a>
-                                                        <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-pen"></i></a>
-                                                        <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="POST" style="display: inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-solid fa-trash"></i></button>
-                                                        </form>
-                                                    </td>
-                                                @endif
+                                                <td>{{ $paciente->userDetalles && count($paciente->userDetalles) > 0 ? $paciente->userDetalles[0]->nombres : 'N/A' }}</td>
+                                                <td>{{ $paciente->userDetalles && count($paciente->userDetalles) > 0 ? $paciente->userDetalles[0]->apellidos : 'N/A' }}</td>
+                                                <td>{{ $paciente->userDetalles && count($paciente->userDetalles) > 0 ? $paciente->userDetalles[0]->edad : 'N/A' }}</td>
+                                                <td>{{ $paciente->userDetalles && count($paciente->userDetalles) > 0 ? $paciente->userDetalles[0]->motivo_consulta : 'N/A' }}</td>
+                                                <td>
+                                                    <a href="{{ route('pacientes.show', $paciente->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-expand"></i> Ver</a>
+                                                    <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-pen"></i></a>
+                                                </td>
                                             </tr>
                                         @endforeach
-                                        @endif
                                     </tbody>
                                 </table>
                             </div>
