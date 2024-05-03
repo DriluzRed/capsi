@@ -36,6 +36,7 @@
                                         
                                         @forelse ($pacientes as $paciente)
                                             <tr>
+                                                @if(count($paciente->userDetalles[0])>0)
                                                     <td>{{ $paciente->userDetalles[0]->nombres}}</td>
                                                     <td>{{ $paciente->userDetalles[0]->apellidos }}</td>
                                                     <td>{{ $paciente->userDetalles[0]->edad }}</td>
@@ -49,6 +50,7 @@
                                                             <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-solid fa-trash"></i></button>
                                                         </form>
                                                     </td>
+                                                @endif
                                             </tr>
                                         @empty
                                         <tr>
