@@ -83,6 +83,10 @@
                                 <td>{{ $paciente->userDetalles[0]->cant_hermanos ?? 'No proporcionado'}}</td>
                             </tr>
                             <tr>
+                                <td>Profesion:</td>
+                                <td>{{ $paciente->userDetalles[0]->profesion->descripcion ?? 'No proporcionado'}}</td>
+                            </tr>
+                            <tr>
                                 <td>Lugar de Trabajo:</td>
                                 <td>{{ $paciente->userDetalles[0]->lugar_trabajo ?? 'No proporcionado'}}</td>
                             </tr>
