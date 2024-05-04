@@ -107,7 +107,8 @@ class UserDetalleController extends Controller
     }
     //crear del lado del paciente
     public function createMiFicha(){
-        $user_id = auth()->user()->id;
+        $user = auth()->user();
+        $user_id = $user->id;
         $ficha_exists = UserDetalle::where('user_id', $user_id)->first();
         if($ficha_exists){
             return $this->miFicha('El usuario ya tiene una ficha.');
@@ -125,7 +126,8 @@ class UserDetalleController extends Controller
             ->with('situaciones_laborales', $situaciones_laborales)
             ->with('escolaridades', $escolaridades)
             ->with('paises', $paises)
-            ->with('departamentos', $departamentos);
+            ->with('departamentos', $departamentos)
+            ->with('user', $user);
     }
     //este es el nuevo index
     public function getPacientes(){
@@ -151,22 +153,20 @@ class UserDetalleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
-            'apellido' => 'required',
+            'nombres' => 'required|string',
+            'apellidos' => 'required|string',
             'ci' => 'required|numeric',
-            'telefono' => 'required|numeric|max:10',
-            'nro_emergencia' => 'required|numeric|max:10',
+            'telefono' => 'required|string|max:10',
+            'nro_emergencia' => 'required|string|max:10',
             'motivo_consulta' => 'required',
         ], [
-            'nombre.required' => 'El nombre es obligatorio',
-            'apellido.required' => 'El apellido es obligatorio',
+            'nombres.required' => 'El nombre es obligatorio',
+            'apellidos.required' => 'El apellido es obligatorio',
             'ci.required' => 'El documento de identidad es obligatorio', 
             'ci.numeric' => 'El documento de identidad solo debe contener números',
             'telefono.required' => 'El número de teléfono es obligatorio',
-            'telefono.numeric' => 'El número de teléfono solo debe contener números',
             'telefono.max' => 'El número de teléfono debe contener un máximo de 10 dígitos',
             'nro_emergencia.required' => 'El número de telefono de emergencia es obligatorio',
-            'nro_emergencia.numeric' => 'El número de telefono de emergencia olo debe contener números',
             'nro_emergencia.max' => 'El número de telefono de emergencia debe contener un máximo de 10 dígitos',
             'motivo_consulta.required' => 'El motivo de consulta es obligatorio',           
 

@@ -143,7 +143,7 @@
                                 has-danger
                             @enderror">
                             <label for="religion">Religión</label>
-                            <input type="text" name="religion" id="religion" class="form-control @error('religion') is-invalid @enderror" value="{{ old('religion', $paciente->userDetalles[0]->religion) }}" required>
+                            <input type="text" name="religion" id="religion" class="form-control @error('religion') is-invalid @enderror" value="{{ old('religion', $paciente->userDetalles[0]->religion) }}">
                             @error('religion')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -153,7 +153,7 @@
                                 has-danger
                             @enderror">
                             <label for="nombre_padre">Nombre del Padre</label>
-                            <input type="text" name="nombre_padre" id="nombre_padre" class="form-control @error('nombre_padre') is-invalid @enderror" value="{{ old('nombre_padre', $paciente->userDetalles[0]->nombre_padre) }}" required>
+                            <input type="text" name="nombre_padre" id="nombre_padre" class="form-control @error('nombre_padre') is-invalid @enderror" value="{{ old('nombre_padre', $paciente->userDetalles[0]->nombre_padre) }}">
                             @error('nombre_padre')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -163,7 +163,7 @@
                                 has-danger
                             @enderror">
                             <label for="nombre_madre">Nombre de la Madre</label>
-                            <input type="text" name="nombre_madre" id="nombre_madre" class="form-control @error('nombre_madre') is-invalid @enderror" value="{{ old('nombre_madre', $paciente->userDetalles[0]->nombre_madre) }}" required>
+                            <input type="text" name="nombre_madre" id="nombre_madre" class="form-control @error('nombre_madre') is-invalid @enderror" value="{{ old('nombre_madre', $paciente->userDetalles[0]->nombre_madre) }}">
                             @error('nombre_madre')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -173,7 +173,7 @@
                                 has-danger
                             @enderror">
                             <label for="tiene_tutor">¿Tiene Tutor?</label>
-                            <select name="tiene_tutor" id="tiene_tutor" class="form-control select2 @error('tiene_tutor') is-invalid @enderror" required>
+                            <select name="tiene_tutor" id="tiene_tutor" class="form-control select2 @error('tiene_tutor') is-invalid @enderror">
                                 <option value="">Seleccione...</option>
                                 <option value="1" {{ old('tiene_tutor', $paciente->userDetalles[0]->tiene_tutor) == 1 ? 'selected' : '' }}>Si</option>
                                 <option value="0" {{ old('tiene_tutor', $paciente->userDetalles[0]->tiene_tutor) == 0 ? 'selected' : '' }}>No</option>
@@ -187,7 +187,7 @@
                                 has-danger
                             @enderror">
                             <label for="nombre_tutor">Nombre del Tutor</label>
-                            <input type="text" name="tutor" id="nombre_tutor" class="form-control @error('nombre_tutor') is-invalid @enderror" value="{{ old('nombre_tutor', $paciente->userDetalles[0]->nombre_tutor) }}" required>
+                            <input type="text" name="tutor" id="nombre_tutor" class="form-control @error('nombre_tutor') is-invalid @enderror" value="{{ old('nombre_tutor', $paciente->userDetalles[0]->nombre_tutor) }}">
                             @error('nombre_tutor')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -197,7 +197,7 @@
                                 has-danger
                             @enderror">
                             <label for="cant_hermanos">Cantidad de Hermanos</label>
-                            <input type="number" name="cant_hermanos" id="cant_hermanos" class="form-control @error('cant_hermanos') is-invalid @enderror" value="{{ old('cant_hermanos', $paciente->userDetalles[0]->cant_hermanos) }}" required>
+                            <input type="number" name="cant_hermanos" id="cant_hermanos" class="form-control @error('cant_hermanos') is-invalid @enderror" value="{{ old('cant_hermanos', $paciente->userDetalles[0]->cant_hermanos) }}">
                             @error('cant_hermanos')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -207,7 +207,7 @@
                                 has-danger
                             @enderror">
                             <label for="profesion">Profesion</label>
-                            <select name="profesion_id" id="profesion_id" class="form-control select2 @error('profesion_id') is-invalid @enderror" required>
+                            <select name="profesion_id" id="profesion_id" class="form-control select2 @error('profesion_id') is-invalid @enderror">
                                 <option value="">Seleccione...</option>
                                 @foreach($profesiones as $profesion)
                                     <option value="{{ $profesion->id }}">{{ $profesion->descripcion }}</option>
@@ -219,7 +219,7 @@
                                 has-danger
                             @enderror">
                             <label for="lugar_trabajo">Lugar de Trabajo</label>
-                            <input type="text" name="lugar_trabajo" id="lugar_trabajo" class="form-control @error('lugar_trabajo') is-invalid @enderror" value="{{ old('lugar_trabajo', $paciente->userDetalles[0]->lugar_trabajo) }}" required>
+                            <input type="text" name="lugar_trabajo" id="lugar_trabajo" class="form-control @error('lugar_trabajo') is-invalid @enderror" value="{{ old('lugar_trabajo', $paciente->userDetalles[0]->lugar_trabajo) }}">
                             @error('lugar_trabajo')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -229,7 +229,7 @@
                                 has-danger
                                 @enderror">
                             <label for="situacion_laboral_id">Situación Laboral</label>
-                            <select name="situacion_laboral_id" id="situacion_laboral_id" class="form-control select2 @error('situacion_laboral_id') is-invalid @enderror" required>
+                            <select name="situacion_laboral_id" id="situacion_laboral_id" class="form-control select2 @error('situacion_laboral_id') is-invalid @enderror">
                                 <option value="">Seleccione...</option>
                                 @foreach($situaciones_laborales as $situacion_laboral)
                                     <option value="{{ $situacion_laboral->id }}" {{ old('situacion_laboral_id', $paciente->userDetalles[0]->situacion_laboral_id) == $situacion_laboral->id ? 'selected' : '' }}>{{ $situacion_laboral->descripcion }}</option>
@@ -244,7 +244,7 @@
                                 has-danger
                             @enderror">
                             <label for="nivel_escolaridad_id">Nivel de Estudio</label>
-                            <select name="nivel_escolaridad_id" id="nivel_escolaridad_id" class="form-control select2 @error('nivel_escolaridad_id') is-invalid @enderror" required>
+                            <select name="nivel_escolaridad_id" id="nivel_escolaridad_id" class="form-control select2 @error('nivel_escolaridad_id') is-invalid @enderror">
                                 <option value="">Seleccione...</option>
                                 @foreach($escolaridades as $escolaridad)
                                     <option value="{{ $escolaridad->id }}" {{ old('nivel_estudio_id', $paciente->userDetalles[0]->nivel_escolaridad_id) == $escolaridad->id ? 'selected' : '' }}>{{ $escolaridad->descripcion }}</option>
@@ -259,7 +259,7 @@
                                 has-danger
                             @enderror">
                             <label for="nro_emergencia">Numero de Emergencia</label>
-                            <input type="text" name="nro_emergencia" id="nro_emergencia" class="form-control @error('nro_emergencia') is-invalid @enderror" value="{{ old('nro_emergencia', $paciente->userDetalles[0]->nro_emergencia) }}" required>
+                            <input type="text" name="nro_emergencia" id="nro_emergencia" class="form-control @error('nro_emergencia') is-invalid @enderror" value="{{ old('nro_emergencia', $paciente->userDetalles[0]->nro_emergencia) }}">
                             @error('nro_emergencia')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
