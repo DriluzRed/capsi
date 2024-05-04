@@ -183,6 +183,18 @@
                             @enderror
                         </div>
                         <div class="form-group
+                            @error('profesion')
+                                has-danger
+                            @enderror">
+                            <label for="profesion">Profesion</label>
+                            <select name="profesion_id" id="profesion_id" class="form-control select2 @error('profesion_id') is-invalid @enderror" required>
+                                <option value="">Seleccione...</option>
+                                @foreach($profesiones as $profesion)
+                                    <option value="{{ $profesion->id }}" {{ old('profesion_id') == $profesion->id ? 'selected' : '' }}>{{ $profesion->descripcion }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group
                             @error('lugar_trabajo')
                                 has-danger
                             @enderror">

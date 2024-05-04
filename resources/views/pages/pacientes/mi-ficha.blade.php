@@ -210,7 +210,7 @@
                             <select name="profesion_id" id="profesion_id" class="form-control select2 @error('profesion_id') is-invalid @enderror">
                                 <option value="">Seleccione...</option>
                                 @foreach($profesiones as $profesion)
-                                    <option value="{{ $profesion->id }}">{{ $profesion->descripcion }}</option>
+                                    <option value="{{ $profesion->id }}" {{ (old('profesion_id') ?? $paciente->userDetalles[0]->profesion_id) == $profesion->id ? 'selected' : '' }}>{{ $profesion->descripcion }}</option>
                                 @endforeach
                             </select>
                         </div>
