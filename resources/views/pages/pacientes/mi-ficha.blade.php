@@ -9,10 +9,15 @@
             </br>
             <div class="card">
                 <div class="card-body">
-                    @if ($message != "")
-                        <div class="alert alert-danger">
-                            {{ $message }}
-                        </div>
+                        @if ($message != "")
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @endif
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
                         @endif
                     <form action="{{ route('pacientes.update', $paciente->id) }}" method="POST">
                         @csrf

@@ -186,6 +186,7 @@ class UserDetalleController extends Controller
         $user_detalle->apellidos = $request->apellidos;
         $user_detalle->edad = $request->edad;
         $user_detalle->ci = $request->ci;
+        $user_detalle->sexo = $request->sexo;
         $user_detalle->departamento_id = $request->departamento_id;
         $user_detalle->ciudad_id = $request->ciudad_id;
         $user_detalle->profesion_id = $request->profesion_id;
@@ -264,6 +265,7 @@ class UserDetalleController extends Controller
         $ficha->apellidos = $request->apellidos;
         $ficha->edad = $request->edad;
         $ficha->ci = $request->ci;
+        $ficha->sexo = $request->sexo;
         $ficha->departamento_id = $request->departamento_id;
         $ficha->ciudad_id = $request->ciudad_id;
         $ficha->profesion_id = $request->profesion_id;
@@ -306,6 +308,10 @@ class UserDetalleController extends Controller
         $ficha->evolucion = $request->evolucion;
         $ficha->epicrisis = $request->epicrisis;
         $ficha->save();
+        if(auth()->user()->es_paciente == 1){
+            return redirect()->route('pacientes.mi-ficha')
+            ->with('success', 'Ficha actualizada correctamente');
+        }
         return redirect()->route('pacientes.show', $user->id);
     }
 
