@@ -23,7 +23,7 @@ class EspecialidadController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:15|min:2'
+            'nombre' => 'required|string|max:35|min:2'
         ],
         [
             'nombre.required' => __('El campo nombre es requerido'),

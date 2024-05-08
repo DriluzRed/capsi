@@ -280,7 +280,8 @@
                         </div>
                         <div class="form-group">
                             <label for="examen_medico">Examen Médico</label>
-                            examen_medico                            @error('examen_medico')
+                            <input type="text" name="examen_medico" id="examen_medico" class="form-control @error('examen_medico') is-invalid @enderror" value="{{ old('examen_medico', $paciente->userDetalles[0]->examen_medico) }}">
+                            @error('examen_medico')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

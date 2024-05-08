@@ -10,7 +10,7 @@ class NivelEscolar extends Model
     use HasFactory;
     protected $table = 'nivel_escolar';
     protected $fillable = ['descripcion'];
-    public function user_detalles()
+    public function user_detalle()
     {
         return $this->hasMany(UserDetalle::class, 'nivel_escolaridad_id');
     }

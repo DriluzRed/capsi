@@ -60,7 +60,7 @@
                             </tr>
                             <tr>
                                 <td>Motivo de Consulta:</td>
-                                <td>{{ $paciente->userDetalles[0]->motivo_consulta ?? 'No proporcionado'}}</td>
+                                <td>{{ $paciente->userDetalles[0]->motivo_consutla ?? 'No proporcionado'}}</td>
                             </tr>
                             <tr>
                                 <td>Nombre del Padre:</td>

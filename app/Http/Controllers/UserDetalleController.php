@@ -138,11 +138,10 @@ class UserDetalleController extends Controller
     //show del lado del psico
     public function showPaciente($id){
         $paciente = User::where('id', $id)->first();
-       
+        
         return view('pages.pacientes.show')
             ->with('paciente', $paciente);
     }
-
     public function seguimiento($id){
         $paciente = User::where('id', $id)->first();
         return view('pages.pacientes.seguimiento')
