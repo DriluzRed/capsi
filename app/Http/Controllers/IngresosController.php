@@ -40,7 +40,7 @@ class IngresosController extends Controller
         $ingreso->fecha = $fecha;
         $ingreso->total = $request->monto;
         $ingreso->save();
-        return redirect()->route('ingresos.index');
+        return redirect()->route('ingresos.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     public function show(Ingreso $ingreso)
@@ -78,13 +78,13 @@ class IngresosController extends Controller
         $ingreso->fecha = $fecha;
         $ingreso->total = $request->monto;
         $ingreso->save();
-        return redirect()->route('ingresos.index');
+        return redirect()->route('ingresos.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(Ingreso $ingreso)
     {
         $ingreso->delete();
-        return redirect()->route('ingresos.index');
+        return redirect()->route('ingresos.index')->with('mensaje', 'Se eliminó correctamente');
     }
 
 }

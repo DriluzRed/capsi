@@ -103,7 +103,7 @@ class AgendaController extends Controller
         $agenda->save();
 
         return redirect()->route('home')
-        ->with('success', 'Turno solicitado con éxito');
+        ->with('mensaje', 'Turno agendado exitosamente');
     }
 
     public function cancelarTurno($id)

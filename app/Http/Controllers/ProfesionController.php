@@ -35,7 +35,8 @@ class ProfesionController extends Controller
                 'descripcion' => $request->descripcion
             ]
         );
-        return redirect()->route('profesiones.index');
+        return redirect()->route('profesiones.index')->with('mensaje', 'Se registró exitosamente');
+    
     }
 
     public function show(Profesion $profesion)
@@ -67,12 +68,12 @@ class ProfesionController extends Controller
                 'descripcion' => $request->descripcion
             ]
         );
-        return redirect()->route('profesiones.index');
+        return redirect()->route('profesiones.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(Profesion $profesion)
     {
         $profesion->delete();
-        return redirect()->route('profesiones.index');
+        return redirect()->route('profesiones.index')->with('mensaje', 'Se eliminó correctamente');
     }
 }

@@ -28,7 +28,7 @@ class PermissionController extends Controller
         $permiso->name = $request->name;
         $permiso->save();
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('admin.permissions.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     public function show(Permission $permiso)
@@ -51,13 +51,13 @@ class PermissionController extends Controller
         $permiso->name = $request->name;
         $permiso->save();
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('admin.permissions.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
 
     public function destroy(Permission $permiso)
     {
         $permiso->delete();
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('admin.permissions.index')->with('mensaje', 'Se eliminó correctamente');
     }
 }

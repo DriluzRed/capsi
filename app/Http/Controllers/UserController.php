@@ -61,7 +61,7 @@ class UserController extends Controller
         // $user_especialidades->user_id = $usuario->id;
         // $user_especialidades->especialidad_id = $request->especialidades;
         return redirect()->route('admin.users.index')
-            ->with('success', 'Rol creado con éxito');
+            ->with('success', 'Rol creado con éxito')->with('mensaje', 'Se registró exitosamente');
     }
 
     public function show(User $usuario)
@@ -117,13 +117,13 @@ class UserController extends Controller
     $usuario->especialidades()->detach();
     $usuario->especialidades()->attach($request->especialidades);
 
-    return redirect()->route('admin.users.index');
+    return redirect()->route('admin.users.index')->with('mensaje', 'Se actualizó correctamente');
 }
 
     public function destroy(User $usuario)
     {
         $usuario->delete();
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('mensaje', 'Se eliminó correctamente');
     }
 
 

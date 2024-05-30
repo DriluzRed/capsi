@@ -35,7 +35,7 @@ class PaisController extends Controller
                 'nombre' => $request->nombre
             ]
         );
-        return redirect()->route('paises.index');
+        return redirect()->route('paises.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     public function show(Pais $pais)
@@ -67,13 +67,13 @@ class PaisController extends Controller
                 'nombre' => $request->nombre
             ]
         );
-        return redirect()->route('paises.index');
+        return redirect()->route('paises.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(Pais $pais)
     {
         $pais->delete();
-        return redirect()->route('paises.index');
+        return redirect()->route('paises.index')->with('mensaje', 'Se eliminó correctamente');
     }
 
 }

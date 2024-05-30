@@ -38,7 +38,7 @@ class EspecialidadController extends Controller
                 'nombre' => $request->nombre
             ]
         );
-        return redirect()->route('especialidades.index');
+        return redirect()->route('especialidades.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     public function show(Especialidad $especialidad)
@@ -72,13 +72,13 @@ class EspecialidadController extends Controller
                 'nombre' => $request->nombre
             ]
         );
-        return redirect()->route('especialidades.index');
+        return redirect()->route('especialidades.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(Especialidad $especialidad)
     {
         $especialidad->delete();
-        return redirect()->route('especialidades.index');
+        return redirect()->route('especialidades.index')->with('mensaje', 'Se eliminó correctamente');
     }
 
 }

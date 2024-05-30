@@ -260,16 +260,22 @@
                     'paciente_id': paciente_id
                 },
                 success: function(response) {
-                    if(response.error) {
-                        alert(response.error);
-                 
+                    if (response.status == 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Éxito!',
+                            text: response.message
+                        });
                     } else {
-                        alert(response.success);
-                        modal.modal('hide');
+                        Swal.fire({
+                            icon: 'error',
+                            title: '¡Error!',
+                            text: response.message
+                        });
                     }
                 },
-                error: function(error) {
-                    console.error(error);
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
                 }
             });
             $('#seguimiento_data').val('');

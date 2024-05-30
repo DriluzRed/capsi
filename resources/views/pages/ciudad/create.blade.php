@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="content-header row">
     <div class="content-header-left col-md-6 col-12 mb-2">
     </div>
@@ -22,7 +23,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body card-dashboard">
-                            <form action="{{ route('ciudades.store') }}" method="POST">
+                            <form action="{{ route('ciudades.store') }}" method="POST" id="frmDatos">
                                 @csrf
                                 <div class="form-group
                                     @error('nombre')
@@ -66,3 +67,6 @@
         </div>
     </section>
 @endsection
+
+
+    

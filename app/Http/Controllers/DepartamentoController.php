@@ -38,7 +38,7 @@ class DepartamentoController extends Controller
         $departamento->nombre = $request->nombre;
         $departamento->pais_id = $request->pais;
         $departamento->save();
-        return redirect()->route('departamentos.index');
+        return redirect()->route('departamentos.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     public function show(Departamento $departamento)
@@ -71,13 +71,13 @@ class DepartamentoController extends Controller
         $departamento->nombre = $request->nombre;
         $departamento->pais_id = $request->pais;
         $departamento->save();
-        return redirect()->route('departamentos.index');
+        return redirect()->route('departamentos.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(Departamento $departamento)
     {
         $departamento->delete();
-        return redirect()->route('departamentos.index');
+        return redirect()->route('departamentos.index')->with('mensaje', 'Se eliminó correctamente');
     }
 
 }

@@ -229,9 +229,9 @@ class UserDetalleController extends Controller
         $user_detalle->epicrisis = $request->epicrisis;
         $user_detalle->save();
         if(auth()->user()->es_paciente == 1){
-            return redirect()->route('pacientes.mi-ficha');
+            return redirect()->route('pacientes.mi-ficha')->with('mensaje', 'Se registró exitosamente');
         }
-        return redirect()->route('pacientes.show', $user->id);
+        return redirect()->route('pacientes.show', $user->id)->with('mensaje', 'Se registró exitosamente');
     }
     //update es para ambos
     public function update(Request $request)
@@ -309,9 +309,9 @@ class UserDetalleController extends Controller
         $ficha->save();
         if(auth()->user()->es_paciente == 1){
             return redirect()->route('pacientes.mi-ficha')
-            ->with('success', 'Ficha actualizada correctamente');
+            ->with('mensaje', 'Datos actualizada correctamente');
         }
-        return redirect()->route('pacientes.show', $user->id);
+        return redirect()->route('pacientes.show', $user->id)->with('mensaje', 'Ficha actualizada correctamente');
     }
 
     public function sendSeguimiento(Request $request){
@@ -339,7 +339,8 @@ class UserDetalleController extends Controller
             $agenda->estado = 'finalizado';
             $agenda->save();
         }
-        return response()->json(['success' => 'Seguimiento guardado correctamente']);
+        return response()->json(['message' => '¡Seguimiento guardado exitosamente!',
+        'status' => 'success']);
     }
 
 

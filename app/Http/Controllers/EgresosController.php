@@ -38,7 +38,7 @@ class EgresosController extends Controller
         $egreso->fecha = $fecha;
         $egreso->total = $request->monto;
         $egreso->save();
-        return redirect()->route('egresos.index');
+        return redirect()->route('egresos.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     public function show(Egreso $egreso)
@@ -75,13 +75,13 @@ class EgresosController extends Controller
         $egreso->fecha = $fecha;
         $egreso->total = $request->monto;
         $egreso->save();
-        return redirect()->route('egresos.index');
+        return redirect()->route('egresos.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(Egreso $egreso)
     {
         $egreso->delete();
-        return redirect()->route('egresos.index');
+        return redirect()->route('egresos.index')->with('mensaje', 'Se eliminó correctamente');
     }
 
 }

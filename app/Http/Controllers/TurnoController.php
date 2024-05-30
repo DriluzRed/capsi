@@ -38,7 +38,7 @@ class TurnoController extends Controller
                 'descripcion' => $request->descripcion
             ]
         );
-        return redirect()->route('turnos.index');
+        return redirect()->route('turnos.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     public function show(Turno $turno)
@@ -73,12 +73,12 @@ class TurnoController extends Controller
                 'descripcion' => $request->descripcion
             ]
         );
-        return redirect()->route('turnos.index');
+        return redirect()->route('turnos.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(Turno $turno)
     {
         $turno->delete();
-        return redirect()->route('turnos.index');
+        return redirect()->route('turnos.index')->with('mensaje', 'Se eliminó correctamente');
     }
 }

@@ -36,7 +36,7 @@ class RoleController extends Controller
 
         $rol->permissions()->sync($request->permissions);
 
-        return redirect()->route('admin.roles.index');
+        return redirect()->route('admin.roles.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     public function edit(Role $role)
@@ -55,13 +55,13 @@ class RoleController extends Controller
         $rol->name = $request->name;
         $rol->save();
         $rol->permissions()->sync($request->permissions);
-        return redirect()->route('admin.roles.index');
+        return redirect()->route('admin.roles.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(Role $rol)
     {
         $rol->delete();
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('mensaje', 'Se eliminó correctamente');
     }
 
 

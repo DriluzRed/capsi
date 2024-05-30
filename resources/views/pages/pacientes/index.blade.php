@@ -58,4 +58,17 @@
     </section>
 </div>
 @endsection
-                    
+
+@section('page-scripts')
+    @if($message = Session::get('mensaje'))
+        <script>
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "{{$message}}",
+        showConfirmButton: false,
+        timer: 1500
+        });
+        </script>
+    @endif
+@endsection

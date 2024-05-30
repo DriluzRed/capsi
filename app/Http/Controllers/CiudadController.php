@@ -37,12 +37,13 @@ class CiudadController extends Controller
         $ciudad->nombre = $request->nombre;
         $ciudad->departamento_id = $request->departamento_id;
         $ciudad->save();
-        return redirect()->route('ciudades.index');
+
+        return redirect()->route('ciudades.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     public function show(Ciudad $ciudad)
     {
-        return view('ciudads.show')
+        return view('ciudades.show')
         ->with('ciudad', $ciudad)
         ->with('title', 'Detalle de ciudad');
     }
@@ -70,13 +71,13 @@ class CiudadController extends Controller
         $ciudad->nombre = $request->nombre;
         $ciudad->departamento_id = $request->departamento_id;
         $ciudad->save();
-        return redirect()->route('ciudades.index');
+        return redirect()->route('ciudades.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(Ciudad $ciudad)
     {
         $ciudad->delete();
-        return redirect()->route('ciudades.index');
+        return redirect()->route('ciudades.index')->with('mensaje', 'Se eliminó correctamente');
     }
 
 }

@@ -23,7 +23,7 @@
                             <form action="{{ route('turnos.destroy', $turno->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                <button type="submit" class="btn btn-danger delete">Eliminar</button>
                             </form>
                         </td>
                     </tr>
@@ -33,3 +33,37 @@
         </div>
     </div>
     @endsection
+
+    @section('page-scripts')
+    @if($message = Session::get('mensaje'))
+        <script>
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "{{$message}}",
+        showConfirmButton: false,
+        timer: 1500
+        });
+        </script>
+    @endif
+    <script>
+        $('.delete').click(function(e) {
+            e.preventDefault();
+            var form = $(this).closest('form');
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "Esta acción no se puede deshacer",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#66a3ac',
+                cancelButtonColor: '#6f51ad',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
+@endsection

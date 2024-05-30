@@ -36,7 +36,7 @@ class NivelEscolarController extends Controller
                 'descripcion' => $request->descripcion
             ]
         );
-        return redirect()->route('nivelEscolar.index');
+        return redirect()->route('nivelEscolar.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     
@@ -62,12 +62,12 @@ class NivelEscolarController extends Controller
                 'descripcion' => $request->descripcion
             ]
         );
-        return redirect()->route('nivelEscolar.index');
+        return redirect()->route('nivelEscolar.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(NivelEscolar $nivelEscolar)
     {
         $nivelEscolar->delete();
-        return redirect()->route('nivelEscolar.index');
+        return redirect()->route('nivelEscolar.index')->with('mensaje', 'Se eliminó correctamente');
     }
 }

@@ -36,7 +36,7 @@ class SituacionLaboralController extends Controller
                 'descripcion' => $request->descripcion
             ]
         );
-        return redirect()->route('situacionLaboral.index');
+        return redirect()->route('situacionLaboral.index')->with('mensaje', 'Se registró exitosamente');
     }
 
     
@@ -62,12 +62,12 @@ class SituacionLaboralController extends Controller
                 'descripcion' => $request->descripcion
             ]
         );
-        return redirect()->route('situacionLaboral.index');
+        return redirect()->route('situacionLaboral.index')->with('mensaje', 'Se actualizó correctamente');
     }
 
     public function destroy(SituacionLaboral $situacionLaboral)
     {
         $situacionLaboral->delete();
-        return redirect()->route('situacionLaboral.index');
+        return redirect()->route('situacionLaboral.index')->with('mensaje', 'Se eliminó correctamente');
     }
 }
