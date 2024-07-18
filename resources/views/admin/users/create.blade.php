@@ -91,7 +91,7 @@
                                     @error('es_paciente')
                                         has-danger
                                     @enderror">
-                                    <label for="es_paciente">Es Paciente</label>
+                                    <label for="es_paciente select2">Es Paciente</label>
                                     <select class="form-control" id="es_paciente" name="es_paciente" required>
                                         <option value="">Seleccione una opcion</option>
                                         <option value="0">No</option>

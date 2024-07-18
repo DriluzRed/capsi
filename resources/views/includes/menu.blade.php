@@ -75,7 +75,7 @@
                 @if (auth()->user()->hasRole('Paciente'))
                    
                     <li class="nav-item">
-                        <a href="{{ url('pacientes/mi-ficha-create') }}" class="nav-link {{ request()->is('pacientes/mi-ficha-create') ? 'active' : '' }}"><i class="fas fa-regular fa-address-card nav-icon"></i><p>Crear mi ficha</p></a>            
+                        <a href="{{ url('pacientes/mi-ficha-create') }}" class="nav-link {{ request()->is('pacientes/mi-ficha-create') ? 'active' : '' }}"><i class="fas fa-regular fa-address-card nav-icon"></i><p>Crear mi registro</p></a>            
                     </li> 
                     <li class="nav-item">
                         <a href="{{ url('pacientes/mi-ficha') }}" class="nav-link {{ request()->is('pacientes/mi-ficha') ? 'active' : '' }}"><i class="fas fa-regular fa-folder nav-icon"></i><p>Mis datos</p></a>            

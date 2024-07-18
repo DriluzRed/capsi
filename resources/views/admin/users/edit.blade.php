@@ -101,7 +101,7 @@
                                         has-danger
                                     @enderror">
                                     <label for="es_paciente">Es Paciente</label>
-                                    <select class="form-control" id="es_paciente" name="es_paciente">
+                                    <select class="form-control select2" id="es_paciente" name="es_paciente">
                                         <option value="">Seleccione una opcion</option>
                                         <option value="0" {{ $user->es_paciente == 0 ? 'selected' : '' }}>No</option>
                                         <option value="1" {{ $user->es_paciente == 1 ? 'selected' : '' }}>Si</option>
