@@ -75,7 +75,10 @@
             $('#especialidadesDiv').show();
             $('#nombre_profesionalDiv').show();
         }
-        $('.select2').select2()
+        $('.select2').select2({
+            width: '100%',
+            theme: 'bootstrap4'
+        })
 
         $('.select2bs4').select2({
             theme: 'bootstrap4'

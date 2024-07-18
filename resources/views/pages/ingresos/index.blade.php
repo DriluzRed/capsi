@@ -36,7 +36,7 @@
                                                 <tr>
                                                     <td>{{ $ingreso->descripcion }}</td>
                                                     <td>{{ $ingreso->fecha }}</td>
-                                                    <td decimal-mask>{{ $ingreso->total }}</td>
+                                                    <td decimal-mask>{{ number_format($ingreso->total, 0, ',', '.') }} Gs.</td>
                                                     <td>
                                                         <a href="{{ route('ingresos.edit', $ingreso->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-pen"></i></a>
                                                         <form action="{{ route('ingresos.destroy', $ingreso->id) }}" method="POST" style="display: inline;">

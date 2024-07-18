@@ -7,7 +7,7 @@
         <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
             <a href="{{ route('admin.users.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-reply"></i></a>
             </br>
-            </br>>
+            </br>
         </div>
     </div>
 </div>

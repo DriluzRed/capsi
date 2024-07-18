@@ -18,31 +18,33 @@
                         <h3>Nuestros Profesionales</h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Psicólogo/a</th>
-                                    <th>Especialidades</th>
-                                    <th>Hora Inicio de Consultas</th>
-                                    <th>Hora Fin de Consultas</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($psicologos as $psicologo)
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
                                     <tr>
-                                        <td>{{ $psicologo->nombre_profesional }}</td>
-                                        <td>
-                                            @foreach($psicologo->especialidades as $especialidad)
-                                                {{ $especialidad->nombre }}<br>
-                                            @endforeach
-                                        </td>
-                                        <td>{{ \Carbon\Carbon::parse($psicologo->rango_hora_start)->format('H:i:s') }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($psicologo->rango_hora_end)->format('H:i:s') }}</td>
+                                        <th>Psicólogo/a</th>
+                                        <th>Especialidades</th>
+                                        <th>Hora Inicio de Consultas</th>
+                                        <th>Hora Fin de Consultas</th>
+
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach($psicologos as $psicologo)
+                                        <tr>
+                                            <td>{{ $psicologo->nombre_profesional }}</td>
+                                            <td>
+                                                @foreach($psicologo->especialidades as $especialidad)
+                                                    {{ $especialidad->nombre }}<br>
+                                                @endforeach
+                                            </td>
+                                            <td>{{ \Carbon\Carbon::parse($psicologo->rango_hora_start)->format('H:i:s') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($psicologo->rango_hora_end)->format('H:i:s') }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                           </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,42 +56,44 @@
                         <h3>Tus turnos</h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Descripcion</th>
-                                    <th>Doctor</th>
-                                    <th>Fecha</th>
-                                    <th>Hora</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($agendas as $agenda)
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
                                     <tr>
-                                        <td>{{$agenda->descripcion}}</td>
-                                        <td>
-                                            {{ $agenda->profesional->nombre_profesional }}
-                                        </td>
-                                        <td>{{$agenda->fecha}}</td> 
-                                        <td>{{$agenda->hora}}</td>
-                                        <td> {{strtoupper($agenda->estado)}}</td>
-                                        @if ($agenda->estado == 'pendiente')
-                                            <td>
-                                                <form action="{{ route('agenda.cancelarTurno', $agenda->id) }}" method="GET" style="display: inline;">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger">Cancelar Turno</button>
-                                                </form>
-                                            </td>
-                                        @endif
-                                        <td>
-                                            No tiene acciones disponibles
-                                        </td>
+                                        <th>Descripcion</th>
+                                        <th>Doctor</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach($agendas as $agenda)
+                                        <tr>
+                                            <td>{{$agenda->descripcion}}</td>
+                                            <td>
+                                                {{ $agenda->profesional->nombre_profesional }}
+                                            </td>
+                                            <td>{{$agenda->fecha}}</td> 
+                                            <td>{{$agenda->hora}}</td>
+                                            <td> {{strtoupper($agenda->estado)}}</td>
+                                            @if ($agenda->estado == 'pendiente')
+                                                <td>
+                                                    <form action="{{ route('agenda.cancelarTurno', $agenda->id) }}" method="GET" style="display: inline;">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger">Cancelar Turno</button>
+                                                    </form>
+                                                </td>
+                                            @endif
+                                            <td>
+                                                No tiene acciones disponibles
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -26,6 +26,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="">Nombre</th>
+                                                <th>País</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
@@ -33,6 +34,7 @@
                                             @foreach($departamentos as $departamento)
                                                 <tr>
                                                     <td>{{ $departamento->nombre }}</td>
+                                                    <td>{{ $departamento->pais->nombre }}</td>
                                                     <td>
                                                         <a href="{{ route('departamentos.edit', $departamento->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-pen"></i></a>
                                                         <form action="{{ route('departamentos.destroy', $departamento->id) }}" method="POST" style="display: inline;">

@@ -29,8 +29,8 @@
                             </li>
                         </ul>
                 </li>
-                <li class="nav-item {{ request()->is(['departamentos', 'paises', 'ciudades', 'especialidades']) ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ request()->is('departamentos','paises', 'ciudades', 'especialidades') ? 'active' : '' }}"><i class="nav-icon fas fa-clipboard-list"></i><p>Datos Generales<i class="right fas fa-angle-left"></i></p></a>
+                <li class="nav-item {{ request()->is(['departamentos', 'paises', 'ciudades', 'especialidades', 'nivelEscolar', 'situacionLaboral', 'profesiones']) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('departamentos','paises', 'ciudades', 'especialidades', 'nivelEscolar', 'situacionLaboral', 'profesiones') ? 'active' : '' }}"><i class="nav-icon fas fa-clipboard-list"></i><p>Datos Generales<i class="right fas fa-angle-left"></i></p></a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                     <a href="{{ url('departamentos') }}" class="nav-link {{ request()->is('departamentos') ? 'active' : '' }}"><i class="fas fa-list nav-icon"></i><p>Departamentos</p></a>            
@@ -85,11 +85,11 @@
                     </li> 
                 @endif
                     <li class="nav-item {{ request()->is(['pacientes']) ? 'menu-open' : '' }}">
-                        @if(auth()->user()->hasAnyRole('Administrador', 'Psicologo'))
+                        @if(auth()->user()->hasAnyRole('Psicologo'))
                             <a href="#" class="nav-link {{ request()->is('pacientes') ? 'active' : '' }}"><i class="nav-icon fas fa-user"></i><p>Lista de Pacientes<i class="right fas fa-angle-left"></i></p></a>
                         @endif
                         <ul class="nav nav-treeview">
-                            @if(auth()->user()->hasAnyRole('Administrador', 'Psicologo'))
+                            @if(auth()->user()->hasAnyRole('Psicologo'))
                                 <li class="nav-item">
                                     <a href="{{ url('pacientes') }}" class="nav-link {{ request()->is('pacientes') ? 'active' : '' }}"><i class="fas fa-regular fa-address-book nav-icon"></i><p>Pacientes</p></a>            
                                 </li>

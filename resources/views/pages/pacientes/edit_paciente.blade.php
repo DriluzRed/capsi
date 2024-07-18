@@ -94,7 +94,7 @@
                         </div>
                         <div class="form-group @error('pais') has-danger @enderror">
                             <label for="pais">Pais</label>
-                            <select name="pais_id" id="pais" class="form-control @error('pais') is-invalid @enderror select2" required>
+                            <select name="pais_id" id="pais" class="form-control select2 @error('pais') is-invalid @enderror select2" required>
                                 <option value="">Seleccione...</option>
                                 @foreach($paises as $pais)
                                     <option value="{{ $pais->id }}" {{ old('pais', $paciente->userDetalles[0]->pais_id) == $pais->id ? 'selected' : '' }}>{{ $pais->nombre }}</option>

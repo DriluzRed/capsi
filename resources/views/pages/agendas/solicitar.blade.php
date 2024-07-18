@@ -37,7 +37,7 @@
                                         has-danger
                                     @enderror">
                                     <label for="profesional_id">Profesional</label>
-                                    <select name="profesional_id" id="profesional_id" class="form-control @error('profesional_id') is-invalid @enderror" required>
+                                    <select name="profesional_id" id="profesional_id" class="form-control select2 @error('profesional_id') is-invalid @enderror" required>
                                         <option value="">Seleccione un profesional</option>
                                         @foreach($profesionales as $profesional)
                                             <option value="{{ $profesional->id }}">{{ $profesional->nombre_profesional }}</option>
@@ -52,7 +52,7 @@
                                         has-danger
                                     @enderror">
                                     <label for="turno_id">Turno</label>
-                                    <select name="turno_id" id="turno_id" class="form-control @error('turno_id') is-invalid @enderror" required>
+                                    <select name="turno_id" id="turno_id" class="form-control select2 @error('turno_id') is-invalid @enderror" required>
                                         <option value="">Seleccione un turno</option>
                                         @foreach($turnos as $turno)
                                             <option value="{{ $turno->id }}">{{ $turno->descripcion }}</option>
